@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="1Day-1MVP is a one-day MVP operating system for idea, scope, job packet, QA, approval, launch evidence, and review."
+      content="1Day-1MVP는 아이디어, 범위, 작업 패킷, QA, 승인, 출시 증거, 리뷰를 하루 안에 연결하는 MVP 운영 시스템입니다."
     />
-    <title>1Day-1MVP</title>
+    <title>1Day-1MVP - 하루에 하나의 MVP를 출시하는 운영 시스템</title>
     <style>
       :root {
         color-scheme: light;
-        --ink: #1c2228;
-        --muted: #56616a;
-        --line: #d9e0da;
+        --ink: #182129;
+        --muted: #58646f;
+        --line: #d8e0dc;
         --paper: #fbfcf8;
         --panel: #ffffff;
         --blue: #2d68c4;
         --green: #1f875c;
         --amber: #c88b26;
         --coral: #b65345;
+        --soft-green: #eef7f2;
       }
 
       * {
@@ -31,16 +32,14 @@
         background: var(--paper);
         color: var(--ink);
         font-family:
-          "Segoe UI",
-          "Apple SD Gothic Neo",
-          "Noto Sans KR",
-          Arial,
-          sans-serif;
-        line-height: 1.5;
+          "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
+        line-height: 1.55;
       }
 
-      a {
+      a,
+      button {
         color: inherit;
+        font: inherit;
       }
 
       .shell {
@@ -50,8 +49,12 @@
       }
 
       header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
         border-bottom: 1px solid var(--line);
-        background: rgba(251, 252, 248, 0.94);
+        background: rgba(251, 252, 248, 0.96);
+        backdrop-filter: blur(12px);
       }
 
       nav,
@@ -62,7 +65,7 @@
       }
 
       nav {
-        min-height: 68px;
+        min-height: 72px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -70,8 +73,16 @@
       }
 
       .brand {
+        min-width: max-content;
         font-size: 1.08rem;
         font-weight: 800;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
       }
 
       .status-link {
@@ -82,6 +93,34 @@
         font-size: 0.9rem;
         text-decoration: none;
         white-space: nowrap;
+      }
+
+      .language-switcher {
+        display: inline-grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        min-width: 132px;
+        padding: 3px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--panel);
+      }
+
+      .language-switcher button {
+        min-height: 34px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 750;
+        letter-spacing: 0;
+      }
+
+      .language-switcher button[aria-pressed="true"] {
+        background: var(--ink);
+        color: white;
       }
 
       main {
@@ -111,7 +150,7 @@
         letter-spacing: 0;
       }
 
-      .headline-ko {
+      .headline {
         display: block;
         margin-top: 16px;
         color: var(--green);
@@ -120,7 +159,7 @@
       }
 
       .subtitle {
-        max-width: 640px;
+        max-width: 650px;
         margin: 26px 0 0;
         color: var(--muted);
         font-size: 1.08rem;
@@ -173,7 +212,7 @@
       }
 
       .card {
-        min-height: 210px;
+        min-height: 230px;
         padding: 22px;
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -235,7 +274,7 @@
         margin-top: 22px;
         padding: 18px 20px;
         border-left: 4px solid var(--green);
-        background: #eef7f2;
+        background: var(--soft-green);
         color: #244a37;
         border-radius: 8px;
       }
@@ -249,10 +288,14 @@
 
       @media (max-width: 860px) {
         nav {
-          align-items: flex-start;
+          align-items: stretch;
           flex-direction: column;
           justify-content: center;
           padding: 16px 0;
+        }
+
+        .nav-actions {
+          justify-content: space-between;
         }
 
         .hero,
@@ -264,94 +307,338 @@
           padding-top: 42px;
         }
       }
+
+      @media (max-width: 560px) {
+        .nav-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .status-link,
+        .language-switcher {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="shell">
       <header>
-        <nav aria-label="Primary">
+        <nav aria-label="주요 탐색" data-i18n-aria-label="navLabel">
           <div class="brand">1Day-1MVP</div>
-          <a
-            class="status-link"
-            href="https://ggbu75769-dot.github.io/1day-1mvp-site/"
-            >Public static launch site</a
-          >
+          <div class="nav-actions">
+            <a
+              class="status-link"
+              href="https://ggbu75769-dot.github.io/1day-1mvp-site/"
+              data-i18n="nav.siteLink"
+              >공개 정적 출시 사이트</a
+            >
+            <div
+              class="language-switcher"
+              role="group"
+              aria-label="언어 선택"
+              data-i18n-aria-label="languageLabel"
+            >
+              <button
+                type="button"
+                data-language="ko"
+                aria-pressed="true"
+                title="한국어로 보기"
+                data-i18n-title="koTitle"
+              >
+                한국
+              </button>
+              <button
+                type="button"
+                data-language="en"
+                aria-pressed="false"
+                title="영어로 보기"
+                data-i18n-title="enTitle"
+              >
+                미국
+              </button>
+            </div>
+          </div>
         </nav>
       </header>
 
       <main>
         <section class="hero" aria-labelledby="title">
           <div>
-            <p class="eyebrow">Engineering release-ready</p>
+            <p class="eyebrow" data-i18n="hero.eyebrow">
+              엔지니어링 출시 준비 완료
+            </p>
             <h1 id="title">
               1Day-1MVP
-              <span class="headline-ko">하루 안에 MVP 출시 흐름을 끝까지 묶는 운영 OS</span>
+              <span class="headline" data-i18n="hero.headline"
+                >하루에 하나의 MVP를 실제로 출시하는 운영 시스템</span
+              >
             </h1>
-            <p class="subtitle">
-              A focused operating system for moving one viable idea through
-              scope, Codex job packets, QA, human approvals, launch evidence,
-              and post-launch review without pretending risky gates are solved.
+            <p class="subtitle" data-i18n="hero.subtitle">
+              실행 가능한 아이디어를 범위 정의, Codex 작업 패킷, QA, 인간 승인,
+              출시 증거, 출시 후 리뷰까지 안전하게 밀어 올리는 집중형 운영
+              시스템입니다.
             </p>
             <div class="actions">
               <a
                 class="button"
                 href="https://ggbu75769-dot.github.io/1day-1mvp-site/"
-                >View this site</a
+                data-i18n="hero.primaryAction"
+                >현재 사이트 보기</a
               >
-              <a class="button secondary" href="#launch-status">Launch status</a>
+              <a
+                class="button secondary"
+                href="#launch-status"
+                data-i18n="hero.secondaryAction"
+                >출시 상태 확인</a
+              >
             </div>
           </div>
 
           <figure class="preview">
             <img
               src="assets/launch-control-preview.png"
-              alt="Preview of the 1Day-1MVP launch control workflow"
+              alt="1Day-1MVP 출시 관리 워크플로 미리보기"
+              data-i18n-alt="previewAlt"
               width="1400"
               height="900"
             />
           </figure>
         </section>
 
-        <section class="sections" aria-label="1Day-1MVP workflow">
+        <section
+          class="sections"
+          aria-label="1Day-1MVP 워크플로"
+          data-i18n-aria-label="workflowLabel"
+        >
           <article class="card">
-            <h2>What It Does</h2>
+            <h2 data-i18n="cards.whatTitle">무엇을 하나요</h2>
             <ul>
-              <li>Chooses a viable one-day MVP idea.</li>
-              <li>Locks scope and planning artifacts.</li>
-              <li>Issues Codex job packets for implementation.</li>
-              <li>Runs QA and records launch evidence.</li>
-              <li>Keeps risky actions behind human approval.</li>
+              <li data-i18n="cards.what1">
+                하루 안에 출시 가능한 MVP 아이디어를 고릅니다.
+              </li>
+              <li data-i18n="cards.what2">
+                범위와 계획 산출물을 작게 잠급니다.
+              </li>
+              <li data-i18n="cards.what3">
+                구현을 위한 Codex 작업 패킷을 발행합니다.
+              </li>
+              <li data-i18n="cards.what4">
+                QA를 실행하고 출시 증거를 기록합니다.
+              </li>
+              <li data-i18n="cards.what5">
+                위험한 행동은 인간 승인 뒤에 둡니다.
+              </li>
             </ul>
           </article>
 
           <article class="card" id="launch-status">
-            <h2>Launch Status</h2>
+            <h2 data-i18n="cards.statusTitle">출시 상태</h2>
             <div class="rail">
-              <span><i class="dot green"></i>Engineering release-ready.</span>
-              <span><i class="dot amber"></i>Source-release human approvals pending.</span>
-              <span><i class="dot coral"></i>Runtime API is not hosted on GitHub Pages.</span>
+              <span
+                ><i class="dot green"></i
+                ><span data-i18n="cards.status1"
+                  >엔지니어링 출시 준비 완료.</span
+                ></span
+              >
+              <span
+                ><i class="dot amber"></i
+                ><span data-i18n="cards.status2"
+                  >소스 공개 릴리스는 인간 승인 대기 중.</span
+                ></span
+              >
+              <span
+                ><i class="dot coral"></i
+                ><span data-i18n="cards.status3"
+                  >Runtime API는 GitHub Pages에 호스팅하지 않음.</span
+                ></span
+              >
             </div>
           </article>
 
           <article class="card">
-            <h2>Security Boundary</h2>
-            <p>
-              This public GitHub Pages site is static. It exposes no backend,
-              no runtime token, no private approval records, and no application
-              source code.
+            <h2 data-i18n="cards.securityTitle">보안 경계</h2>
+            <p data-i18n="cards.securityBody">
+              이 공개 GitHub Pages 사이트는 정적 페이지입니다. 백엔드, 런타임
+              토큰, 비공개 승인 기록, 애플리케이션 소스 코드를 노출하지
+              않습니다.
             </p>
-            <div class="safety">
-              Pages hosts only public launch copy and static assets.
+            <div class="safety" data-i18n="cards.securityNote">
+              Pages에는 공개 출시 문구와 정적 에셋만 배포됩니다.
             </div>
           </article>
         </section>
       </main>
 
-      <footer>
-        1Day-1MVP public landing page. The main application repository remains
-        private; public source release is not approved until human approvals and
-        license decisions are complete.
+      <footer data-i18n="footer">
+        1Day-1MVP 공개 랜딩 페이지입니다. 메인 애플리케이션 저장소는 비공개로
+        유지되며, 인간 승인과 라이선스 결정이 완료되기 전에는 소스 공개 릴리스가
+        승인되지 않습니다.
       </footer>
     </div>
+
+    <script>
+      const translations = {
+        ko: {
+          meta: {
+            title: "1Day-1MVP - 하루에 하나의 MVP를 출시하는 운영 시스템",
+            description:
+              "1Day-1MVP는 아이디어, 범위, 작업 패킷, QA, 승인, 출시 증거, 리뷰를 하루 안에 연결하는 MVP 운영 시스템입니다.",
+          },
+          navLabel: "주요 탐색",
+          languageLabel: "언어 선택",
+          koTitle: "한국어로 보기",
+          enTitle: "영어로 보기",
+          workflowLabel: "1Day-1MVP 워크플로",
+          previewAlt: "1Day-1MVP 출시 관리 워크플로 미리보기",
+          nav: {
+            siteLink: "공개 정적 출시 사이트",
+          },
+          hero: {
+            eyebrow: "엔지니어링 출시 준비 완료",
+            headline: "하루에 하나의 MVP를 실제로 출시하는 운영 시스템",
+            subtitle:
+              "실행 가능한 아이디어를 범위 정의, Codex 작업 패킷, QA, 인간 승인, 출시 증거, 출시 후 리뷰까지 안전하게 밀어 올리는 집중형 운영 시스템입니다.",
+            primaryAction: "현재 사이트 보기",
+            secondaryAction: "출시 상태 확인",
+          },
+          cards: {
+            whatTitle: "무엇을 하나요",
+            what1: "하루 안에 출시 가능한 MVP 아이디어를 고릅니다.",
+            what2: "범위와 계획 산출물을 작게 잠급니다.",
+            what3: "구현을 위한 Codex 작업 패킷을 발행합니다.",
+            what4: "QA를 실행하고 출시 증거를 기록합니다.",
+            what5: "위험한 행동은 인간 승인 뒤에 둡니다.",
+            statusTitle: "출시 상태",
+            status1: "엔지니어링 출시 준비 완료.",
+            status2: "소스 공개 릴리스는 인간 승인 대기 중.",
+            status3: "Runtime API는 GitHub Pages에 호스팅하지 않음.",
+            securityTitle: "보안 경계",
+            securityBody:
+              "이 공개 GitHub Pages 사이트는 정적 페이지입니다. 백엔드, 런타임 토큰, 비공개 승인 기록, 애플리케이션 소스 코드를 노출하지 않습니다.",
+            securityNote: "Pages에는 공개 출시 문구와 정적 에셋만 배포됩니다.",
+          },
+          footer:
+            "1Day-1MVP 공개 랜딩 페이지입니다. 메인 애플리케이션 저장소는 비공개로 유지되며, 인간 승인과 라이선스 결정이 완료되기 전에는 소스 공개 릴리스가 승인되지 않습니다.",
+        },
+        en: {
+          meta: {
+            title: "1Day-1MVP - Operating system for shipping one MVP a day",
+            description:
+              "1Day-1MVP is a one-day MVP operating system for idea, scope, job packet, QA, approval, launch evidence, and review.",
+          },
+          navLabel: "Primary navigation",
+          languageLabel: "Language selection",
+          koTitle: "View in Korean",
+          enTitle: "View in English",
+          workflowLabel: "1Day-1MVP workflow",
+          previewAlt: "Preview of the 1Day-1MVP launch control workflow",
+          nav: {
+            siteLink: "Public static launch site",
+          },
+          hero: {
+            eyebrow: "Engineering release-ready",
+            headline: "An operating system for shipping one real MVP every day",
+            subtitle:
+              "A focused operating system for moving one viable idea through scope, Codex job packets, QA, human approvals, launch evidence, and post-launch review without pretending risky gates are solved.",
+            primaryAction: "View this site",
+            secondaryAction: "Launch status",
+          },
+          cards: {
+            whatTitle: "What It Does",
+            what1: "Chooses a viable one-day MVP idea.",
+            what2: "Locks scope and planning artifacts.",
+            what3: "Issues Codex job packets for implementation.",
+            what4: "Runs QA and records launch evidence.",
+            what5: "Keeps risky actions behind human approval.",
+            statusTitle: "Launch Status",
+            status1: "Engineering release-ready.",
+            status2: "Source-release human approvals pending.",
+            status3: "Runtime API is not hosted on GitHub Pages.",
+            securityTitle: "Security Boundary",
+            securityBody:
+              "This public GitHub Pages site is static. It exposes no backend, no runtime token, no private approval records, and no application source code.",
+            securityNote:
+              "Pages hosts only public launch copy and static assets.",
+          },
+          footer:
+            "1Day-1MVP public landing page. The main application repository remains private; public source release is not approved until human approvals and license decisions are complete.",
+        },
+      };
+
+      function getValue(dictionary, path) {
+        return path
+          .split(".")
+          .reduce(
+            (value, key) => (value && value[key] ? value[key] : ""),
+            dictionary,
+          );
+      }
+
+      function getStoredLanguage() {
+        try {
+          return localStorage.getItem("1day-1mvp-language");
+        } catch {
+          return null;
+        }
+      }
+
+      function storeLanguage(language) {
+        try {
+          localStorage.setItem("1day-1mvp-language", language);
+        } catch {
+          return;
+        }
+      }
+
+      function setLanguage(language) {
+        const selectedLanguage = translations[language] ? language : "ko";
+        const dictionary = translations[selectedLanguage];
+        document.documentElement.lang = selectedLanguage === "ko" ? "ko" : "en";
+        document.title = dictionary.meta.title;
+        document
+          .querySelector('meta[name="description"]')
+          .setAttribute("content", dictionary.meta.description);
+
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          element.textContent = getValue(dictionary, element.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+          element.setAttribute(
+            "alt",
+            getValue(dictionary, element.dataset.i18nAlt),
+          );
+        });
+        document.querySelectorAll("[data-i18n-title]").forEach((element) => {
+          element.setAttribute(
+            "title",
+            getValue(dictionary, element.dataset.i18nTitle),
+          );
+        });
+        document
+          .querySelectorAll("[data-i18n-aria-label]")
+          .forEach((element) => {
+            element.setAttribute(
+              "aria-label",
+              getValue(dictionary, element.dataset.i18nAriaLabel),
+            );
+          });
+        document.querySelectorAll("[data-language]").forEach((button) => {
+          button.setAttribute(
+            "aria-pressed",
+            String(button.dataset.language === selectedLanguage),
+          );
+        });
+        storeLanguage(selectedLanguage);
+      }
+
+      document.querySelectorAll("[data-language]").forEach((button) => {
+        button.addEventListener("click", () =>
+          setLanguage(button.dataset.language),
+        );
+      });
+
+      setLanguage(getStoredLanguage() || "ko");
+    </script>
   </body>
 </html>

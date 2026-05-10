@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>1Day-1MVP - Page Not Found</title>
+    <meta
+      name="description"
+      content="요청한 1Day-1MVP 정적 페이지를 찾을 수 없습니다."
+    />
+    <title>1Day-1MVP - 페이지를 찾을 수 없습니다</title>
     <style>
       body {
         min-height: 100vh;
@@ -13,35 +17,210 @@
         background: #fbfcf8;
         color: #1c2228;
         font-family:
-          "Segoe UI",
-          "Apple SD Gothic Neo",
-          "Noto Sans KR",
-          Arial,
-          sans-serif;
+          "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
       }
 
       main {
         width: min(680px, calc(100% - 32px));
       }
 
+      .topline {
+        color: #2d68c4;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 12px 0;
+        font-size: clamp(2.1rem, 7vw, 4rem);
+        line-height: 1;
+      }
+
+      p {
+        color: #56616a;
+        line-height: 1.6;
+      }
+
       a {
         color: #2d68c4;
         font-weight: 700;
+      }
+
+      .language-switcher {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        display: inline-grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        min-width: 132px;
+        padding: 3px;
+        border: 1px solid #d8e0dc;
+        border-radius: 999px;
+        background: #ffffff;
+      }
+
+      .language-switcher button {
+        min-height: 34px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: #58646f;
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.9rem;
+        font-weight: 750;
+      }
+
+      .language-switcher button[aria-pressed="true"] {
+        background: #182129;
+        color: white;
+      }
+
+      @media (max-width: 520px) {
+        .language-switcher {
+          left: 16px;
+          right: 16px;
+          width: auto;
+        }
       }
     </style>
   </head>
   <body>
     <main>
-      <h1>1Day-1MVP</h1>
-      <p>
-        This public GitHub Pages site hosts only static launch information. It
-        does not host backend or runtime API routes.
+      <div
+        class="language-switcher"
+        role="group"
+        aria-label="언어 선택"
+        data-i18n-aria-label="languageLabel"
+      >
+        <button
+          type="button"
+          data-language="ko"
+          aria-pressed="true"
+          title="한국어로 보기"
+          data-i18n-title="koTitle"
+        >
+          한국
+        </button>
+        <button
+          type="button"
+          data-language="en"
+          aria-pressed="false"
+          title="영어로 보기"
+          data-i18n-title="enTitle"
+        >
+          미국
+        </button>
+      </div>
+      <div class="topline">1Day-1MVP</div>
+      <h1 data-i18n="title">페이지를 찾을 수 없습니다</h1>
+      <p data-i18n="body">
+        이 공개 GitHub Pages 사이트는 정적 출시 정보만 호스팅합니다. 백엔드나
+        Runtime API 경로는 여기에서 제공하지 않습니다.
       </p>
       <p>
-        <a href="https://ggbu75769-dot.github.io/1day-1mvp-site/"
-          >Return to the static launch page</a
+        <a
+          href="https://ggbu75769-dot.github.io/1day-1mvp-site/"
+          data-i18n="link"
+          >정적 출시 페이지로 돌아가기</a
         >
       </p>
     </main>
+
+    <script>
+      const translations = {
+        ko: {
+          meta: {
+            title: "1Day-1MVP - 페이지를 찾을 수 없습니다",
+            description: "요청한 1Day-1MVP 정적 페이지를 찾을 수 없습니다.",
+          },
+          languageLabel: "언어 선택",
+          koTitle: "한국어로 보기",
+          enTitle: "영어로 보기",
+          title: "페이지를 찾을 수 없습니다",
+          body: "이 공개 GitHub Pages 사이트는 정적 출시 정보만 호스팅합니다. 백엔드나 Runtime API 경로는 여기에서 제공하지 않습니다.",
+          link: "정적 출시 페이지로 돌아가기",
+        },
+        en: {
+          meta: {
+            title: "1Day-1MVP - Page Not Found",
+            description: "The requested 1Day-1MVP static page was not found.",
+          },
+          languageLabel: "Language selection",
+          koTitle: "View in Korean",
+          enTitle: "View in English",
+          title: "Page Not Found",
+          body: "This public GitHub Pages site hosts only static launch information. It does not host backend or Runtime API routes.",
+          link: "Return to the static launch page",
+        },
+      };
+
+      function getValue(dictionary, path) {
+        return path
+          .split(".")
+          .reduce(
+            (value, key) => (value && value[key] ? value[key] : ""),
+            dictionary,
+          );
+      }
+
+      function getStoredLanguage() {
+        try {
+          return localStorage.getItem("1day-1mvp-language");
+        } catch {
+          return null;
+        }
+      }
+
+      function storeLanguage(language) {
+        try {
+          localStorage.setItem("1day-1mvp-language", language);
+        } catch {
+          return;
+        }
+      }
+
+      function setLanguage(language) {
+        const selectedLanguage = translations[language] ? language : "ko";
+        const dictionary = translations[selectedLanguage];
+        document.documentElement.lang = selectedLanguage === "ko" ? "ko" : "en";
+        document.title = dictionary.meta.title;
+        document
+          .querySelector('meta[name="description"]')
+          .setAttribute("content", dictionary.meta.description);
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          element.textContent = getValue(dictionary, element.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-title]").forEach((element) => {
+          element.setAttribute(
+            "title",
+            getValue(dictionary, element.dataset.i18nTitle),
+          );
+        });
+        document
+          .querySelectorAll("[data-i18n-aria-label]")
+          .forEach((element) => {
+            element.setAttribute(
+              "aria-label",
+              getValue(dictionary, element.dataset.i18nAriaLabel),
+            );
+          });
+        document.querySelectorAll("[data-language]").forEach((button) => {
+          button.setAttribute(
+            "aria-pressed",
+            String(button.dataset.language === selectedLanguage),
+          );
+        });
+        storeLanguage(selectedLanguage);
+      }
+
+      document.querySelectorAll("[data-language]").forEach((button) => {
+        button.addEventListener("click", () =>
+          setLanguage(button.dataset.language),
+        );
+      });
+
+      setLanguage(getStoredLanguage() || "ko");
+    </script>
   </body>
 </html>
