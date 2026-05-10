@@ -1,0 +1,10 @@
+{
+  "name": "1Day-1MVP public landing site",
+  "repo": "1day-1mvp-site",
+  "type": "static-github-pages-site",
+  "pagesUrl": "https://ggbu75769-dot.github.io/1day-1mvp-site/",
+  "runtimeApiHostedHere": false,
+  "sourceReleaseApproved": false,
+  "mainAppRepositoryVisibility": "private",
+  "safePublicFilesOnly": true
+}
