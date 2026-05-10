@@ -5,26 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="1Day-1MVP는 아이디어, 범위, 작업 패킷, QA, 승인, 출시 증거, 리뷰를 하루 안에 연결하는 MVP 운영 시스템입니다."
+      content="1Day-1MVP는 아이디어, 범위, Codex 작업 패킷, QA-Z, 인간 승인, 출시 증거, 결과 리뷰를 하루 안의 MVP 운영 루프로 연결하는 정적 공개 설명 사이트입니다."
     />
-    <title>1Day-1MVP - 하루에 하나의 MVP를 출시하는 운영 시스템</title>
+    <title>1Day-1MVP - 하루 안에 MVP를 기획하고 검증하는 운영 시스템</title>
     <style>
       :root {
         color-scheme: light;
-        --ink: #182129;
-        --muted: #58646f;
-        --line: #d8e0dc;
-        --paper: #fbfcf8;
+        --paper: #f8faf7;
         --panel: #ffffff;
-        --blue: #2d68c4;
-        --green: #1f875c;
-        --amber: #c88b26;
-        --coral: #b65345;
-        --soft-green: #eef7f2;
+        --ink: #17212b;
+        --muted: #596671;
+        --line: #d8e1dc;
+        --nav: rgba(248, 250, 247, 0.96);
+        --blue: #245fb8;
+        --green: #1f7a55;
+        --amber: #a66f19;
+        --coral: #a94d42;
+        --violet: #6a57b8;
+        --blue-soft: #edf4ff;
+        --green-soft: #edf8f2;
+        --amber-soft: #fff6e5;
+        --coral-soft: #fff1ef;
+        --violet-soft: #f4f1ff;
       }
 
       * {
         box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
@@ -33,13 +43,19 @@
         color: var(--ink);
         font-family:
           "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
-        line-height: 1.55;
+        line-height: 1.58;
       }
 
       a,
       button {
         color: inherit;
         font: inherit;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid #78a9ff;
+        outline-offset: 3px;
       }
 
       .shell {
@@ -51,48 +67,56 @@
       header {
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 20;
         border-bottom: 1px solid var(--line);
-        background: rgba(251, 252, 248, 0.96);
-        backdrop-filter: blur(12px);
+        background: var(--nav);
+        backdrop-filter: blur(14px);
       }
 
-      nav,
+      .nav-wrap,
       main,
       footer {
-        width: min(1120px, calc(100% - 32px));
+        width: min(1160px, calc(100% - 32px));
         margin: 0 auto;
       }
 
-      nav {
-        min-height: 72px;
-        display: flex;
+      .nav-wrap {
+        min-height: 76px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
         align-items: center;
-        justify-content: space-between;
         gap: 18px;
       }
 
       .brand {
         min-width: max-content;
-        font-size: 1.08rem;
-        font-weight: 800;
-      }
-
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 12px;
-      }
-
-      .status-link {
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 8px 14px;
-        color: var(--muted);
-        font-size: 0.9rem;
+        font-size: 1.04rem;
+        font-weight: 850;
         text-decoration: none;
-        white-space: nowrap;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      .nav-links a {
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 8px;
+        padding: 8px 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        background: var(--blue-soft);
+        color: var(--blue);
       }
 
       .language-switcher {
@@ -114,7 +138,7 @@
         color: var(--muted);
         cursor: pointer;
         font-size: 0.9rem;
-        font-weight: 750;
+        font-weight: 800;
         letter-spacing: 0;
       }
 
@@ -124,43 +148,47 @@
       }
 
       main {
-        padding: 64px 0 72px;
+        padding: 56px 0 72px;
+      }
+
+      section {
+        scroll-margin-top: 96px;
       }
 
       .hero {
         display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
-        gap: 46px;
+        grid-template-columns: minmax(0, 0.96fr) minmax(330px, 1.04fr);
+        gap: 44px;
         align-items: center;
       }
 
-      .eyebrow {
+      .eyebrow,
+      .section-kicker {
+        margin: 0 0 12px;
         color: var(--blue);
-        font-size: 0.88rem;
-        font-weight: 800;
+        font-size: 0.86rem;
+        font-weight: 850;
         letter-spacing: 0;
-        margin: 0 0 16px;
         text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        overflow-wrap: anywhere;
       }
 
       h1 {
         margin: 0;
-        font-size: clamp(2.45rem, 6vw, 5rem);
-        line-height: 0.98;
+        font-size: clamp(2.25rem, 5.4vw, 4.75rem);
+        line-height: 1.04;
         letter-spacing: 0;
       }
 
-      .headline {
-        display: block;
-        margin-top: 16px;
-        color: var(--green);
-        font-size: clamp(1.45rem, 3.8vw, 2.6rem);
-        line-height: 1.16;
-      }
-
-      .subtitle {
-        max-width: 650px;
-        margin: 26px 0 0;
+      .hero-subtitle {
+        max-width: 660px;
+        margin: 24px 0 0;
         color: var(--muted);
         font-size: 1.08rem;
       }
@@ -173,16 +201,16 @@
       }
 
       .button {
-        display: inline-flex;
         min-height: 44px;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        border-radius: 8px;
-        padding: 10px 16px;
         border: 1px solid var(--ink);
+        border-radius: 8px;
+        padding: 10px 15px;
         background: var(--ink);
-        color: white;
-        font-weight: 750;
+        color: #ffffff;
+        font-weight: 800;
         text-decoration: none;
       }
 
@@ -201,122 +229,305 @@
         height: auto;
         border: 1px solid var(--line);
         border-radius: 8px;
-        box-shadow: 0 18px 50px rgba(28, 34, 40, 0.12);
+        background: var(--panel);
+        box-shadow: 0 18px 52px rgba(29, 37, 45, 0.12);
       }
 
-      .sections {
-        margin-top: 64px;
+      .status-strip {
+        margin: 28px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        display: inline-flex;
+        min-height: 34px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 11px;
+        background: var(--panel);
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 750;
+      }
+
+      .section-block {
+        margin-top: 76px;
+      }
+
+      .section-heading {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
+        grid-template-columns: minmax(0, 0.8fr) minmax(260px, 0.55fr);
+        gap: 28px;
+        align-items: end;
+        margin-bottom: 22px;
       }
 
-      .card {
-        min-height: 230px;
-        padding: 22px;
+      h2 {
+        margin: 0;
+        font-size: clamp(1.65rem, 3.2vw, 2.6rem);
+        line-height: 1.16;
+        letter-spacing: 0;
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .workflow-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        counter-reset: workflow;
+      }
+
+      .step-card {
+        min-height: 190px;
+        position: relative;
+        padding: 18px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--panel);
       }
 
-      .card h2 {
-        margin: 0 0 14px;
-        font-size: 1.05rem;
+      .step-card::before {
+        counter-increment: workflow;
+        content: counter(workflow);
+        width: 32px;
+        height: 32px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        font-weight: 850;
+      }
+
+      .step-card h3,
+      .module-card h3,
+      .qa-card h3,
+      .faq-card h3,
+      .status-card h3 {
+        margin: 14px 0 8px;
+        font-size: 1.03rem;
+        line-height: 1.24;
         letter-spacing: 0;
       }
 
-      .card p,
-      .card li {
+      .step-card p,
+      .module-card p,
+      .qa-card p,
+      .faq-card p,
+      .status-card p,
+      .boundary-card p {
+        margin: 0;
         color: var(--muted);
         font-size: 0.96rem;
       }
 
-      .card ul {
-        margin: 0;
-        padding-left: 20px;
+      .module-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
       }
 
-      .rail {
-        margin-top: 18px;
+      .module-card,
+      .qa-card,
+      .status-card,
+      .faq-card,
+      .boundary-card {
+        min-height: 162px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .module-card:nth-child(5n + 1) {
+        background: var(--blue-soft);
+      }
+
+      .module-card:nth-child(5n + 2) {
+        background: var(--green-soft);
+      }
+
+      .module-card:nth-child(5n + 3) {
+        background: var(--amber-soft);
+      }
+
+      .module-card:nth-child(5n + 4) {
+        background: var(--violet-soft);
+      }
+
+      .module-card:nth-child(5n + 5) {
+        background: var(--coral-soft);
+      }
+
+      .qa-layout,
+      .approval-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.75fr) minmax(320px, 1.25fr);
+        gap: 16px;
+      }
+
+      .qa-list,
+      .approval-list {
         display: grid;
         gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .rail span {
+      .qa-list li,
+      .approval-list li {
+        min-height: 48px;
         display: flex;
-        gap: 10px;
         align-items: center;
+        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px 12px;
+        background: var(--panel);
         color: var(--muted);
-        font-size: 0.95rem;
+        font-weight: 720;
       }
 
-      .dot {
-        width: 10px;
-        height: 10px;
+      .marker {
+        width: 12px;
+        height: 12px;
         flex: 0 0 auto;
         border-radius: 999px;
-        background: var(--blue);
-      }
-
-      .dot.green {
         background: var(--green);
       }
 
-      .dot.amber {
+      .marker.amber {
         background: var(--amber);
       }
 
-      .dot.coral {
+      .marker.coral {
         background: var(--coral);
       }
 
-      .safety {
-        margin-top: 22px;
-        padding: 18px 20px;
-        border-left: 4px solid var(--green);
-        background: var(--soft-green);
-        color: #244a37;
-        border-radius: 8px;
+      .marker.violet {
+        background: var(--violet);
       }
 
-      footer {
+      .boundary-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .status-card {
+        min-height: 134px;
+      }
+
+      .status-card strong {
+        display: inline-flex;
+        min-height: 28px;
+        align-items: center;
+        border-radius: 999px;
+        padding: 4px 9px;
+        background: var(--green-soft);
+        color: var(--green);
+        font-size: 0.82rem;
+      }
+
+      .status-card.pending strong {
+        background: var(--amber-soft);
+        color: var(--amber);
+      }
+
+      .status-card.blocked strong {
+        background: var(--coral-soft);
+        color: var(--coral);
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 16px;
         padding: 28px 0 34px;
         border-top: 1px solid var(--line);
         color: var(--muted);
         font-size: 0.92rem;
       }
 
-      @media (max-width: 860px) {
-        nav {
-          align-items: stretch;
-          flex-direction: column;
-          justify-content: center;
-          padding: 16px 0;
+      .footer-inner a {
+        color: var(--blue);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      @media (max-width: 980px) {
+        .nav-wrap {
+          grid-template-columns: 1fr auto;
+          align-items: start;
+          padding: 14px 0;
         }
 
-        .nav-actions {
-          justify-content: space-between;
+        .nav-links {
+          grid-column: 1 / -1;
+          justify-content: flex-start;
         }
 
         .hero,
-        .sections {
+        .section-heading,
+        .qa-layout,
+        .approval-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .workflow-grid,
+        .module-grid,
+        .status-grid,
+        .boundary-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .language-switcher {
+          width: 100%;
+        }
+
+        .nav-links {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: 100%;
+        }
+
+        .workflow-grid,
+        .module-grid,
+        .status-grid,
+        .boundary-grid,
+        .faq-grid {
           grid-template-columns: 1fr;
         }
 
         main {
-          padding-top: 42px;
-        }
-      }
-
-      @media (max-width: 560px) {
-        .nav-actions {
-          align-items: stretch;
-          flex-direction: column;
-        }
-
-        .status-link,
-        .language-switcher {
-          width: 100%;
+          padding-top: 34px;
         }
       }
     </style>
@@ -324,81 +535,107 @@
   <body>
     <div class="shell">
       <header>
-        <nav aria-label="주요 탐색" data-i18n-aria-label="navLabel">
-          <div class="brand">1Day-1MVP</div>
-          <div class="nav-actions">
-            <a
-              class="status-link"
-              href="https://ggbu75769-dot.github.io/1day-1mvp-site/"
-              data-i18n="nav.siteLink"
-              >공개 정적 출시 사이트</a
-            >
-            <div
-              class="language-switcher"
-              role="group"
-              aria-label="언어 선택"
-              data-i18n-aria-label="languageLabel"
-            >
-              <button
-                type="button"
-                data-language="ko"
-                aria-pressed="true"
-                title="한국어로 보기"
-                data-i18n-title="koTitle"
+        <div class="nav-wrap">
+          <a class="brand" href="#overview" aria-label="1Day-1MVP">1Day-1MVP</a>
+          <nav aria-label="주요 탐색" data-i18n-aria-label="navLabel">
+            <div class="nav-links">
+              <a href="#overview" data-i18n="nav.overview">개요</a>
+              <a href="#operating-logic" data-i18n="nav.operatingLogic"
+                >운영 로직</a
               >
-                한국
-              </button>
-              <button
-                type="button"
-                data-language="en"
-                aria-pressed="false"
-                title="영어로 보기"
-                data-i18n-title="enTitle"
+              <a href="#modules" data-i18n="nav.modules">기능 모듈</a>
+              <a href="#qa-z" data-i18n="nav.qaZ">QA-Z</a>
+              <a href="#approval-gates" data-i18n="nav.approvalGates"
+                >승인 게이트</a
               >
-                미국
-              </button>
+              <a href="#launch-status" data-i18n="nav.launchStatus"
+                >출시 상태</a
+              >
+              <a href="#faq" data-i18n="nav.faq">FAQ</a>
             </div>
+          </nav>
+          <div
+            class="language-switcher"
+            role="group"
+            aria-label="언어 선택"
+            data-i18n-aria-label="languageLabel"
+          >
+            <button
+              type="button"
+              data-language="ko"
+              aria-pressed="true"
+              title="한국어로 보기"
+              data-i18n-title="koTitle"
+            >
+              한국
+            </button>
+            <button
+              type="button"
+              data-language="en"
+              aria-pressed="false"
+              title="영어로 보기"
+              data-i18n-title="enTitle"
+            >
+              미국
+            </button>
           </div>
-        </nav>
+        </div>
       </header>
 
       <main>
-        <section class="hero" aria-labelledby="title">
+        <section class="hero" id="overview" aria-labelledby="hero-title">
           <div>
             <p class="eyebrow" data-i18n="hero.eyebrow">
-              엔지니어링 출시 준비 완료
+              안전한 하루 MVP 운영 루프
             </p>
-            <h1 id="title">
-              1Day-1MVP
-              <span class="headline" data-i18n="hero.headline"
-                >하루에 하나의 MVP를 실제로 출시하는 운영 시스템</span
-              >
+            <h1 id="hero-title" data-i18n="hero.headline">
+              하루 안에 MVP를 기획하고, 검증하고, 출시 증거까지 남기는 운영
+              시스템
             </h1>
-            <p class="subtitle" data-i18n="hero.subtitle">
-              실행 가능한 아이디어를 범위 정의, Codex 작업 패킷, QA, 인간 승인,
-              출시 증거, 출시 후 리뷰까지 안전하게 밀어 올리는 집중형 운영
-              시스템입니다.
+            <p class="hero-subtitle" data-i18n="hero.subcopy">
+              아이디어 → 범위 → Codex 작업 패킷 → QA-Z → 인간 승인 → 출시 증거 →
+              결과 리뷰를 하나의 실행 루프로 연결합니다. 단순한 랜딩 페이지
+              생성기가 아니라, 더 안전한 MVP 실행을 위한 운영 루프입니다.
             </p>
-            <div class="actions">
-              <a
-                class="button"
-                href="https://ggbu75769-dot.github.io/1day-1mvp-site/"
-                data-i18n="hero.primaryAction"
-                >현재 사이트 보기</a
+            <div
+              class="actions"
+              aria-label="주요 이동"
+              data-i18n-aria-label="ctaLabel"
+            >
+              <a class="button" href="#operating-logic" data-i18n="cta.logic"
+                >운영 로직 보기</a
               >
               <a
                 class="button secondary"
                 href="#launch-status"
-                data-i18n="hero.secondaryAction"
+                data-i18n="cta.status"
                 >출시 상태 확인</a
+              >
+              <a
+                class="button secondary"
+                href="#approval-gates"
+                data-i18n="cta.approvals"
+                >승인 게이트 이해하기</a
+              >
+            </div>
+            <div
+              class="status-strip"
+              aria-label="핵심 상태"
+              data-i18n-aria-label="statusStripLabel"
+            >
+              <span class="pill" data-i18n="hero.pillStatic"
+                >정적 GitHub Pages</span
+              >
+              <span class="pill" data-i18n="hero.pillQa">QA-Z merge_ok</span>
+              <span class="pill" data-i18n="hero.pillApproval"
+                >소스 공개 승인 대기</span
               >
             </div>
           </div>
-
           <figure class="preview">
             <img
               src="assets/launch-control-preview.png"
-              alt="1Day-1MVP 출시 관리 워크플로 미리보기"
+              alt="1Day-1MVP 출시 운영 흐름 미리보기"
               data-i18n-alt="previewAlt"
               width="1400"
               height="900"
@@ -407,73 +644,428 @@
         </section>
 
         <section
-          class="sections"
-          aria-label="1Day-1MVP 워크플로"
-          data-i18n-aria-label="workflowLabel"
+          class="section-block"
+          id="operating-logic"
+          aria-labelledby="operating-logic-title"
         >
-          <article class="card">
-            <h2 data-i18n="cards.whatTitle">무엇을 하나요</h2>
-            <ul>
-              <li data-i18n="cards.what1">
-                하루 안에 출시 가능한 MVP 아이디어를 고릅니다.
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="workflow.kicker">
+                Workflow Spine
+              </p>
+              <h2 id="operating-logic-title" data-i18n="workflow.title">
+                운영 로직
+              </h2>
+            </div>
+            <p data-i18n="workflow.intro">
+              1Day-1MVP는 아이디어를 바로 개발로 던지지 않고, 범위 잠금과 검증
+              게이트를 통과한 작업 패킷으로 바꿉니다.
+            </p>
+          </div>
+          <div class="workflow-grid">
+            <article class="step-card">
+              <h3 data-i18n="workflow.step1.title">아이디어 수집</h3>
+              <p data-i18n="workflow.step1.body">
+                실행 가능한 MVP 후보를 모으고 하루 안에 검증할 수 있는 문제로
+                좁힙니다.
+              </p>
+            </article>
+            <article class="step-card">
+              <h3 data-i18n="workflow.step2.title">범위 잠금</h3>
+              <p data-i18n="workflow.step2.body">
+                오늘 만들 기능, 보류할 기능, 성공 판단 기준을 한 번에
+                고정합니다.
+              </p>
+            </article>
+            <article class="step-card">
+              <h3 data-i18n="workflow.step3.title">Codex 작업 패킷 생성</h3>
+              <p data-i18n="workflow.step3.body">
+                구현자가 바로 실행할 수 있도록 목적, 파일, 게이트, 검증 명령을
+                묶습니다.
+              </p>
+            </article>
+            <article class="step-card">
+              <h3 data-i18n="workflow.step4.title">구현 및 변경 추적</h3>
+              <p data-i18n="workflow.step4.body">
+                작업 결과와 실행 영수증을 프로젝트 흐름에 연결해 변경 맥락을
+                잃지 않습니다.
+              </p>
+            </article>
+            <article class="step-card">
+              <h3 data-i18n="workflow.step5.title">QA-Z / 릴리스 검증</h3>
+              <p data-i18n="workflow.step5.body">
+                보안, 문서, 테스트, 릴리스 안정성 검사를 통해 병합 가능성을
+                판단합니다.
+              </p>
+            </article>
+            <article class="step-card">
+              <h3 data-i18n="workflow.step6.title">인간 승인 게이트</h3>
+              <p data-i18n="workflow.step6.body">
+                결제, 개인정보, 외부 API, 도메인, 공개 릴리스는 자동화 밖에서
+                승인합니다.
+              </p>
+            </article>
+            <article class="step-card">
+              <h3 data-i18n="workflow.step7.title">출시 증거 기록</h3>
+              <p data-i18n="workflow.step7.body">
+                공개 URL, 결과, 차단 사유, 검증 결과를 다음 판단이 가능한 형태로
+                남깁니다.
+              </p>
+            </article>
+            <article class="step-card">
+              <h3 data-i18n="workflow.step8.title">결과 리뷰와 다음 결정</h3>
+              <p data-i18n="workflow.step8.body">
+                출시 후 데이터를 검토하고 반복, 보류, 템플릿화 중 다음 결정을
+                선택합니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="section-block"
+          id="modules"
+          aria-labelledby="modules-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="modules.kicker">
+                Core Modules
+              </p>
+              <h2 id="modules-title" data-i18n="modules.title">기능 모듈</h2>
+            </div>
+            <p data-i18n="modules.intro">
+              공개 사이트는 내부 구현을 노출하지 않고 운영 체계의 역할만
+              설명합니다.
+            </p>
+          </div>
+          <div class="module-grid">
+            <article class="module-card">
+              <h3 data-i18n="modules.dashboard.title">프로젝트 대시보드</h3>
+              <p data-i18n="modules.dashboard.body">
+                후보 프로젝트, 현재 단계, 실행 가능성을 한 화면에서 비교합니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.artifact.title">Workflow Artifact</h3>
+              <p data-i18n="modules.artifact.body">
+                범위, 체크리스트, 증거 링크를 프로젝트 실행 문맥으로 묶습니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.packet.title">Codex Job Packet</h3>
+              <p data-i18n="modules.packet.body">
+                Codex가 수행할 작업, 파일 경계, 승인 조건, 검증 명령을
+                전달합니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.approvalQueue.title">승인 큐</h3>
+              <p data-i18n="modules.approvalQueue.body">
+                위험한 행동을 자동 실행하지 않고 사람의 검토 대기 상태로
+                관리합니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.readiness.title">Launch Readiness</h3>
+              <p data-i18n="modules.readiness.body">
+                출시 후보가 필요한 증거와 승인 조건을 충족했는지 확인합니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.evidence.title">Launch Evidence</h3>
+              <p data-i18n="modules.evidence.body">
+                공개 URL, 검증 결과, 승인 상태, 실행 결과를 감사 가능한 기록으로
+                남깁니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.review.title">Result Review</h3>
+              <p data-i18n="modules.review.body">
+                MVP 결과를 바탕으로 반복, 중단, 템플릿화 같은 후속 결정을
+                돕습니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.audit.title">Audit Trail</h3>
+              <p data-i18n="modules.audit.body">
+                누가 무엇을 바꾸고 어떤 검증을 거쳤는지 추적할 수 있게 합니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="qa-z" aria-labelledby="qa-z-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="qa.kicker">Quality Gate</p>
+              <h2 id="qa-z-title" data-i18n="qa.title">QA-Z 검증</h2>
+            </div>
+            <p data-i18n="qa.intro">
+              QA-Z는 변경사항을 병합하기 전 보안, 릴리스 안정성, 문서 정합성,
+              테스트 품질을 점검하는 품질 게이트입니다.
+            </p>
+          </div>
+          <div class="qa-layout">
+            <article class="qa-card">
+              <h3 data-i18n="qa.publicSafe.title">공개 가능한 설명</h3>
+              <p data-i18n="qa.publicSafe.body">
+                이 사이트는 QA-Z가 무엇을 검증하는지만 설명하며, 내부 판정
+                산출물은 공개하지 않습니다.
+              </p>
+            </article>
+            <ul class="qa-list">
+              <li>
+                <span class="marker"></span
+                ><span data-i18n="qa.fast">Fast checks</span>
               </li>
-              <li data-i18n="cards.what2">
-                범위와 계획 산출물을 작게 잠급니다.
+              <li>
+                <span class="marker violet"></span
+                ><span data-i18n="qa.deep">Deep review</span>
               </li>
-              <li data-i18n="cards.what3">
-                구현을 위한 Codex 작업 패킷을 발행합니다.
+              <li>
+                <span class="marker coral"></span
+                ><span data-i18n="qa.blocking">Blocking findings</span>
               </li>
-              <li data-i18n="cards.what4">
-                QA를 실행하고 출시 증거를 기록합니다.
+              <li>
+                <span class="marker amber"></span
+                ><span data-i18n="qa.verdict">Merge-ready verdict</span>
               </li>
-              <li data-i18n="cards.what5">
-                위험한 행동은 인간 승인 뒤에 둡니다.
+              <li>
+                <span class="marker"></span
+                ><span data-i18n="qa.privateArtifacts"
+                  >No private verdict artifacts exposed publicly</span
+                >
               </li>
             </ul>
-          </article>
+          </div>
+        </section>
 
-          <article class="card" id="launch-status">
-            <h2 data-i18n="cards.statusTitle">출시 상태</h2>
-            <div class="rail">
-              <span
-                ><i class="dot green"></i
-                ><span data-i18n="cards.status1"
-                  >엔지니어링 출시 준비 완료.</span
-                ></span
-              >
-              <span
-                ><i class="dot amber"></i
-                ><span data-i18n="cards.status2"
-                  >소스 공개 릴리스는 인간 승인 대기 중.</span
-                ></span
-              >
-              <span
-                ><i class="dot coral"></i
-                ><span data-i18n="cards.status3"
-                  >Runtime API는 GitHub Pages에 호스팅하지 않음.</span
-                ></span
-              >
+        <section
+          class="section-block"
+          id="approval-gates"
+          aria-labelledby="approval-gates-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="approvals.kicker">
+                Human Gates
+              </p>
+              <h2 id="approval-gates-title" data-i18n="approvals.title">
+                승인 게이트
+              </h2>
             </div>
-          </article>
+            <p data-i18n="approvals.intro">
+              결제, 개인정보, 외부 API, 도메인/DNS, 공개 소스 릴리스 같은 위험한
+              행동은 자동화가 아니라 인간 승인 뒤에 둡니다.
+            </p>
+          </div>
+          <div class="approval-layout">
+            <article class="boundary-card">
+              <h3 data-i18n="approvals.whyTitle">안전 기능입니다</h3>
+              <p data-i18n="approvals.whyBody">
+                승인 대기는 결함이 아니라 운영 원칙입니다. 소스 공개, 라이선스,
+                런타임 배포는 승인 전까지 멈춰 있습니다.
+              </p>
+            </article>
+            <ul class="approval-list">
+              <li>
+                <span class="marker amber"></span
+                ><span data-i18n="approvals.sourceRelease"
+                  >source-release approval is pending</span
+                >
+              </li>
+              <li>
+                <span class="marker coral"></span
+                ><span data-i18n="approvals.license"
+                  >LICENSE is absent because license metadata is not
+                  approved</span
+                >
+              </li>
+              <li>
+                <span class="marker violet"></span
+                ><span data-i18n="approvals.runtime"
+                  >runtime-api is not deployed publicly</span
+                >
+              </li>
+              <li>
+                <span class="marker"></span
+                ><span data-i18n="approvals.noBug"
+                  >This is a safety feature, not a bug</span
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
 
-          <article class="card">
-            <h2 data-i18n="cards.securityTitle">보안 경계</h2>
-            <p data-i18n="cards.securityBody">
-              이 공개 GitHub Pages 사이트는 정적 페이지입니다. 백엔드, 런타임
-              토큰, 비공개 승인 기록, 애플리케이션 소스 코드를 노출하지
+        <section
+          class="section-block"
+          id="security-boundary"
+          aria-labelledby="security-boundary-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="security.kicker">
+                Static Boundary
+              </p>
+              <h2 id="security-boundary-title" data-i18n="security.title">
+                보안 / 정적 호스팅 경계
+              </h2>
+            </div>
+            <p data-i18n="security.intro">
+              GitHub Pages에는 공개 설명과 정적 자산만 배포됩니다. 백엔드, 앱
+              소스, 내부 문서, 승인 기록, 환경 파일, 런타임 값은 포함하지
               않습니다.
             </p>
-            <div class="safety" data-i18n="cards.securityNote">
-              Pages에는 공개 출시 문구와 정적 에셋만 배포됩니다.
+          </div>
+          <div class="boundary-grid">
+            <article class="boundary-card">
+              <h3 data-i18n="security.static.title">정적 사이트</h3>
+              <p data-i18n="security.static.body">
+                이 페이지는 HTML, CSS, 이미지, 작은 언어 전환 스크립트만
+                사용합니다.
+              </p>
+            </article>
+            <article class="boundary-card">
+              <h3 data-i18n="security.runtime.title">Runtime API 미배포</h3>
+              <p data-i18n="security.runtime.body">
+                GitHub Pages는 서버를 실행하지 않으므로 runtime-api를 호스팅하지
+                않습니다.
+              </p>
+            </article>
+            <article class="boundary-card">
+              <h3 data-i18n="security.safeFiles.title">공개 파일만</h3>
+              <p data-i18n="security.safeFiles.body">
+                사이트 전용 저장소에는 공개 가능한 정적 파일만 복사합니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="section-block"
+          id="launch-status"
+          aria-labelledby="launch-status-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="status.kicker">
+                Release Truth
+              </p>
+              <h2 id="launch-status-title" data-i18n="status.title">
+                출시 상태
+              </h2>
             </div>
-          </article>
+            <p data-i18n="status.intro">
+              현재 상태는 공개 정적 사이트 출시와 소스 공개 승인 대기를 분리해서
+              보여줍니다.
+            </p>
+          </div>
+          <div class="status-grid">
+            <article class="status-card">
+              <strong data-i18n="status.launchedBadge">출시됨</strong>
+              <h3 data-i18n="status.pages.title">공개 GitHub Pages 사이트</h3>
+              <p data-i18n="status.pages.body">출시됨</p>
+            </article>
+            <article class="status-card">
+              <strong data-i18n="status.completeBadge">완료</strong>
+              <h3 data-i18n="status.engineering.title">엔지니어링 준비 상태</h3>
+              <p data-i18n="status.engineering.body">완료</p>
+            </article>
+            <article class="status-card">
+              <strong data-i18n="status.mergeBadge">merge_ok</strong>
+              <h3 data-i18n="status.qa.title">QA-Z 상태</h3>
+              <p data-i18n="status.qa.body">merge_ok</p>
+            </article>
+            <article class="status-card pending">
+              <strong data-i18n="status.notHostedBadge">미배포</strong>
+              <h3 data-i18n="status.runtime.title">Runtime API</h3>
+              <p data-i18n="status.runtime.body">
+                GitHub Pages에 배포하지 않음
+              </p>
+            </article>
+            <article class="status-card pending">
+              <strong data-i18n="status.pendingBadge">승인 대기</strong>
+              <h3 data-i18n="status.source.title">소스 공개 릴리스</h3>
+              <p data-i18n="status.source.body">인간 승인 대기</p>
+            </article>
+            <article class="status-card blocked">
+              <strong data-i18n="status.absentBadge">미생성</strong>
+              <h3 data-i18n="status.license.title">LICENSE</h3>
+              <p data-i18n="status.license.body">승인 전까지 미생성</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="faq" aria-labelledby="faq-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="faq.kicker">
+                Operator Notes
+              </p>
+              <h2 id="faq-title" data-i18n="faq.title">FAQ / 운영자 노트</h2>
+            </div>
+            <p data-i18n="faq.intro">
+              공개 사이트가 무엇을 제공하고 무엇을 의도적으로 제공하지 않는지
+              명확히 정리합니다.
+            </p>
+          </div>
+          <div class="faq-grid">
+            <article class="faq-card">
+              <h3 data-i18n="faq.q1.title">
+                이 사이트에서 실제 앱을 사용할 수 있나요?
+              </h3>
+              <p data-i18n="faq.q1.body">
+                이 사이트는 제품 로직과 출시 상태를 설명하는 정적 공개
+                페이지입니다. 실제 운영 콘솔은 여기에서 제공하지 않습니다.
+              </p>
+            </article>
+            <article class="faq-card">
+              <h3 data-i18n="faq.q2.title">
+                GitHub Pages에 백엔드도 올라가 있나요?
+              </h3>
+              <p data-i18n="faq.q2.body">
+                아니요. GitHub Pages는 정적 파일만 호스팅하며 runtime-api는
+                배포되어 있지 않습니다.
+              </p>
+            </article>
+            <article class="faq-card">
+              <h3 data-i18n="faq.q3.title">
+                왜 소스 공개 릴리스는 대기 중인가요?
+              </h3>
+              <p data-i18n="faq.q3.body">
+                저장소 공개, 라이선스 선택, 취약점 제보 채널은 인간 승인 전까지
+                진행하지 않기 때문입니다.
+              </p>
+            </article>
+            <article class="faq-card">
+              <h3 data-i18n="faq.q4.title">QA-Z는 무엇을 검증하나요?</h3>
+              <p data-i18n="faq.q4.body">
+                보안, 릴리스 안정성, 문서 정합성, 테스트 품질, 병합 가능성을
+                공개 가능한 수준으로 설명합니다.
+              </p>
+            </article>
+            <article class="faq-card">
+              <h3 data-i18n="faq.q5.title">
+                1Day-1MVP는 누구를 위한 도구인가요?
+              </h3>
+              <p data-i18n="faq.q5.body">
+                하루 단위로 MVP를 고르고, 범위를 잠그고, Codex 작업을 발행하고,
+                증거 기반으로 다음 결정을 내려야 하는 운영자를 위한 도구입니다.
+              </p>
+            </article>
+          </div>
         </section>
       </main>
 
-      <footer data-i18n="footer">
-        1Day-1MVP 공개 랜딩 페이지입니다. 메인 애플리케이션 저장소는 비공개로
-        유지되며, 인간 승인과 라이선스 결정이 완료되기 전에는 소스 공개 릴리스가
-        승인되지 않습니다.
+      <footer>
+        <div class="footer-inner">
+          <span data-i18n="footer.copy">
+            1Day-1MVP 공개 정적 설명 사이트입니다. 메인 앱 저장소는 비공개이며
+            소스 공개 릴리스는 인간 승인 대기 상태입니다.
+          </span>
+          <a href="#overview" data-i18n="footer.backTop">맨 위로</a>
+        </div>
       </footer>
     </div>
 
@@ -481,98 +1073,467 @@
       const translations = {
         ko: {
           meta: {
-            title: "1Day-1MVP - 하루에 하나의 MVP를 출시하는 운영 시스템",
+            title: "1Day-1MVP - 하루 안에 MVP를 기획하고 검증하는 운영 시스템",
             description:
-              "1Day-1MVP는 아이디어, 범위, 작업 패킷, QA, 승인, 출시 증거, 리뷰를 하루 안에 연결하는 MVP 운영 시스템입니다.",
+              "1Day-1MVP는 아이디어, 범위, Codex 작업 패킷, QA-Z, 인간 승인, 출시 증거, 결과 리뷰를 하루 안의 MVP 운영 루프로 연결하는 정적 공개 설명 사이트입니다.",
           },
           navLabel: "주요 탐색",
           languageLabel: "언어 선택",
           koTitle: "한국어로 보기",
           enTitle: "영어로 보기",
-          workflowLabel: "1Day-1MVP 워크플로",
-          previewAlt: "1Day-1MVP 출시 관리 워크플로 미리보기",
+          ctaLabel: "주요 이동",
+          statusStripLabel: "핵심 상태",
+          previewAlt: "1Day-1MVP 출시 운영 흐름 미리보기",
           nav: {
-            siteLink: "공개 정적 출시 사이트",
+            overview: "개요",
+            operatingLogic: "운영 로직",
+            modules: "기능 모듈",
+            qaZ: "QA-Z",
+            approvalGates: "승인 게이트",
+            launchStatus: "출시 상태",
+            faq: "FAQ",
           },
           hero: {
-            eyebrow: "엔지니어링 출시 준비 완료",
-            headline: "하루에 하나의 MVP를 실제로 출시하는 운영 시스템",
-            subtitle:
-              "실행 가능한 아이디어를 범위 정의, Codex 작업 패킷, QA, 인간 승인, 출시 증거, 출시 후 리뷰까지 안전하게 밀어 올리는 집중형 운영 시스템입니다.",
-            primaryAction: "현재 사이트 보기",
-            secondaryAction: "출시 상태 확인",
+            eyebrow: "안전한 하루 MVP 운영 루프",
+            headline:
+              "하루 안에 MVP를 기획하고, 검증하고, 출시 증거까지 남기는 운영 시스템",
+            subcopy:
+              "아이디어 → 범위 → Codex 작업 패킷 → QA-Z → 인간 승인 → 출시 증거 → 결과 리뷰를 하나의 실행 루프로 연결합니다. 단순한 랜딩 페이지 생성기가 아니라, 더 안전한 MVP 실행을 위한 운영 루프입니다.",
+            pillStatic: "정적 GitHub Pages",
+            pillQa: "QA-Z merge_ok",
+            pillApproval: "소스 공개 승인 대기",
           },
-          cards: {
-            whatTitle: "무엇을 하나요",
-            what1: "하루 안에 출시 가능한 MVP 아이디어를 고릅니다.",
-            what2: "범위와 계획 산출물을 작게 잠급니다.",
-            what3: "구현을 위한 Codex 작업 패킷을 발행합니다.",
-            what4: "QA를 실행하고 출시 증거를 기록합니다.",
-            what5: "위험한 행동은 인간 승인 뒤에 둡니다.",
-            statusTitle: "출시 상태",
-            status1: "엔지니어링 출시 준비 완료.",
-            status2: "소스 공개 릴리스는 인간 승인 대기 중.",
-            status3: "Runtime API는 GitHub Pages에 호스팅하지 않음.",
-            securityTitle: "보안 경계",
-            securityBody:
-              "이 공개 GitHub Pages 사이트는 정적 페이지입니다. 백엔드, 런타임 토큰, 비공개 승인 기록, 애플리케이션 소스 코드를 노출하지 않습니다.",
-            securityNote: "Pages에는 공개 출시 문구와 정적 에셋만 배포됩니다.",
+          cta: {
+            logic: "운영 로직 보기",
+            status: "출시 상태 확인",
+            approvals: "승인 게이트 이해하기",
           },
-          footer:
-            "1Day-1MVP 공개 랜딩 페이지입니다. 메인 애플리케이션 저장소는 비공개로 유지되며, 인간 승인과 라이선스 결정이 완료되기 전에는 소스 공개 릴리스가 승인되지 않습니다.",
+          workflow: {
+            kicker: "Workflow Spine",
+            title: "운영 로직",
+            intro:
+              "1Day-1MVP는 아이디어를 바로 개발로 던지지 않고, 범위 잠금과 검증 게이트를 통과한 작업 패킷으로 바꿉니다.",
+            step1: {
+              title: "아이디어 수집",
+              body: "실행 가능한 MVP 후보를 모으고 하루 안에 검증할 수 있는 문제로 좁힙니다.",
+            },
+            step2: {
+              title: "범위 잠금",
+              body: "오늘 만들 기능, 보류할 기능, 성공 판단 기준을 한 번에 고정합니다.",
+            },
+            step3: {
+              title: "Codex 작업 패킷 생성",
+              body: "구현자가 바로 실행할 수 있도록 목적, 파일, 게이트, 검증 명령을 묶습니다.",
+            },
+            step4: {
+              title: "구현 및 변경 추적",
+              body: "작업 결과와 실행 영수증을 프로젝트 흐름에 연결해 변경 맥락을 잃지 않습니다.",
+            },
+            step5: {
+              title: "QA-Z / 릴리스 검증",
+              body: "보안, 문서, 테스트, 릴리스 안정성 검사를 통해 병합 가능성을 판단합니다.",
+            },
+            step6: {
+              title: "인간 승인 게이트",
+              body: "결제, 개인정보, 외부 API, 도메인, 공개 릴리스는 자동화 밖에서 승인합니다.",
+            },
+            step7: {
+              title: "출시 증거 기록",
+              body: "공개 URL, 결과, 차단 사유, 검증 결과를 다음 판단이 가능한 형태로 남깁니다.",
+            },
+            step8: {
+              title: "결과 리뷰와 다음 결정",
+              body: "출시 후 데이터를 검토하고 반복, 보류, 템플릿화 중 다음 결정을 선택합니다.",
+            },
+          },
+          modules: {
+            kicker: "Core Modules",
+            title: "기능 모듈",
+            intro:
+              "공개 사이트는 내부 구현을 노출하지 않고 운영 체계의 역할만 설명합니다.",
+            dashboard: {
+              title: "프로젝트 대시보드",
+              body: "후보 프로젝트, 현재 단계, 실행 가능성을 한 화면에서 비교합니다.",
+            },
+            artifact: {
+              title: "Workflow Artifact",
+              body: "범위, 체크리스트, 증거 링크를 프로젝트 실행 문맥으로 묶습니다.",
+            },
+            packet: {
+              title: "Codex Job Packet",
+              body: "Codex가 수행할 작업, 파일 경계, 승인 조건, 검증 명령을 전달합니다.",
+            },
+            approvalQueue: {
+              title: "승인 큐",
+              body: "위험한 행동을 자동 실행하지 않고 사람의 검토 대기 상태로 관리합니다.",
+            },
+            readiness: {
+              title: "Launch Readiness",
+              body: "출시 후보가 필요한 증거와 승인 조건을 충족했는지 확인합니다.",
+            },
+            evidence: {
+              title: "Launch Evidence",
+              body: "공개 URL, 검증 결과, 승인 상태, 실행 결과를 감사 가능한 기록으로 남깁니다.",
+            },
+            review: {
+              title: "Result Review",
+              body: "MVP 결과를 바탕으로 반복, 중단, 템플릿화 같은 후속 결정을 돕습니다.",
+            },
+            audit: {
+              title: "Audit Trail",
+              body: "누가 무엇을 바꾸고 어떤 검증을 거쳤는지 추적할 수 있게 합니다.",
+            },
+          },
+          qa: {
+            kicker: "Quality Gate",
+            title: "QA-Z 검증",
+            intro:
+              "QA-Z는 변경사항을 병합하기 전 보안, 릴리스 안정성, 문서 정합성, 테스트 품질을 점검하는 품질 게이트입니다.",
+            publicSafe: {
+              title: "공개 가능한 설명",
+              body: "이 사이트는 QA-Z가 무엇을 검증하는지만 설명하며, 내부 판정 산출물은 공개하지 않습니다.",
+            },
+            fast: "빠른 검사",
+            deep: "심층 리뷰",
+            blocking: "차단 발견사항",
+            verdict: "병합 가능 판정",
+            privateArtifacts: "비공개 판정 산출물은 공개하지 않음",
+          },
+          approvals: {
+            kicker: "Human Gates",
+            title: "승인 게이트",
+            intro:
+              "결제, 개인정보, 외부 API, 도메인/DNS, 공개 소스 릴리스 같은 위험한 행동은 자동화가 아니라 인간 승인 뒤에 둡니다.",
+            whyTitle: "안전 기능입니다",
+            whyBody:
+              "승인 대기는 결함이 아니라 운영 원칙입니다. 소스 공개, 라이선스, 런타임 배포는 승인 전까지 멈춰 있습니다.",
+            sourceRelease: "소스 공개 릴리스 승인은 대기 중",
+            license: "LICENSE는 라이선스 메타데이터 승인 전까지 만들지 않음",
+            runtime: "runtime-api는 공개 배포되지 않음",
+            noBug: "이 상태는 결함이 아니라 안전 기능",
+          },
+          security: {
+            kicker: "Static Boundary",
+            title: "보안 / 정적 호스팅 경계",
+            intro:
+              "GitHub Pages에는 공개 설명과 정적 자산만 배포됩니다. 백엔드, 앱 소스, 내부 문서, 승인 기록, 환경 파일, 런타임 값은 포함하지 않습니다.",
+            static: {
+              title: "정적 사이트",
+              body: "이 페이지는 HTML, CSS, 이미지, 작은 언어 전환 스크립트만 사용합니다.",
+            },
+            runtime: {
+              title: "Runtime API 미배포",
+              body: "GitHub Pages는 서버를 실행하지 않으므로 runtime-api를 호스팅하지 않습니다.",
+            },
+            safeFiles: {
+              title: "공개 파일만",
+              body: "사이트 전용 저장소에는 공개 가능한 정적 파일만 복사합니다.",
+            },
+          },
+          status: {
+            kicker: "Release Truth",
+            title: "출시 상태",
+            intro:
+              "현재 상태는 공개 정적 사이트 출시와 소스 공개 승인 대기를 분리해서 보여줍니다.",
+            launchedBadge: "출시됨",
+            completeBadge: "완료",
+            mergeBadge: "merge_ok",
+            notHostedBadge: "미배포",
+            pendingBadge: "승인 대기",
+            absentBadge: "미생성",
+            pages: {
+              title: "공개 GitHub Pages 사이트",
+              body: "출시됨",
+            },
+            engineering: {
+              title: "엔지니어링 준비 상태",
+              body: "완료",
+            },
+            qa: {
+              title: "QA-Z 상태",
+              body: "merge_ok",
+            },
+            runtime: {
+              title: "Runtime API",
+              body: "GitHub Pages에 배포하지 않음",
+            },
+            source: {
+              title: "소스 공개 릴리스",
+              body: "인간 승인 대기",
+            },
+            license: {
+              title: "LICENSE",
+              body: "승인 전까지 미생성",
+            },
+          },
+          faq: {
+            kicker: "Operator Notes",
+            title: "FAQ / 운영자 노트",
+            intro:
+              "공개 사이트가 무엇을 제공하고 무엇을 의도적으로 제공하지 않는지 명확히 정리합니다.",
+            q1: {
+              title: "이 사이트에서 실제 앱을 사용할 수 있나요?",
+              body: "이 사이트는 제품 로직과 출시 상태를 설명하는 정적 공개 페이지입니다. 실제 운영 콘솔은 여기에서 제공하지 않습니다.",
+            },
+            q2: {
+              title: "GitHub Pages에 백엔드도 올라가 있나요?",
+              body: "아니요. GitHub Pages는 정적 파일만 호스팅하며 runtime-api는 배포되어 있지 않습니다.",
+            },
+            q3: {
+              title: "왜 소스 공개 릴리스는 대기 중인가요?",
+              body: "저장소 공개, 라이선스 선택, 취약점 제보 채널은 인간 승인 전까지 진행하지 않기 때문입니다.",
+            },
+            q4: {
+              title: "QA-Z는 무엇을 검증하나요?",
+              body: "보안, 릴리스 안정성, 문서 정합성, 테스트 품질, 병합 가능성을 공개 가능한 수준으로 설명합니다.",
+            },
+            q5: {
+              title: "1Day-1MVP는 누구를 위한 도구인가요?",
+              body: "하루 단위로 MVP를 고르고, 범위를 잠그고, Codex 작업을 발행하고, 증거 기반으로 다음 결정을 내려야 하는 운영자를 위한 도구입니다.",
+            },
+          },
+          footer: {
+            copy: "1Day-1MVP 공개 정적 설명 사이트입니다. 메인 앱 저장소는 비공개이며 소스 공개 릴리스는 인간 승인 대기 상태입니다.",
+            backTop: "맨 위로",
+          },
         },
         en: {
           meta: {
-            title: "1Day-1MVP - Operating system for shipping one MVP a day",
+            title:
+              "1Day-1MVP - Operating system for planning and validating one MVP in a day",
             description:
-              "1Day-1MVP is a one-day MVP operating system for idea, scope, job packet, QA, approval, launch evidence, and review.",
+              "1Day-1MVP is a static public explainer for the MVP operating loop: idea, scope, Codex job packet, QA-Z, human approval, launch evidence, and result review.",
           },
           navLabel: "Primary navigation",
           languageLabel: "Language selection",
           koTitle: "View in Korean",
           enTitle: "View in English",
-          workflowLabel: "1Day-1MVP workflow",
-          previewAlt: "Preview of the 1Day-1MVP launch control workflow",
+          ctaLabel: "Primary actions",
+          statusStripLabel: "Key status",
+          previewAlt: "Preview of the 1Day-1MVP launch operating flow",
           nav: {
-            siteLink: "Public static launch site",
+            overview: "Overview",
+            operatingLogic: "Operating Logic",
+            modules: "Modules",
+            qaZ: "QA-Z",
+            approvalGates: "Approval Gates",
+            launchStatus: "Launch Status",
+            faq: "FAQ",
           },
           hero: {
-            eyebrow: "Engineering release-ready",
-            headline: "An operating system for shipping one real MVP every day",
-            subtitle:
-              "A focused operating system for moving one viable idea through scope, Codex job packets, QA, human approvals, launch evidence, and post-launch review without pretending risky gates are solved.",
-            primaryAction: "View this site",
-            secondaryAction: "Launch status",
+            eyebrow: "Safer one-day MVP operating loop",
+            headline:
+              "An operating system for planning, validating, and launching one MVP in a day",
+            subcopy:
+              "It connects idea → scope → Codex job packet → QA-Z → human approval → launch evidence → result review into one execution loop. This is not just a landing page generator. It is an operating loop for safer MVP execution.",
+            pillStatic: "Static GitHub Pages",
+            pillQa: "QA-Z merge_ok",
+            pillApproval: "Source release pending",
           },
-          cards: {
-            whatTitle: "What It Does",
-            what1: "Chooses a viable one-day MVP idea.",
-            what2: "Locks scope and planning artifacts.",
-            what3: "Issues Codex job packets for implementation.",
-            what4: "Runs QA and records launch evidence.",
-            what5: "Keeps risky actions behind human approval.",
-            statusTitle: "Launch Status",
-            status1: "Engineering release-ready.",
-            status2: "Source-release human approvals pending.",
-            status3: "Runtime API is not hosted on GitHub Pages.",
-            securityTitle: "Security Boundary",
-            securityBody:
-              "This public GitHub Pages site is static. It exposes no backend, no runtime token, no private approval records, and no application source code.",
-            securityNote:
-              "Pages hosts only public launch copy and static assets.",
+          cta: {
+            logic: "View Operating Logic",
+            status: "Check Launch Status",
+            approvals: "Understand Approval Gates",
           },
-          footer:
-            "1Day-1MVP public landing page. The main application repository remains private; public source release is not approved until human approvals and license decisions are complete.",
+          workflow: {
+            kicker: "Workflow Spine",
+            title: "Operating Logic",
+            intro:
+              "1Day-1MVP does not throw an idea straight into development. It turns scoped work into a packet that has passed verification gates.",
+            step1: {
+              title: "Idea Intake",
+              body: "Collect viable MVP candidates and narrow them into a problem that can be validated in one day.",
+            },
+            step2: {
+              title: "Scope Lock",
+              body: "Fix today's feature, deferred ideas, and success criteria before implementation starts.",
+            },
+            step3: {
+              title: "Codex Job Packet",
+              body: "Package the goal, file boundaries, gates, and verification commands for implementation.",
+            },
+            step4: {
+              title: "Build and Change Tracking",
+              body: "Connect execution results and receipts back to the project flow so context is not lost.",
+            },
+            step5: {
+              title: "QA-Z / Release Verification",
+              body: "Check security, docs, tests, and release stability before considering a change merge-ready.",
+            },
+            step6: {
+              title: "Human Approval Gates",
+              body: "Payments, personal data, external APIs, domains, and public release stay outside automation.",
+            },
+            step7: {
+              title: "Launch Evidence",
+              body: "Record public URL proof, results, blockers, and verification outcomes for the next decision.",
+            },
+            step8: {
+              title: "Result Review and Next Decision",
+              body: "Review launch data and choose whether to iterate, pause, or turn the MVP into a template.",
+            },
+          },
+          modules: {
+            kicker: "Core Modules",
+            title: "Modules",
+            intro:
+              "The public site explains module roles without exposing private implementation details.",
+            dashboard: {
+              title: "Project Dashboard",
+              body: "Compares candidate projects, current stage, and execution readiness in one view.",
+            },
+            artifact: {
+              title: "Workflow Artifact",
+              body: "Binds scope, checklist items, and evidence links into project execution context.",
+            },
+            packet: {
+              title: "Codex Job Packet",
+              body: "Tells Codex the task, file boundaries, approval conditions, and verification commands.",
+            },
+            approvalQueue: {
+              title: "Approval Queue",
+              body: "Keeps risky actions pending for human review instead of executing them automatically.",
+            },
+            readiness: {
+              title: "Launch Readiness",
+              body: "Checks whether a launch candidate has the required evidence and approvals.",
+            },
+            evidence: {
+              title: "Launch Evidence",
+              body: "Records public URL proof, verification results, approval state, and execution outcomes.",
+            },
+            review: {
+              title: "Result Review",
+              body: "Uses MVP results to support decisions such as iterate, stop, or templatize.",
+            },
+            audit: {
+              title: "Audit Trail",
+              body: "Tracks who changed what and which verification steps were run.",
+            },
+          },
+          qa: {
+            kicker: "Quality Gate",
+            title: "QA-Z Verification",
+            intro:
+              "QA-Z is a quality gate that checks security, release stability, documentation consistency, and test quality before changes are considered merge-ready.",
+            publicSafe: {
+              title: "Public-safe explanation",
+              body: "This site explains what QA-Z verifies, while private verdict artifacts are not published.",
+            },
+            fast: "Fast checks",
+            deep: "Deep review",
+            blocking: "Blocking findings",
+            verdict: "Merge-ready verdict",
+            privateArtifacts: "No private verdict artifacts exposed publicly",
+          },
+          approvals: {
+            kicker: "Human Gates",
+            title: "Approval Gates",
+            intro:
+              "Risky actions such as payments, personal data, external APIs, domain/DNS changes, and public source release remain behind human approval gates.",
+            whyTitle: "This is a safety feature",
+            whyBody:
+              "Pending approval is an operating rule, not a defect. Source release, license metadata, and runtime deployment remain stopped until approved.",
+            sourceRelease: "source-release approval is pending",
+            license:
+              "LICENSE is absent because license metadata is not approved",
+            runtime: "runtime-api is not deployed publicly",
+            noBug: "This is a safety feature, not a bug",
+          },
+          security: {
+            kicker: "Static Boundary",
+            title: "Security / Static Hosting Boundary",
+            intro:
+              "GitHub Pages deploys only public copy and static assets. It does not include backend services, app source, internal docs, approval records, env files, or runtime values.",
+            static: {
+              title: "Static site",
+              body: "This page uses HTML, CSS, an image, and a small language-switching script.",
+            },
+            runtime: {
+              title: "Runtime API not deployed",
+              body: "GitHub Pages does not run a server, so it does not host runtime-api.",
+            },
+            safeFiles: {
+              title: "Public files only",
+              body: "Only safe static files are copied into the site-only repository.",
+            },
+          },
+          status: {
+            kicker: "Release Truth",
+            title: "Launch Status",
+            intro:
+              "The current state separates the launched public static site from the still-pending public source release.",
+            launchedBadge: "launched",
+            completeBadge: "complete",
+            mergeBadge: "merge_ok",
+            notHostedBadge: "not hosted",
+            pendingBadge: "pending",
+            absentBadge: "absent",
+            pages: {
+              title: "Public GitHub Pages site",
+              body: "launched",
+            },
+            engineering: {
+              title: "Engineering readiness",
+              body: "complete",
+            },
+            qa: {
+              title: "QA-Z status",
+              body: "merge_ok",
+            },
+            runtime: {
+              title: "Runtime API",
+              body: "not deployed on GitHub Pages",
+            },
+            source: {
+              title: "Public source release",
+              body: "pending human approval",
+            },
+            license: {
+              title: "LICENSE",
+              body: "not created before approval",
+            },
+          },
+          faq: {
+            kicker: "Operator Notes",
+            title: "FAQ / Operator Notes",
+            intro:
+              "These notes clarify what the public site provides and what it intentionally does not provide.",
+            q1: {
+              title: "Can I use the actual app from this site?",
+              body: "This is a static public page explaining product logic and launch status. The full operator console is not provided here.",
+            },
+            q2: {
+              title: "Is the backend hosted on GitHub Pages?",
+              body: "No. GitHub Pages hosts static files only, and runtime-api is not deployed here.",
+            },
+            q3: {
+              title: "Why is the public source release still pending?",
+              body: "Repository visibility, license choice, and vulnerability-reporting setup remain behind human approval gates.",
+            },
+            q4: {
+              title: "What does QA-Z verify?",
+              body: "It checks security, release stability, documentation consistency, test quality, and merge-ready status in public-safe terms.",
+            },
+            q5: {
+              title: "Who is 1Day-1MVP for?",
+              body: "It is for operators who need to choose one-day MVPs, lock scope, issue Codex work, and make evidence-based next decisions.",
+            },
+          },
+          footer: {
+            copy: "1Day-1MVP public static explainer. The main app repository remains private, and public source release is pending human approval.",
+            backTop: "Back to top",
+          },
         },
       };
 
       function getValue(dictionary, path) {
-        return path
-          .split(".")
-          .reduce(
-            (value, key) => (value && value[key] ? value[key] : ""),
-            dictionary,
-          );
+        return path.split(".").reduce((value, key) => {
+          if (value && Object.prototype.hasOwnProperty.call(value, key)) {
+            return value[key];
+          }
+          return "";
+        }, dictionary);
       }
 
       function getStoredLanguage() {

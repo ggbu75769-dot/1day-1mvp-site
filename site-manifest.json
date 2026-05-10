@@ -1,10 +1,21 @@
 {
-  "name": "1Day-1MVP public bilingual landing site",
+  "name": "1Day-1MVP public bilingual product-logic explainer",
   "repo": "1day-1mvp-site",
   "type": "static-github-pages-site",
   "defaultLanguage": "ko",
   "supportedLanguages": ["ko", "en"],
   "pagesUrl": "https://ggbu75769-dot.github.io/1day-1mvp-site/",
+  "contentModel": "public-product-logic-explainer",
+  "sections": [
+    "overview",
+    "operating-logic",
+    "modules",
+    "qa-z",
+    "approval-gates",
+    "security-boundary",
+    "launch-status",
+    "faq"
+  ],
   "runtimeApiHostedHere": false,
   "sourceReleaseApproved": false,
   "mainAppRepositoryVisibility": "private",
