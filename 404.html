@@ -3,26 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>1Day-1MVP - 페이지를 찾을 수 없습니다</title>
     <meta
       name="description"
-      content="1Day-1MVP 공개 소개 사이트에서 요청한 페이지를 찾을 수 없습니다."
+      content="1Day-1MVP 공개 사이트의 요청한 페이지를 찾을 수 없습니다."
     />
-    <title>1Day-1MVP - 404 페이지를 찾을 수 없습니다</title>
     <style>
       :root {
         color-scheme: light;
-        --paper: #f5f7f3;
-        --surface: #ffffff;
-        --ink: #10151d;
-        --muted: #5b6673;
-        --line: #d8dfd7;
-        --blue: #245fb8;
-        --blue-soft: #e8f0ff;
-        --green: #16825b;
-        --green-soft: #e5f5ee;
-        --amber: #b26f14;
-        --amber-soft: #fff1d7;
-        --shadow: 0 24px 70px rgba(16, 21, 29, 0.13);
+        --paper: #f7f4ee;
+        --panel: #fffdf8;
+        --ink: #17191c;
+        --muted: #62666f;
+        --line: #ded8ce;
+        --blue: #2569c9;
+        --green: #1e8b5e;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Noto Sans KR",
+          sans-serif;
       }
 
       * {
@@ -32,249 +36,204 @@
       body {
         min-height: 100vh;
         margin: 0;
-        display: grid;
-        place-items: center;
         background: var(--paper);
         color: var(--ink);
-        font-family:
-          "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
-        line-height: 1.62;
-      }
-
-      a,
-      button {
-        color: inherit;
-        font: inherit;
-      }
-
-      a:focus-visible,
-      button:focus-visible {
-        outline: 3px solid #82afff;
-        outline-offset: 3px;
       }
 
       main {
-        width: min(920px, calc(100vw - 32px));
-        padding: 88px 0 56px;
-      }
-
-      .language-switcher {
-        position: fixed;
-        top: 16px;
-        right: 16px;
-        display: inline-grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2px;
-        min-width: 136px;
-        padding: 3px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: var(--surface);
-      }
-
-      .language-switcher button {
-        min-height: 34px;
-        border: 0;
-        border-radius: 999px;
-        background: transparent;
-        color: var(--muted);
-        cursor: pointer;
-        font-size: 0.9rem;
-        font-weight: 850;
-      }
-
-      .language-switcher button[aria-pressed="true"] {
-        background: var(--ink);
-        color: #ffffff;
+        display: grid;
+        width: min(980px, calc(100vw - 32px));
+        min-height: 100vh;
+        margin: 0 auto;
+        place-items: center;
+        padding: 48px 0;
       }
 
       .panel {
-        overflow: hidden;
+        display: grid;
+        gap: 22px;
+        width: 100%;
+        padding: clamp(28px, 6vw, 58px);
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: var(--surface);
-        box-shadow: var(--shadow);
+        background: var(--panel);
+        box-shadow: 0 24px 80px rgba(31, 35, 40, 0.13);
       }
 
-      .panel-header {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 16px 18px;
-        border-bottom: 1px solid var(--line);
-        background: #f1f5f1;
-      }
-
-      .panel-header strong {
-        font-size: 0.96rem;
-      }
-
-      .badge {
-        min-height: 30px;
+      .brand {
         display: inline-flex;
         align-items: center;
-        border-radius: 999px;
-        padding: 5px 10px;
-        background: var(--amber-soft);
-        color: var(--amber);
-        font-size: 0.82rem;
-        font-weight: 900;
+        gap: 10px;
+        font-weight: 760;
       }
 
-      .panel-body {
+      .brand-mark {
         display: grid;
-        gap: 20px;
-        padding: 30px;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--ink);
+        color: white;
+        font-size: 0.84rem;
       }
 
-      .kicker {
+      .eyebrow {
         margin: 0;
         color: var(--blue);
-        font-size: 0.82rem;
-        font-weight: 900;
+        font-size: 0.78rem;
+        font-weight: 780;
         text-transform: uppercase;
       }
 
       h1 {
         max-width: 760px;
         margin: 0;
-        font-size: 3.35rem;
-        line-height: 1.05;
+        font-size: 5rem;
+        line-height: 0.98;
         letter-spacing: 0;
-        word-break: keep-all;
       }
 
       p {
-        max-width: 710px;
+        max-width: 700px;
         margin: 0;
         color: var(--muted);
-        font-size: 1.05rem;
-        word-break: keep-all;
+        font-size: 1.08rem;
+        line-height: 1.7;
       }
 
-      .links {
+      .status-row,
+      .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
       }
 
-      .link-card {
-        min-height: 44px;
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 8px 11px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 650;
+      }
+
+      .button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        min-height: 46px;
+        padding: 0 17px;
         border: 1px solid var(--ink);
         border-radius: 8px;
-        padding: 10px 14px;
         background: var(--ink);
-        color: #ffffff;
-        font-weight: 850;
+        color: white;
+        font-weight: 760;
         text-decoration: none;
       }
 
-      .link-card.secondary {
-        background: transparent;
+      .button.secondary {
+        border-color: var(--line);
+        background: white;
         color: var(--ink);
       }
 
-      .status-note {
-        border: 1px solid #bfe3d1;
+      .language-toggle {
+        display: inline-flex;
+        width: max-content;
+        gap: 2px;
+        padding: 3px;
+        border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 14px 16px;
-        background: var(--green-soft);
-        color: #24523d;
+        background: white;
       }
 
-      @media (max-width: 620px) {
-        .language-switcher {
-          left: 16px;
-          right: 16px;
-          width: auto;
-        }
+      .language-toggle button {
+        min-width: 44px;
+        min-height: 32px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font: inherit;
+      }
 
-        main {
-          padding-top: 104px;
-        }
+      .language-toggle button[aria-pressed="true"] {
+        background: var(--ink);
+        color: white;
+      }
 
-        .panel-body {
-          padding: 22px;
-        }
+      .button:focus-visible,
+      .language-toggle button:focus-visible {
+        outline: 3px solid rgba(37, 105, 201, 0.28);
+        outline-offset: 2px;
+      }
 
+      @media (max-width: 640px) {
         h1 {
-          font-size: 2.35rem;
+          font-size: 2.75rem;
         }
       }
     </style>
   </head>
   <body>
     <main>
-      <div
-        class="language-switcher"
-        role="group"
-        aria-label="언어 선택"
-        data-i18n-aria-label="languageLabel"
-      >
-        <button
-          type="button"
-          data-language="ko"
-          aria-pressed="true"
-          title="한국어로 보기"
-          data-i18n-title="koTitle"
-        >
-          한국
-        </button>
-        <button
-          type="button"
-          data-language="en"
-          aria-pressed="false"
-          title="영어로 보기"
-          data-i18n-title="enTitle"
-        >
-          미국
-        </button>
-      </div>
-
       <section class="panel" aria-labelledby="not-found-title">
-        <div class="panel-header">
-          <strong>1Day-1MVP</strong>
-          <span class="badge" data-i18n="badge">404 route check</span>
+        <div class="brand">
+          <span class="brand-mark">1D</span>
+          <span>1Day-1MVP</span>
         </div>
-        <div class="panel-body">
-          <p class="kicker" data-i18n="kicker">Page not found</p>
-          <h1 id="not-found-title" data-i18n="title">
-            404 페이지를 찾을 수 없습니다.
-          </h1>
-          <p data-i18n="body">
-            주소가 바뀌었거나 아직 공개하지 않은 페이지일 수 있습니다. 공개 소개
-            사이트의 흐름과 현재 상태로 돌아갈 수 있습니다.
-          </p>
-          <div
-            class="links"
-            aria-label="이동 링크"
-            data-i18n-aria-label="linksLabel"
+        <p class="eyebrow" data-i18n="eyebrow">404 / static public site</p>
+        <h1 id="not-found-title" data-i18n="title">
+          404 페이지를 찾을 수 없습니다.
+        </h1>
+        <p data-i18n="body">
+          요청한 경로는 공개 소개 사이트에 없습니다. 홈으로 돌아가 실행 흐름,
+          콘솔 미리보기, 파일럿 준비 상태를 확인할 수 있습니다.
+        </p>
+        <div class="status-row" aria-label="공개 사이트 상태">
+          <span class="pill" data-i18n="pill1">정적 공개 소개 사이트</span>
+          <span class="pill" data-i18n="pill2">Runtime API 비공개</span>
+          <span class="pill" data-i18n="pill3">QA-Z 확인</span>
+        </div>
+        <div class="actions">
+          <a class="button" href="./" data-i18n="home">홈으로 돌아가기</a>
+          <a class="button secondary" href="./#workflow" data-i18n="workflow"
+            >실행 흐름 보기</a
           >
-            <a class="link-card" href="./" data-i18n="homeLink"
-              >홈으로 돌아가기</a
-            >
-            <a
-              class="link-card secondary"
-              href="./#workflow"
-              data-i18n="workflowLink"
-              >실행 흐름 보기</a
-            >
-            <a
-              class="link-card secondary"
-              href="./#status"
-              data-i18n="statusLink"
-              >공개 상태 확인</a
-            >
-          </div>
-          <p class="status-note" data-i18n="note">
-            이 페이지는 정적 공개 소개 사이트입니다. 실제 관리 콘솔과 Runtime
-            API는 비공개 환경에서 검증됩니다.
-          </p>
+          <a class="button secondary" href="./#readiness" data-i18n="readiness"
+            >공개 상태 확인</a
+          >
+        </div>
+        <div
+          class="language-toggle"
+          role="group"
+          aria-label="언어 선택"
+          data-i18n-aria-label="languageLabel"
+        >
+          <button
+            type="button"
+            data-language="ko"
+            aria-pressed="true"
+            title="한국어로 보기"
+            data-i18n-title="koTitle"
+          >
+            한국
+          </button>
+          <button
+            type="button"
+            data-language="en"
+            aria-pressed="false"
+            title="영어로 보기"
+            data-i18n-title="enTitle"
+          >
+            미국
+          </button>
         </div>
       </section>
     </main>
@@ -283,41 +242,41 @@
       const translations = {
         ko: {
           meta: {
-            title: "1Day-1MVP - 404 페이지를 찾을 수 없습니다",
+            title: "1Day-1MVP - 페이지를 찾을 수 없습니다",
             description:
-              "1Day-1MVP 공개 소개 사이트에서 요청한 페이지를 찾을 수 없습니다.",
+              "1Day-1MVP 공개 사이트의 요청한 페이지를 찾을 수 없습니다.",
           },
           languageLabel: "언어 선택",
-          linksLabel: "이동 링크",
           koTitle: "한국어로 보기",
           enTitle: "영어로 보기",
-          badge: "404 route check",
-          kicker: "Page not found",
+          eyebrow: "404 / static public site",
           title: "404 페이지를 찾을 수 없습니다.",
-          body: "주소가 바뀌었거나 아직 공개하지 않은 페이지일 수 있습니다. 공개 소개 사이트의 흐름과 현재 상태로 돌아갈 수 있습니다.",
-          homeLink: "홈으로 돌아가기",
-          workflowLink: "실행 흐름 보기",
-          statusLink: "공개 상태 확인",
-          note: "이 페이지는 정적 공개 소개 사이트입니다. 실제 관리 콘솔과 Runtime API는 비공개 환경에서 검증됩니다.",
+          body: "요청한 경로는 공개 소개 사이트에 없습니다. 홈으로 돌아가 실행 흐름, 콘솔 미리보기, 파일럿 준비 상태를 확인할 수 있습니다.",
+          pill1: "정적 공개 소개 사이트",
+          pill2: "Runtime API 비공개",
+          pill3: "QA-Z 확인",
+          home: "홈으로 돌아가기",
+          workflow: "실행 흐름 보기",
+          readiness: "공개 상태 확인",
         },
         en: {
           meta: {
-            title: "1Day-1MVP - 404 page not found",
+            title: "1Day-1MVP - Page not found",
             description:
-              "The requested page was not found on the 1Day-1MVP public introduction site.",
+              "The requested page was not found on the 1Day-1MVP public site.",
           },
           languageLabel: "Language selection",
-          linksLabel: "Navigation links",
           koTitle: "View in Korean",
           enTitle: "View in English",
-          badge: "404 route check",
-          kicker: "Page not found",
+          eyebrow: "404 / static public site",
           title: "404 page not found.",
-          body: "The address may have changed, or the page may not be public yet. You can return to the public workflow and current status.",
-          homeLink: "Return home",
-          workflowLink: "See the workflow",
-          statusLink: "Check launch status",
-          note: "This is a static public introduction site. The real management console and Runtime API are verified in a private environment.",
+          body: "That route is not part of the public introduction site. Return home to view the workflow, console preview, and pilot readiness status.",
+          pill1: "static public introduction site",
+          pill2: "Runtime API private",
+          pill3: "QA-Z checked",
+          home: "Return home",
+          workflow: "See the workflow",
+          readiness: "Check launch status",
         },
       };
 
@@ -330,26 +289,10 @@
         }, dictionary);
       }
 
-      function getStoredLanguage() {
-        try {
-          return localStorage.getItem("1day-1mvp-language");
-        } catch {
-          return null;
-        }
-      }
-
-      function storeLanguage(language) {
-        try {
-          localStorage.setItem("1day-1mvp-language", language);
-        } catch {
-          return;
-        }
-      }
-
       function setLanguage(language) {
         const selectedLanguage = translations[language] ? language : "ko";
         const dictionary = translations[selectedLanguage];
-        document.documentElement.lang = selectedLanguage === "ko" ? "ko" : "en";
+        document.documentElement.lang = selectedLanguage;
         document.title = dictionary.meta.title;
         document
           .querySelector('meta[name="description"]')
@@ -377,7 +320,11 @@
             String(button.dataset.language === selectedLanguage),
           );
         });
-        storeLanguage(selectedLanguage);
+        try {
+          localStorage.setItem("1day-1mvp-language", selectedLanguage);
+        } catch {
+          return;
+        }
       }
 
       document.querySelectorAll("[data-language]").forEach((button) => {
@@ -386,7 +333,13 @@
         );
       });
 
-      setLanguage(getStoredLanguage() || "ko");
+      let initialLanguage = "ko";
+      try {
+        initialLanguage = localStorage.getItem("1day-1mvp-language") || "ko";
+      } catch {
+        initialLanguage = "ko";
+      }
+      setLanguage(initialLanguage);
     </script>
   </body>
 </html>
