@@ -5,31 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="1Day-1MVP는 아이디어를 하루 안에 검증 가능한 MVP 실행으로 바꾸는 비공개 운영 콘솔입니다. 이 페이지는 정적 공개 소개 사이트입니다."
+      content="1Day-1MVP는 오늘의 아이디어를 범위, Codex 작업 패킷, QA-Z 검증, 승인 게이트, 출시 기록까지 이어 주는 하루 MVP 실행 콘솔입니다."
     />
-    <title>1Day-1MVP - 하루짜리 MVP를 끝까지 굴러가게 만드는 작업실</title>
+    <title>1Day-1MVP - 오늘 만들 MVP, 오늘 끝낼 수 있게</title>
     <style>
       :root {
         color-scheme: light;
-        --paper: #f6f8f5;
+        --paper: #f5f7f3;
+        --ink: #10151d;
+        --muted: #5b6673;
+        --line: #d8dfd7;
         --surface: #ffffff;
-        --surface-warm: #fffaf2;
-        --ink: #141a22;
-        --muted: #5c6773;
-        --soft: #eef2f0;
-        --line: #d8e0dc;
-        --nav: rgba(246, 248, 245, 0.96);
+        --surface-soft: #eef3ed;
+        --nav: rgba(245, 247, 243, 0.96);
         --blue: #245fb8;
-        --blue-soft: #eaf2ff;
-        --green: #1f7a55;
-        --green-soft: #eaf7f0;
-        --amber: #a66f19;
-        --amber-soft: #fff4dc;
-        --coral: #b04d43;
-        --coral-soft: #fff0ee;
-        --violet: #6657b8;
-        --violet-soft: #f1efff;
-        --shadow: 0 22px 60px rgba(20, 26, 34, 0.1);
+        --blue-soft: #e8f0ff;
+        --green: #16825b;
+        --green-soft: #e5f5ee;
+        --amber: #b26f14;
+        --amber-soft: #fff1d7;
+        --coral: #b84f43;
+        --coral-soft: #ffedea;
+        --violet: #6453b7;
+        --violet-soft: #efedff;
+        --shadow: 0 24px 70px rgba(16, 21, 29, 0.13);
       }
 
       * {
@@ -46,7 +45,8 @@
         color: var(--ink);
         font-family:
           "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
-        line-height: 1.62;
+        line-height: 1.6;
+        overflow-x: hidden;
       }
 
       a,
@@ -57,8 +57,28 @@
 
       a:focus-visible,
       button:focus-visible {
-        outline: 3px solid #78a9ff;
+        outline: 3px solid #82afff;
         outline-offset: 3px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      li,
+      a,
+      button,
+      span {
+        letter-spacing: 0;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
       }
 
       .shell {
@@ -77,14 +97,14 @@
       }
 
       .nav-wrap,
-      main,
-      footer {
-        width: min(1160px, calc(100% - 32px));
+      .content,
+      .footer-inner {
+        width: min(1180px, calc(100vw - 32px));
         margin: 0 auto;
       }
 
       .nav-wrap {
-        min-height: 74px;
+        min-height: 76px;
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
@@ -93,8 +113,7 @@
 
       .brand {
         min-width: max-content;
-        font-size: 1.05rem;
-        font-weight: 900;
+        font-weight: 920;
         text-decoration: none;
       }
 
@@ -112,12 +131,13 @@
         border-radius: 8px;
         padding: 8px 10px;
         color: var(--muted);
-        font-size: 0.91rem;
-        font-weight: 760;
+        font-size: 0.92rem;
+        font-weight: 800;
         text-decoration: none;
       }
 
-      .nav-links a:hover {
+      .nav-links a:hover,
+      .nav-links a.is-active {
         background: var(--blue-soft);
         color: var(--blue);
       }
@@ -126,7 +146,7 @@
         display: inline-grid;
         grid-template-columns: 1fr 1fr;
         gap: 2px;
-        min-width: 132px;
+        min-width: 136px;
         padding: 3px;
         border: 1px solid var(--line);
         border-radius: 999px;
@@ -142,7 +162,6 @@
         cursor: pointer;
         font-size: 0.9rem;
         font-weight: 850;
-        letter-spacing: 0;
       }
 
       .language-switcher button[aria-pressed="true"] {
@@ -150,82 +169,69 @@
         color: #ffffff;
       }
 
-      main {
-        padding: 54px 0 72px;
+      .content {
+        padding: 34px 0 76px;
       }
 
       section {
-        scroll-margin-top: 96px;
-      }
-
-      h1,
-      h2,
-      h3,
-      p,
-      li {
-        overflow-wrap: break-word;
-      }
-
-      h1,
-      h2,
-      h3,
-      p,
-      li,
-      a,
-      button,
-      span {
-        word-break: keep-all;
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
+        scroll-margin-top: 104px;
       }
 
       .hero {
-        min-height: calc(100vh - 130px);
         display: grid;
-        grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
-        gap: 44px;
+        grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+        gap: 42px;
         align-items: center;
-        padding-bottom: 34px;
+        padding: 72px 0 54px;
+      }
+
+      .hero > *,
+      .launch-console,
+      .mini-panel,
+      .stage,
+      .proof-item,
+      .problem-card,
+      .module-card,
+      .status-card,
+      .faq-card,
+      .use-case-card {
+        min-width: 0;
       }
 
       .eyebrow,
       .section-kicker {
         margin: 0 0 12px;
         color: var(--blue);
-        font-size: 0.86rem;
+        font-size: 0.82rem;
         font-weight: 900;
-        letter-spacing: 0;
+        text-transform: uppercase;
       }
 
       h1 {
-        max-width: 780px;
+        max-width: 760px;
         margin-bottom: 22px;
-        font-size: clamp(2.35rem, 6vw, 5.15rem);
-        line-height: 1.04;
-        letter-spacing: 0;
+        font-size: 4.55rem;
+        line-height: 1.02;
+        font-weight: 940;
+        white-space: pre-line;
       }
 
       .hero-subtitle {
-        max-width: 690px;
+        max-width: 680px;
         margin-bottom: 0;
         color: var(--muted);
-        font-size: clamp(1.02rem, 1.55vw, 1.18rem);
+        font-size: 1.14rem;
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin-top: 30px;
+        margin-top: 28px;
       }
 
       .button {
-        min-height: 45px;
+        min-height: 46px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -243,11 +249,26 @@
         color: var(--ink);
       }
 
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero-note {
+        max-width: 650px;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .badge-row,
       .status-strip {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 28px;
+      }
+
+      .badge-row {
+        margin-top: 24px;
       }
 
       .pill {
@@ -260,215 +281,10 @@
         background: var(--surface);
         color: var(--muted);
         font-size: 0.88rem;
-        font-weight: 780;
+        font-weight: 800;
       }
 
-      .hero-visual {
-        margin: 0;
-      }
-
-      .hero-visual img {
-        display: block;
-        width: 100%;
-        height: auto;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
-        box-shadow: var(--shadow);
-      }
-
-      .hero-visual figcaption {
-        margin-top: 12px;
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .section-block {
-        margin-top: 74px;
-      }
-
-      .section-heading {
-        display: grid;
-        grid-template-columns: minmax(0, 0.82fr) minmax(260px, 0.58fr);
-        gap: 28px;
-        align-items: end;
-        margin-bottom: 24px;
-      }
-
-      h2 {
-        margin-bottom: 0;
-        font-size: clamp(1.72rem, 3.3vw, 2.7rem);
-        line-height: 1.14;
-        letter-spacing: 0;
-      }
-
-      .section-heading p,
-      .section-lede {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .problem-grid,
-      .module-grid,
-      .status-grid,
-      .faq-grid {
-        display: grid;
-        gap: 12px;
-      }
-
-      .problem-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .problem-card,
-      .module-card,
-      .status-card,
-      .faq-card,
-      .qa-card,
-      .decision-card,
-      .mini-card {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
-      }
-
-      .problem-card {
-        min-height: 172px;
-        padding: 18px;
-      }
-
-      .problem-card:nth-child(1) {
-        background: var(--blue-soft);
-      }
-
-      .problem-card:nth-child(2) {
-        background: var(--amber-soft);
-      }
-
-      .problem-card:nth-child(3) {
-        background: var(--green-soft);
-      }
-
-      .problem-card:nth-child(4) {
-        background: var(--coral-soft);
-      }
-
-      .problem-card h3,
-      .module-card h3,
-      .status-card h3,
-      .faq-card h3,
-      .qa-card h3,
-      .decision-card h3,
-      .mini-card h3 {
-        margin: 0 0 8px;
-        font-size: 1.04rem;
-        line-height: 1.28;
-        letter-spacing: 0;
-      }
-
-      .problem-card p,
-      .module-card p,
-      .status-card p,
-      .faq-card p,
-      .qa-card p,
-      .decision-card p,
-      .mini-card p,
-      .console-intro p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.96rem;
-      }
-
-      .solution-panel {
-        display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.58fr);
-        gap: 18px;
-        align-items: stretch;
-      }
-
-      .solution-copy,
-      .solution-points {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
-      }
-
-      .solution-copy {
-        padding: 26px;
-      }
-
-      .solution-copy p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 1.04rem;
-      }
-
-      .solution-points {
-        display: grid;
-        gap: 10px;
-        padding: 16px;
-      }
-
-      .mini-card {
-        padding: 15px;
-      }
-
-      .workflow-list {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        counter-reset: workflow;
-      }
-
-      .workflow-step {
-        min-height: 188px;
-        position: relative;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 18px;
-        background: var(--surface);
-      }
-
-      .workflow-step::before {
-        counter-increment: workflow;
-        content: counter(workflow);
-        width: 32px;
-        height: 32px;
-        display: inline-grid;
-        place-items: center;
-        border-radius: 999px;
-        background: var(--blue-soft);
-        color: var(--blue);
-        font-weight: 900;
-      }
-
-      .workflow-step h3 {
-        margin: 14px 0 8px;
-        font-size: 1.05rem;
-        line-height: 1.28;
-      }
-
-      .workflow-step p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .console-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1.08fr);
-        gap: 18px;
-        align-items: start;
-      }
-
-      .module-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .module-card {
-        padding: 17px;
-      }
-
-      .console-preview {
+      .launch-console {
         overflow: hidden;
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -476,25 +292,29 @@
         box-shadow: var(--shadow);
       }
 
-      .console-toolbar {
+      .console-topbar {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        padding: 18px;
+        padding: 17px 18px;
         border-bottom: 1px solid var(--line);
-        background: #f2f6fa;
+        background: #f1f5f1;
       }
 
-      .console-toolbar h3 {
+      .console-topbar h2,
+      .console-topbar p {
         margin: 0;
-        font-size: 1.14rem;
       }
 
-      .console-toolbar p {
-        margin: 3px 0 0;
+      .console-topbar h2 {
+        font-size: 1.1rem;
+      }
+
+      .console-topbar p {
         color: var(--muted);
+        font-size: 0.9rem;
       }
 
       .console-badge {
@@ -515,53 +335,111 @@
         padding: 18px;
       }
 
-      .kpi-grid {
+      .run-card {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: #fbfcfa;
       }
 
-      .kpi {
-        min-height: 96px;
+      .run-card h3 {
+        margin: 0;
+        font-size: 1.04rem;
+      }
+
+      .run-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .pipeline {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .stage {
+        min-height: 92px;
+        display: grid;
+        align-content: start;
+        gap: 7px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px;
+        background: var(--surface);
+      }
+
+      .stage strong {
+        font-size: 0.88rem;
+      }
+
+      .stage span {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .stage.done {
+        border-color: #a9d9c4;
+        background: var(--green-soft);
+      }
+
+      .stage.waiting {
+        border-color: #edcc8f;
+        background: var(--amber-soft);
+      }
+
+      .stage.review {
+        border-color: #c9c1f5;
+        background: var(--violet-soft);
+      }
+
+      .split-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .mini-panel {
         border: 1px solid var(--line);
         border-radius: 8px;
         padding: 14px;
-        background: #ffffff;
+        background: var(--surface);
       }
 
-      .kpi strong {
-        display: block;
-        font-size: clamp(1.45rem, 2.8vw, 2rem);
-        line-height: 1.05;
+      .mini-panel h3 {
+        margin: 0 0 8px;
+        font-size: 0.96rem;
       }
 
-      .kpi span {
-        display: block;
-        margin-top: 4px;
+      .mini-panel p {
+        margin: 0;
         color: var(--muted);
-        font-size: 0.85rem;
-        font-weight: 760;
+        font-size: 0.9rem;
       }
 
-      .project-list {
+      .list {
         display: grid;
-        gap: 10px;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .project-row {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto;
-        gap: 12px;
-        align-items: center;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 12px;
-        background: #ffffff;
+      .list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 0.9rem;
       }
 
       .dot {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
+        flex: 0 0 auto;
+        margin-top: 7px;
         border-radius: 999px;
         background: var(--green);
       }
@@ -574,51 +452,180 @@
         background: var(--coral);
       }
 
-      .project-row h3 {
-        margin: 0;
-        font-size: 0.99rem;
+      .dot.violet {
+        background: var(--violet);
       }
 
-      .project-row p {
-        margin: 2px 0 0;
-        color: var(--muted);
-        font-size: 0.91rem;
+      .section-block {
+        margin-top: 76px;
       }
 
-      .row-tag {
-        min-width: max-content;
-        border-radius: 999px;
-        padding: 4px 8px;
-        background: var(--amber-soft);
-        color: var(--amber);
-        font-size: 0.78rem;
-        font-weight: 900;
-      }
-
-      .console-note {
+      .section-heading {
         display: grid;
-        gap: 10px;
+        grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.58fr);
+        gap: 28px;
+        align-items: end;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: 2.45rem;
+        line-height: 1.14;
+      }
+
+      .section-heading p,
+      .section-lede {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .status-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .proof-item,
+      .problem-card,
+      .module-card,
+      .status-card,
+      .faq-card,
+      .qa-card,
+      .safety-card,
+      .use-case-card {
         border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 14px;
-        background: var(--surface-warm);
+        background: var(--surface);
+      }
+
+      .proof-item {
+        min-height: 118px;
+        padding: 17px;
+      }
+
+      .proof-item strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .proof-item span {
         color: var(--muted);
-        font-size: 0.95rem;
+        font-size: 0.92rem;
       }
 
-      .qa-layout,
-      .decision-layout {
+      .problem-grid,
+      .module-grid,
+      .faq-grid,
+      .use-case-grid {
         display: grid;
-        grid-template-columns: minmax(0, 0.72fr) minmax(320px, 1fr);
-        gap: 16px;
+        gap: 12px;
       }
 
+      .problem-grid,
+      .use-case-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .problem-card,
+      .module-card,
+      .faq-card,
+      .use-case-card,
       .qa-card,
-      .decision-card {
+      .safety-card,
+      .status-card {
         padding: 18px;
       }
 
-      .check-list {
+      .problem-card h3,
+      .module-card h3,
+      .faq-card h3,
+      .use-case-card h3,
+      .qa-card h3,
+      .safety-card h3,
+      .status-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.04rem;
+        line-height: 1.3;
+      }
+
+      .problem-card p,
+      .module-card p,
+      .faq-card p,
+      .use-case-card p,
+      .qa-card p,
+      .safety-card p,
+      .status-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .problem-card:nth-child(1) {
+        background: var(--blue-soft);
+      }
+
+      .problem-card:nth-child(2) {
+        background: var(--amber-soft);
+      }
+
+      .problem-card:nth-child(3) {
+        background: var(--coral-soft);
+      }
+
+      .preview-layout,
+      .qa-layout,
+      .safety-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.75fr);
+        gap: 16px;
+        align-items: start;
+      }
+
+      .workflow-list {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 10px;
+        counter-reset: workflow;
+      }
+
+      .workflow-step {
+        min-height: 196px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: var(--surface);
+      }
+
+      .workflow-step::before {
+        counter-increment: workflow;
+        content: counter(workflow);
+        width: 32px;
+        height: 32px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        font-weight: 900;
+      }
+
+      .workflow-step h3 {
+        margin: 14px 0 8px;
+        font-size: 1rem;
+      }
+
+      .workflow-step p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .module-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .qa-checks {
         display: grid;
         gap: 10px;
         margin: 0;
@@ -626,8 +633,8 @@
         list-style: none;
       }
 
-      .check-list li {
-        min-height: 48px;
+      .qa-checks li {
+        min-height: 52px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -636,42 +643,20 @@
         padding: 10px 12px;
         background: var(--surface);
         color: var(--muted);
-        font-weight: 730;
-      }
-
-      .marker {
-        width: 12px;
-        height: 12px;
-        flex: 0 0 auto;
-        border-radius: 999px;
-        background: var(--green);
-      }
-
-      .marker.amber {
-        background: var(--amber);
-      }
-
-      .marker.coral {
-        background: var(--coral);
-      }
-
-      .marker.violet {
-        background: var(--violet);
+        font-weight: 760;
       }
 
       .status-grid {
+        display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .status-card {
-        min-height: 138px;
-        padding: 18px;
+        gap: 12px;
       }
 
       .status-card strong {
         min-height: 28px;
         display: inline-flex;
         align-items: center;
+        margin-bottom: 10px;
         border-radius: 999px;
         padding: 4px 9px;
         background: var(--green-soft);
@@ -680,23 +665,34 @@
         font-weight: 900;
       }
 
-      .status-card.pending strong {
-        background: var(--amber-soft);
-        color: var(--amber);
-      }
-
       .status-card.private strong {
         background: var(--blue-soft);
         color: var(--blue);
+      }
+
+      .status-card.pending strong {
+        background: var(--amber-soft);
+        color: var(--amber);
       }
 
       .faq-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .faq-card {
-        min-height: 150px;
-        padding: 18px;
+      .final-cta {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+        margin-top: 76px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 28px 0;
+      }
+
+      .final-cta p {
+        margin: 8px 0 0;
+        color: var(--muted);
       }
 
       .footer-inner {
@@ -716,9 +712,9 @@
         text-decoration: none;
       }
 
-      @media (max-width: 1000px) {
+      @media (max-width: 1080px) {
         section {
-          scroll-margin-top: 150px;
+          scroll-margin-top: 152px;
         }
 
         .nav-wrap {
@@ -734,31 +730,53 @@
 
         .hero,
         .section-heading,
-        .solution-panel,
-        .console-layout,
+        .preview-layout,
         .qa-layout,
-        .decision-layout {
+        .safety-layout {
           grid-template-columns: 1fr;
         }
 
+        h1 {
+          font-size: 3.55rem;
+        }
+
+        .status-strip,
         .problem-grid,
-        .workflow-list,
-        .status-grid,
-        .kpi-grid {
+        .use-case-grid,
+        .module-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .workflow-list,
+        .pipeline {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
       }
 
-      @media (max-width: 640px) {
+      @media (max-width: 680px) {
+        h1,
+        h2,
+        h3,
+        p,
+        li,
+        a,
+        button,
+        span,
+        strong {
+          word-break: normal;
+          overflow-wrap: anywhere;
+        }
+
         section {
-          scroll-margin-top: 330px;
+          scroll-margin-top: 332px;
         }
 
-        main {
-          padding-top: 34px;
+        .content {
+          padding-top: 22px;
         }
 
-        .nav-wrap {
+        .nav-wrap,
+        .final-cta {
           grid-template-columns: 1fr;
         }
 
@@ -772,25 +790,31 @@
           width: 100%;
         }
 
+        h1 {
+          font-size: 2.15rem;
+          overflow-wrap: anywhere;
+        }
+
+        h2 {
+          font-size: 1.9rem;
+        }
+
         .hero {
           min-height: auto;
+          gap: 26px;
+          padding-top: 54px;
         }
 
+        .status-strip,
         .problem-grid,
+        .use-case-grid,
+        .module-grid,
         .workflow-list,
+        .pipeline,
+        .split-panel,
         .status-grid,
-        .faq-grid,
-        .kpi-grid {
+        .faq-grid {
           grid-template-columns: 1fr;
-        }
-
-        .project-row {
-          grid-template-columns: auto minmax(0, 1fr);
-        }
-
-        .row-tag {
-          grid-column: 2;
-          width: max-content;
         }
       }
     </style>
@@ -802,14 +826,14 @@
           <a class="brand" href="#overview" aria-label="1Day-1MVP">1Day-1MVP</a>
           <nav aria-label="주요 탐색" data-i18n-aria-label="navLabel">
             <div class="nav-links">
-              <a href="#overview" data-i18n="nav.overview">처음</a>
+              <a href="#overview" data-i18n="nav.overview">개요</a>
               <a href="#problem" data-i18n="nav.problem">문제</a>
-              <a href="#solution" data-i18n="nav.solution">하는 일</a>
+              <a href="#preview" data-i18n="nav.preview">제품 미리보기</a>
               <a href="#workflow" data-i18n="nav.workflow">흐름</a>
-              <a href="#console" data-i18n="nav.console">관리 콘솔</a>
+              <a href="#modules" data-i18n="nav.modules">모듈</a>
               <a href="#qa-z" data-i18n="nav.qaZ">QA-Z</a>
-              <a href="#safety" data-i18n="nav.safety">안전장치</a>
-              <a href="#status" data-i18n="nav.status">공개 상태</a>
+              <a href="#safety" data-i18n="nav.safety">안전</a>
+              <a href="#status" data-i18n="nav.status">상태</a>
               <a href="#faq" data-i18n="nav.faq">FAQ</a>
             </div>
           </nav>
@@ -841,17 +865,19 @@
         </div>
       </header>
 
-      <main>
+      <main class="content">
         <section class="hero" id="overview" aria-labelledby="hero-title">
           <div>
-            <p class="eyebrow" data-i18n="hero.eyebrow">공개 소개 사이트</p>
+            <p class="eyebrow" data-i18n="hero.eyebrow">
+              Daily MVP operating console
+            </p>
             <h1 id="hero-title" data-i18n="hero.headline">
-              하루짜리 MVP를 끝까지 굴러가게 만드는 작업실
+              오늘 만들 MVP, 오늘 끝낼 수 있게
             </h1>
             <p class="hero-subtitle" data-i18n="hero.subcopy">
-              아이디어를 고르는 일부터 범위 정리, Codex 작업 지시, QA 점검, 승인
-              확인, 출시 기록까지. 1Day-1MVP는 “오늘 만들 것”을 실제로 끝내기
-              위한 작은 운영 콘솔입니다.
+              1Day-1MVP는 아이디어 하나를 오늘의 범위, Codex 작업 패킷, QA-Z
+              검증, 승인 게이트, 출시 기록까지 이어 주는 하루 MVP 실행
+              콘솔입니다.
             </p>
             <div
               class="actions"
@@ -859,47 +885,165 @@
               data-i18n-aria-label="ctaLabel"
             >
               <a class="button" href="#workflow" data-i18n="cta.workflow"
-                >어떻게 굴러가는지 보기</a
-              >
-              <a class="button secondary" href="#status" data-i18n="cta.status"
-                >출시 상태 확인하기</a
+                >실행 흐름 보기</a
               >
               <a
                 class="button secondary"
-                href="#console"
-                data-i18n="cta.console"
-                >관리 콘솔 구조 보기</a
+                href="#preview"
+                data-i18n="cta.preview"
+                >비공개 콘솔 미리보기</a
+              >
+              <a class="button secondary" href="#status" data-i18n="cta.status"
+                >공개 상태 확인</a
               >
             </div>
+            <p class="hero-note" data-i18n="hero.note">
+              파일럿 문의는 아직 열지 않았습니다. 공개 데모가 준비되면 이
+              페이지에 안내합니다.
+            </p>
             <div
-              class="status-strip"
-              aria-label="현재 상태"
+              class="badge-row"
+              aria-label="현재 운영 상태"
               data-i18n-aria-label="statusStripLabel"
             >
               <span class="pill" data-i18n="hero.pillSite"
-                >정적 소개 사이트 공개</span
+                >GitHub Pages live</span
               >
-              <span class="pill" data-i18n="hero.pillConsole"
-                >관리 콘솔은 비공개</span
-              >
-              <span class="pill" data-i18n="hero.pillQa"
-                >QA-Z 품질 점검 통과</span
+              <span class="pill" data-i18n="hero.pillQa">QA-Z checked</span>
+              <span class="pill" data-i18n="hero.pillRuntime"
+                >Private runtime</span
               >
               <span class="pill" data-i18n="hero.pillSource"
-                >공개 소스 릴리스 승인 대기</span
+                >Source release awaiting approval</span
               >
             </div>
           </div>
-          <figure class="hero-visual">
-            <img
-              src="assets/launch-control-preview.png"
-              alt="1Day-1MVP 관리 콘솔 흐름을 보여주는 공개 미리보기"
-              data-i18n-alt="visual.alt"
-            />
-            <figcaption data-i18n="visual.caption">
-              실제 프로젝트 생성과 실행 버튼은 비공개 콘솔에서만 작동합니다.
-            </figcaption>
-          </figure>
+
+          <aside
+            class="launch-console"
+            aria-label="Launch Control 제품 미리보기"
+            data-i18n-aria-label="mockLabel"
+          >
+            <div class="console-topbar">
+              <div>
+                <h2 data-i18n="mock.title">Launch Control</h2>
+                <p data-i18n="mock.subtitle">
+                  오늘의 MVP 실행 상태를 한 화면에서 확인합니다.
+                </p>
+              </div>
+              <span class="console-badge" data-i18n="mock.badge"
+                >safe static preview</span
+              >
+            </div>
+            <div class="console-body">
+              <div class="run-card">
+                <div>
+                  <h3 data-i18n="mock.mvpTitle">
+                    오늘의 MVP: 인터뷰 예약 랜딩
+                  </h3>
+                  <p data-i18n="mock.mvpBody">
+                    목표는 한 가지입니다. 방문자가 문제 인터뷰 시간을 남길 수
+                    있는지 검증합니다.
+                  </p>
+                </div>
+                <div class="pipeline">
+                  <div class="stage done">
+                    <strong data-i18n="mock.stage1">Scope locked</strong>
+                    <span data-i18n="mock.stage1Body">one slice</span>
+                  </div>
+                  <div class="stage done">
+                    <strong data-i18n="mock.stage2">Packet ready</strong>
+                    <span data-i18n="mock.stage2Body">Codex brief</span>
+                  </div>
+                  <div class="stage done">
+                    <strong data-i18n="mock.stage3">QA-Z passed</strong>
+                    <span data-i18n="mock.stage3Body">checks clear</span>
+                  </div>
+                  <div class="stage waiting">
+                    <strong data-i18n="mock.stage4">Approval waiting</strong>
+                    <span data-i18n="mock.stage4Body">domain gate</span>
+                  </div>
+                  <div class="stage review">
+                    <strong data-i18n="mock.stage5">Evidence ready</strong>
+                    <span data-i18n="mock.stage5Body">URL proof next</span>
+                  </div>
+                  <div class="stage">
+                    <strong data-i18n="mock.stage6">Review queued</strong>
+                    <span data-i18n="mock.stage6Body">decide tomorrow</span>
+                  </div>
+                </div>
+              </div>
+              <div class="split-panel">
+                <div class="mini-panel">
+                  <h3 data-i18n="mock.queueTitle">Approval queue</h3>
+                  <ul class="list">
+                    <li>
+                      <span class="dot amber"></span>
+                      <span data-i18n="mock.queue1">도메인 공개 전 검토</span>
+                    </li>
+                    <li>
+                      <span class="dot green"></span>
+                      <span data-i18n="mock.queue2">결제 없음 확인</span>
+                    </li>
+                    <li>
+                      <span class="dot violet"></span>
+                      <span data-i18n="mock.queue3">개인정보 범위 점검</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mini-panel">
+                  <h3 data-i18n="mock.evidenceTitle">Launch evidence</h3>
+                  <p data-i18n="mock.evidenceBody">
+                    공개 URL, 확인 결과, 남은 판단을 한 번에 남겨 다음 실행의
+                    출발점으로 씁니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section-block" id="proof" aria-labelledby="proof-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="proof.kicker">
+                Public status
+              </p>
+              <h2 id="proof-title" data-i18n="proof.title">
+                고객 로고 대신 지금 공개할 수 있는 상태를 보여줍니다.
+              </h2>
+            </div>
+            <p data-i18n="proof.intro">
+              아직 고객 로고를 만들 단계가 아니므로, 신뢰 장치는 현재 공개
+              범위와 비공개 경계를 정확히 보여주는 방식으로 둡니다.
+            </p>
+          </div>
+          <div class="status-strip">
+            <div class="proof-item">
+              <strong data-i18n="proof.item1Title">GitHub Pages live</strong>
+              <span data-i18n="proof.item1Body"
+                >공개 소개 사이트는 정적 페이지로 운영 중입니다.</span
+              >
+            </div>
+            <div class="proof-item">
+              <strong data-i18n="proof.item2Title">QA-Z checked</strong>
+              <span data-i18n="proof.item2Body"
+                >공개 파일은 안전 경계를 기준으로 확인합니다.</span
+              >
+            </div>
+            <div class="proof-item">
+              <strong data-i18n="proof.item3Title">Private runtime</strong>
+              <span data-i18n="proof.item3Body"
+                >실제 API와 관리 콘솔은 비공개 환경에서 검증합니다.</span
+              >
+            </div>
+            <div class="proof-item">
+              <strong data-i18n="proof.item4Title">Approval gated</strong>
+              <span data-i18n="proof.item4Body"
+                >소스 공개와 라이선스 결정은 승인 이후에만 진행됩니다.</span
+              >
+            </div>
+          </div>
         </section>
 
         <section
@@ -909,52 +1053,38 @@
         >
           <div class="section-heading">
             <div>
-              <p class="section-kicker" data-i18n="problem.kicker">문제</p>
+              <p class="section-kicker" data-i18n="problem.kicker">
+                The problem
+              </p>
               <h2 id="problem-title" data-i18n="problem.title">
-                왜 하루 MVP는 자꾸 밀릴까?
+                AI는 빨라졌지만, 무엇을 끝낼지는 여전히 흐려집니다.
               </h2>
             </div>
             <p data-i18n="problem.intro">
-              대부분의 MVP가 느려지는 이유는 개발력이 부족해서만은 아닙니다.
-              오늘 끝낼 범위, 검증 기준, 위험한 결정의 위치가 흐려질 때 실행이
-              밀립니다.
+              하루 MVP가 막히는 지점은 코드 생산량이 아니라 범위, 검증 기준,
+              위험한 결정, 다음 판단이 흩어지는 순간입니다.
             </p>
           </div>
           <div class="problem-grid">
             <article class="problem-card">
-              <h3 data-i18n="problem.card1.title">
-                아이디어는 많은데 오늘 끝낼 범위가 없다
-              </h3>
+              <h3 data-i18n="problem.card1.title">범위가 하루보다 큽니다</h3>
               <p data-i18n="problem.card1.body">
-                좋은 아이디어도 하루 안에 검증할 단위로 줄이지 못하면 계속
-                회의와 메모에 남습니다.
+                좋은 아이디어도 오늘 검증할 단위로 줄이지 못하면 실행이
+                늘어집니다.
               </p>
             </article>
             <article class="problem-card">
-              <h3 data-i18n="problem.card2.title">
-                개발 지시는 길지만 검증 기준이 흐릿하다
-              </h3>
+              <h3 data-i18n="problem.card2.title">완료 기준이 약합니다</h3>
               <p data-i18n="problem.card2.body">
-                무엇을 바꾸는지보다 무엇을 통과해야 하는지가 불분명하면 작업이
-                끝났는지 판단하기 어렵습니다.
+                패킷, 테스트, 출시 증거가 분리되면 무엇이 끝났는지 다시 확인해야
+                합니다.
               </p>
             </article>
             <article class="problem-card">
-              <h3 data-i18n="problem.card3.title">
-                출시했다고 말하지만 남은 증거가 없다
-              </h3>
+              <h3 data-i18n="problem.card3.title">속도와 안전이 섞입니다</h3>
               <p data-i18n="problem.card3.body">
-                URL, 점검 결과, 막힌 이유, 다음 결정을 남기지 않으면 다음날 같은
-                질문부터 다시 시작합니다.
-              </p>
-            </article>
-            <article class="problem-card">
-              <h3 data-i18n="problem.card4.title">
-                위험한 결정이 자동화 흐름에 섞인다
-              </h3>
-              <p data-i18n="problem.card4.body">
-                결제, 개인정보, 외부 API, 공개 릴리스 같은 결정은 속도보다
-                확인이 먼저입니다.
+                결제, 개인정보, 배포, 외부 API, 도메인 결정은 자동으로 밀어붙일
+                일이 아닙니다.
               </p>
             </article>
           </div>
@@ -962,50 +1092,88 @@
 
         <section
           class="section-block"
-          id="solution"
-          aria-labelledby="solution-title"
+          id="preview"
+          aria-labelledby="preview-title"
         >
           <div class="section-heading">
             <div>
-              <p class="section-kicker" data-i18n="solution.kicker">
-                해결 방식
+              <p class="section-kicker" data-i18n="preview.kicker">
+                Product preview
               </p>
-              <h2 id="solution-title" data-i18n="solution.title">
-                1Day-1MVP가 하는 일
+              <h2 id="preview-title" data-i18n="preview.title">
+                Launch Control은 하루 실행을 제품처럼 다룹니다.
               </h2>
             </div>
-            <p data-i18n="solution.intro">
-              하루 실행을 하나의 화면과 기록으로 묶어, 만들기 전과 만든 뒤의
-              판단이 끊기지 않게 합니다.
+            <p data-i18n="preview.intro">
+              실제 데이터는 공개하지 않고, 방문자가 제품의 사용 장면을 이해할 수
+              있도록 안전한 예시 화면을 보여줍니다.
             </p>
           </div>
-          <div class="solution-panel">
-            <article class="solution-copy">
-              <p data-i18n="solution.body">
-                1Day-1MVP는 하루 단위의 MVP 실행을 하나의 흐름으로 정리합니다.
-                무엇을 만들지 정하고, Codex가 실행할 수 있는 작업 단위로 나누고,
-                QA-Z로 점검하고, 사람이 확인해야 하는 결정은 따로 멈춰 세웁니다.
-                마지막에는 출시 URL, 검증 결과, 다음 결정을 남깁니다.
-              </p>
-            </article>
-            <div class="solution-points">
-              <article class="mini-card">
-                <h3 data-i18n="solution.point1.title">오늘 끝낼 범위</h3>
-                <p data-i18n="solution.point1.body">
-                  만들 것, 미룰 것, 성공 기준을 먼저 정합니다.
+          <div class="preview-layout">
+            <div class="launch-console">
+              <div class="console-topbar">
+                <div>
+                  <h2 data-i18n="preview.panelTitle">Daily MVP Control Room</h2>
+                  <p data-i18n="preview.panelBody">
+                    scope, packet, QA, approval, evidence, review
+                  </p>
+                </div>
+                <span class="console-badge" data-i18n="preview.panelBadge"
+                  >fictional sample</span
+                >
+              </div>
+              <div class="console-body">
+                <div class="split-panel">
+                  <div class="mini-panel">
+                    <h3 data-i18n="preview.todayTitle">Today’s MVP</h3>
+                    <p data-i18n="preview.todayBody">
+                      인터뷰 예약 랜딩을 오늘 안에 공개 가능한 검증 단위로
+                      줄입니다.
+                    </p>
+                  </div>
+                  <div class="mini-panel">
+                    <h3 data-i18n="preview.packetTitle">Codex packet</h3>
+                    <p data-i18n="preview.packetBody">
+                      목표, 금지 범위, 파일, 확인 명령을 실행 가능한 요청으로
+                      묶습니다.
+                    </p>
+                  </div>
+                </div>
+                <div class="split-panel">
+                  <div class="mini-panel">
+                    <h3 data-i18n="preview.qaTitle">QA-Z gate</h3>
+                    <p data-i18n="preview.qaBody">
+                      문서, 테스트, 보안, 공개 파일 경계를 먼저 확인합니다.
+                    </p>
+                  </div>
+                  <div class="mini-panel">
+                    <h3 data-i18n="preview.resultTitle">Result review</h3>
+                    <p data-i18n="preview.resultBody">
+                      계속할지, 멈출지, 다음 실험으로 바꿀지 기록합니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="use-case-grid">
+              <article class="use-case-card">
+                <h3 data-i18n="preview.case1.title">솔로 창업자</h3>
+                <p data-i18n="preview.case1.body">
+                  아이디어를 오늘의 실험으로 줄이고, Codex에게 줄 작업 단위를
+                  놓치지 않습니다.
                 </p>
               </article>
-              <article class="mini-card">
-                <h3 data-i18n="solution.point2.title">실행 가능한 작업 패킷</h3>
-                <p data-i18n="solution.point2.body">
-                  Codex가 바로 움직일 수 있도록 파일, 조건, 검증 명령을
-                  묶습니다.
+              <article class="use-case-card">
+                <h3 data-i18n="preview.case2.title">인디 빌더</h3>
+                <p data-i18n="preview.case2.body">
+                  빠르게 만든 결과를 감으로 넘기지 않고, 출시 증거와 다음 결정을
+                  남깁니다.
                 </p>
               </article>
-              <article class="mini-card">
-                <h3 data-i18n="solution.point3.title">증거 기반 다음 결정</h3>
-                <p data-i18n="solution.point3.body">
-                  출시 결과와 막힌 이유를 남겨 다음 실행을 빠르게 고릅니다.
+              <article class="use-case-card">
+                <h3 data-i18n="preview.case3.title">작은 제품팀</h3>
+                <p data-i18n="preview.case3.body">
+                  위험한 결정은 멈추고, 안전한 작업은 더 짧은 주기로 움직입니다.
                 </p>
               </article>
             </div>
@@ -1020,53 +1188,52 @@
           <div class="section-heading">
             <div>
               <p class="section-kicker" data-i18n="workflow.kicker">
-                하루 루프
+                How it works
               </p>
               <h2 id="workflow-title" data-i18n="workflow.title">
-                하루 실행 흐름
+                아이디어에서 증거까지 여섯 단계로 닫습니다.
               </h2>
             </div>
             <p data-i18n="workflow.intro">
-              아이디어를 바로 개발하지 않고, 오늘 끝낼 수 있는 실험으로 바꾼 뒤
-              실행과 확인을 연결합니다.
+              1Day-1MVP는 빌드 도구가 아니라 하루 실행을 끝까지 운영하는 작업
+              흐름입니다.
             </p>
           </div>
           <div class="workflow-list">
             <article class="workflow-step">
-              <h3 data-i18n="workflow.step1.title">고르기</h3>
+              <h3 data-i18n="workflow.step1.title">실험 선택</h3>
               <p data-i18n="workflow.step1.body">
-                오늘 검증할 아이디어를 하나로 좁힙니다.
+                오늘 검증할 한 가지 아이디어와 대상 사용자를 고릅니다.
               </p>
             </article>
             <article class="workflow-step">
-              <h3 data-i18n="workflow.step2.title">자르기</h3>
+              <h3 data-i18n="workflow.step2.title">범위 잠금</h3>
               <p data-i18n="workflow.step2.body">
-                만들 것과 미룰 것을 분리합니다.
+                오늘 할 일과 하지 않을 일을 분리하고 성공 기준을 적습니다.
               </p>
             </article>
             <article class="workflow-step">
-              <h3 data-i18n="workflow.step3.title">지시하기</h3>
+              <h3 data-i18n="workflow.step3.title">작업 패킷 생성</h3>
               <p data-i18n="workflow.step3.body">
-                Codex가 바로 실행할 수 있는 작업 패킷으로 바꿉니다.
+                Codex가 바로 실행할 수 있게 파일, 제약, 확인 명령을 묶습니다.
               </p>
             </article>
             <article class="workflow-step">
-              <h3 data-i18n="workflow.step4.title">점검하기</h3>
+              <h3 data-i18n="workflow.step4.title">QA-Z 검증</h3>
               <p data-i18n="workflow.step4.body">
-                QA-Z와 릴리스 검증으로 놓친 부분을 찾습니다.
+                코드, 문서, 테스트, 공개 파일 경계가 어긋나지 않는지 봅니다.
               </p>
             </article>
             <article class="workflow-step">
-              <h3 data-i18n="workflow.step5.title">확인하기</h3>
+              <h3 data-i18n="workflow.step5.title">승인 대기</h3>
               <p data-i18n="workflow.step5.body">
-                결제, 개인정보, 외부 API, 공개 릴리스 같은 위험한 결정은 사람이
-                확인합니다.
+                되돌리기 어려운 결정은 사람의 확인 전까지 멈춥니다.
               </p>
             </article>
             <article class="workflow-step">
-              <h3 data-i18n="workflow.step6.title">남기기</h3>
+              <h3 data-i18n="workflow.step6.title">증거와 리뷰</h3>
               <p data-i18n="workflow.step6.body">
-                출시 URL, 결과, 막힌 이유, 다음 결정을 기록합니다.
+                출시 URL, 확인 결과, 막힌 점, 다음 결정을 한곳에 남깁니다.
               </p>
             </article>
           </div>
@@ -1074,202 +1241,108 @@
 
         <section
           class="section-block"
-          id="console"
-          aria-labelledby="console-title"
+          id="modules"
+          aria-labelledby="modules-title"
         >
           <div class="section-heading">
             <div>
-              <p class="section-kicker" data-i18n="console.kicker">
-                비공개 관리 화면
+              <p class="section-kicker" data-i18n="modules.kicker">
+                Private console modules
               </p>
-              <h2 id="console-title" data-i18n="console.title">
-                관리 콘솔에서 볼 수 있는 것
+              <h2 id="modules-title" data-i18n="modules.title">
+                비공개 콘솔은 하루 MVP 운영판입니다.
               </h2>
             </div>
-            <p data-i18n="console.intro">
-              이 공개 페이지에는 안전한 미리보기만 있습니다. 실제 프로젝트 생성,
-              승인 처리, 실행 기록은 비공개 console-web의 /manage에서
-              관리합니다.
+            <p data-i18n="modules.intro">
+              이 공개 사이트는 미리보기만 제공합니다. 실제 프로젝트 관리와 실행
+              기록은 통제된 콘솔 환경에서 다룹니다.
             </p>
           </div>
-          <div class="console-layout">
-            <div class="module-grid">
-              <article class="module-card">
-                <h3 data-i18n="modules.projectBoard.title">프로젝트 보드</h3>
-                <p data-i18n="modules.projectBoard.body">
-                  진행 중인 MVP와 상태를 한눈에 봅니다.
-                </p>
-              </article>
-              <article class="module-card">
-                <h3 data-i18n="modules.scopeNotes.title">범위 노트</h3>
-                <p data-i18n="modules.scopeNotes.body">
-                  오늘 만들 것, 보류할 것, 성공 기준을 정리합니다.
-                </p>
-              </article>
-              <article class="module-card">
-                <h3 data-i18n="modules.codexPackets.title">Codex 작업 패킷</h3>
-                <p data-i18n="modules.codexPackets.body">
-                  실행할 파일, 조건, 검증 명령을 묶어 전달합니다.
-                </p>
-              </article>
-              <article class="module-card">
-                <h3 data-i18n="modules.approvalQueue.title">승인 대기함</h3>
-                <p data-i18n="modules.approvalQueue.body">
-                  위험한 행동을 자동으로 넘기지 않고 따로 확인합니다.
-                </p>
-              </article>
-              <article class="module-card">
-                <h3 data-i18n="modules.readiness.title">출시 준비도</h3>
-                <p data-i18n="modules.readiness.body">
-                  빠진 증거, 막힌 승인, 남은 작업을 보여줍니다.
-                </p>
-              </article>
-              <article class="module-card">
-                <h3 data-i18n="modules.launchRecord.title">출시 기록</h3>
-                <p data-i18n="modules.launchRecord.body">
-                  URL, 결과, 검증 내역을 다음 판단을 위해 남깁니다.
-                </p>
-              </article>
-              <article class="module-card">
-                <h3 data-i18n="modules.resultReview.title">결과 리뷰</h3>
-                <p data-i18n="modules.resultReview.body">
-                  계속할지, 멈출지, 템플릿으로 만들지 결정합니다.
-                </p>
-              </article>
-            </div>
-
-            <aside class="console-preview" aria-labelledby="preview-title">
-              <div class="console-toolbar">
-                <div>
-                  <h3 id="preview-title" data-i18n="preview.title">
-                    프로젝트 관리 대시보드
-                  </h3>
-                  <p data-i18n="preview.subtitle">
-                    프로젝트, 승인, 출시 준비도, 증거, 리뷰를 한 화면에서
-                    봅니다.
-                  </p>
-                </div>
-                <span class="console-badge" data-i18n="preview.badge"
-                  >공개 미리보기</span
-                >
-              </div>
-              <div class="console-body">
-                <div class="kpi-grid">
-                  <div class="kpi">
-                    <strong data-i18n="preview.kpi1.value">12</strong>
-                    <span data-i18n="preview.kpi1.label">진행 프로젝트</span>
-                  </div>
-                  <div class="kpi">
-                    <strong data-i18n="preview.kpi2.value">4</strong>
-                    <span data-i18n="preview.kpi2.label">승인 대기</span>
-                  </div>
-                  <div class="kpi">
-                    <strong data-i18n="preview.kpi3.value">3</strong>
-                    <span data-i18n="preview.kpi3.label">출시 준비 막힘</span>
-                  </div>
-                  <div class="kpi">
-                    <strong data-i18n="preview.kpi4.value">7</strong>
-                    <span data-i18n="preview.kpi4.label">결과 리뷰</span>
-                  </div>
-                </div>
-                <div class="project-list">
-                  <article class="project-row">
-                    <span class="dot amber" aria-hidden="true"></span>
-                    <div>
-                      <h3 data-i18n="preview.row1.title">Launch Pulse</h3>
-                      <p data-i18n="preview.row1.body">
-                        출시 준비도 확인 중 · 승인 대기
-                      </p>
-                    </div>
-                    <span class="row-tag" data-i18n="preview.row1.tag"
-                      >확인 필요</span
-                    >
-                  </article>
-                  <article class="project-row">
-                    <span class="dot" aria-hidden="true"></span>
-                    <div>
-                      <h3 data-i18n="preview.row2.title">
-                        Workflow Artifact Kit
-                      </h3>
-                      <p data-i18n="preview.row2.body">
-                        QA-Z 통과 · 결과 리뷰 준비
-                      </p>
-                    </div>
-                    <span class="row-tag" data-i18n="preview.row2.tag"
-                      >리뷰</span
-                    >
-                  </article>
-                  <article class="project-row">
-                    <span class="dot coral" aria-hidden="true"></span>
-                    <div>
-                      <h3 data-i18n="preview.row3.title">
-                        Operator Console Polish
-                      </h3>
-                      <p data-i18n="preview.row3.body">
-                        출시 증거 누락 · 작업 패킷 진행 중
-                      </p>
-                    </div>
-                    <span class="row-tag" data-i18n="preview.row3.tag"
-                      >증거 필요</span
-                    >
-                  </article>
-                </div>
-                <p class="console-note" data-i18n="preview.boundary">
-                  공개 사이트는 입력을 저장하지 않습니다. 실제 생성, 수정, 승인,
-                  실행은 서버 측 프록시가 있는 비공개 콘솔에서만 진행됩니다.
-                </p>
-              </div>
-            </aside>
+          <div class="module-grid">
+            <article class="module-card">
+              <h3 data-i18n="modules.projectBoard.title">Project board</h3>
+              <p data-i18n="modules.projectBoard.body">
+                진행 중인 MVP와 현재 상태를 빠르게 훑어봅니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.scopeNote.title">Scope note</h3>
+              <p data-i18n="modules.scopeNote.body">
+                오늘 출시할 범위, 보류할 범위, 성공 기준을 고정합니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.packet.title">Codex packet</h3>
+              <p data-i18n="modules.packet.body">
+                작업 목표, 제약, 파일, 확인 명령을 하나의 실행 요청으로
+                만듭니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.approval.title">Approval queue</h3>
+              <p data-i18n="modules.approval.body">
+                결제, 개인정보, 배포, 외부 API, 도메인 관련 결정을 대기시킵니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.readiness.title">Launch readiness</h3>
+              <p data-i18n="modules.readiness.body">
+                남은 증거, 승인, 차단 항목을 출시 전 한 번 더 확인합니다.
+              </p>
+            </article>
+            <article class="module-card">
+              <h3 data-i18n="modules.review.title">Result review</h3>
+              <p data-i18n="modules.review.body">
+                오늘의 결과를 계속할지, 멈출지, 반복할지 결정합니다.
+              </p>
+            </article>
           </div>
         </section>
 
         <section class="section-block" id="qa-z" aria-labelledby="qa-title">
           <div class="section-heading">
             <div>
-              <p class="section-kicker" data-i18n="qa.kicker">품질 확인</p>
-              <h2 id="qa-title" data-i18n="qa.title">QA-Z는 무엇을 보나요?</h2>
+              <p class="section-kicker" data-i18n="qa.kicker">
+                QA-Z quality gate
+              </p>
+              <h2 id="qa-title" data-i18n="qa.title">
+                빠르게 만들수록 검증은 더 짧고 분명해야 합니다.
+              </h2>
             </div>
             <p data-i18n="qa.intro">
-              QA-Z는 “이 변경을 믿고 넘겨도 되는지”를 확인하는 점검 도구입니다.
+              QA-Z는 변경이 다음 단계로 넘어가도 되는지 확인하는 품질 게이트로
+              설명합니다. 내부 판정 파일은 공개 사이트에 올리지 않습니다.
             </p>
           </div>
           <div class="qa-layout">
             <article class="qa-card">
-              <h3 data-i18n="qa.card.title">품질 점검 통과</h3>
+              <h3 data-i18n="qa.card.title">무엇을 확인하나요?</h3>
               <p data-i18n="qa.card.body">
-                보안 위험, 문서와 코드의 불일치, 테스트 누락, 릴리스 파일 문제를
-                확인하고 막히는 항목이 있으면 진행을 멈춥니다.
-              </p>
-              <p
-                class="section-lede"
-                style="margin-top: 14px"
-                data-i18n="qa.note"
-              >
-                최근 QA-Z 상태: merge_ok
+                테스트 누락, 문서와 코드의 불일치, 공개하면 안 되는 값, 출시
+                파일 경계, 승인 항목을 함께 봅니다. 차단 항목이 있으면 고친 뒤
+                다시 확인합니다.
               </p>
             </article>
-            <ul class="check-list">
+            <ul class="qa-checks">
               <li>
-                <span class="marker" aria-hidden="true"></span>
-                <span data-i18n="qa.check1"
-                  >보안 위험과 공개하면 안 되는 값</span
-                >
+                <span class="dot"></span>
+                <span data-i18n="qa.check1">문서와 실제 동작의 어긋남</span>
               </li>
               <li>
-                <span class="marker amber" aria-hidden="true"></span>
+                <span class="dot amber"></span>
                 <span data-i18n="qa.check2"
-                  >문서와 코드가 말하는 내용의 차이</span
+                  >테스트나 출시 파일의 빠진 부분</span
                 >
               </li>
               <li>
-                <span class="marker violet" aria-hidden="true"></span>
+                <span class="dot violet"></span>
                 <span data-i18n="qa.check3"
-                  >테스트와 릴리스 파일의 빠진 부분</span
+                  >공개 사이트에 올라가면 안 되는 값</span
                 >
               </li>
               <li>
-                <span class="marker coral" aria-hidden="true"></span>
-                <span data-i18n="qa.check4">멈춰야 하는 승인 항목</span>
+                <span class="dot coral"></span>
+                <span data-i18n="qa.check4">승인 전 멈춰야 하는 결정</span>
               </li>
             </ul>
           </div>
@@ -1283,48 +1356,48 @@
           <div class="section-heading">
             <div>
               <p class="section-kicker" data-i18n="safety.kicker">
-                사람의 확인
+                Safety by design
               </p>
               <h2 id="safety-title" data-i18n="safety.title">
-                자동화하지 않는 결정
+                공개 사이트는 소개만, 실행 권한은 비공개로 둡니다.
               </h2>
             </div>
             <p data-i18n="safety.intro">
-              1Day-1MVP는 모든 일을 자동으로 밀어붙이지 않습니다. 되돌리기
-              어려운 결정은 확인이 끝날 때까지 멈춥니다.
+              GitHub Pages에는 정적 소개 파일만 배포합니다. 실제 실행, 승인, API
+              호출, 운영 기록은 공개 사이트에 두지 않습니다.
             </p>
           </div>
-          <div class="decision-layout">
-            <article class="decision-card">
-              <h3 data-i18n="safety.card.title">멈춰야 할 때 멈추는 구조</h3>
+          <div class="safety-layout">
+            <article class="safety-card">
+              <h3 data-i18n="safety.card.title">
+                자동화가 혼자 결정하지 않는 일
+              </h3>
               <p data-i18n="safety.card.body">
-                결제, 개인정보, 외부 API, 도메인/DNS, 공개 소스 릴리스처럼
-                되돌리기 어려운 결정은 사람이 확인하기 전까지 진행하지 않습니다.
+                결제, 개인정보, 실제 배포, 유료 외부 API, 도메인과 DNS, 저장소
+                공개, 라이선스 선택, 취약점 신고 채널은 승인 전까지 멈춥니다.
               </p>
             </article>
-            <ul class="check-list">
+            <ul class="qa-checks">
               <li>
-                <span class="marker amber" aria-hidden="true"></span>
-                <span data-i18n="safety.item1"
-                  >공개 소스 릴리스: 승인 대기</span
-                >
+                <span class="dot"></span>
+                <span data-i18n="safety.item1">정적 공개 사이트만 운영</span>
               </li>
               <li>
-                <span class="marker amber" aria-hidden="true"></span>
+                <span class="dot amber"></span>
                 <span data-i18n="safety.item2"
-                  >LICENSE: 승인 전까지 미생성</span
+                  >Runtime API는 공개 배포하지 않음</span
                 >
               </li>
               <li>
-                <span class="marker coral" aria-hidden="true"></span>
+                <span class="dot violet"></span>
                 <span data-i18n="safety.item3"
-                  >Runtime API: GitHub Pages에 배포하지 않음</span
+                  >관리 콘솔은 비공개 환경에서 검증</span
                 >
               </li>
               <li>
-                <span class="marker" aria-hidden="true"></span>
+                <span class="dot coral"></span>
                 <span data-i18n="safety.item4"
-                  >공개 사이트: 정적 소개 페이지로만 운영</span
+                  >소스 공개와 라이선스는 승인 대기</span
                 >
               </li>
             </ul>
@@ -1338,55 +1411,59 @@
         >
           <div class="section-heading">
             <div>
-              <p class="section-kicker" data-i18n="status.kicker">지금 상태</p>
-              <h2 id="status-title" data-i18n="status.title">현재 공개 상태</h2>
+              <p class="section-kicker" data-i18n="status.kicker">
+                Current status
+              </p>
+              <h2 id="status-title" data-i18n="status.title">
+                지금 공개된 것과 아직 닫아 둔 것
+              </h2>
             </div>
             <p data-i18n="status.intro">
-              공개된 것은 소개 페이지입니다. 실제 관리 화면과 API는 비공개
-              환경에서 검증됩니다.
+              방문자에게 필요한 신뢰 정보는 숨기지 않되, 내부 운영 세부 정보가
+              첫 화면을 대신하지 않게 정리했습니다.
             </p>
           </div>
           <div class="status-grid">
             <article class="status-card">
-              <strong data-i18n="status.site.badge">공개됨</strong>
-              <h3 data-i18n="status.site.title">소개 사이트</h3>
+              <strong data-i18n="status.site.badge">live</strong>
+              <h3 data-i18n="status.site.title">Public landing</h3>
               <p data-i18n="status.site.body">
-                GitHub Pages에서 정적 페이지로 운영 중입니다.
+                이 페이지는 GitHub Pages에서 정적 사이트로 열려 있습니다.
               </p>
             </article>
             <article class="status-card private">
-              <strong data-i18n="status.console.badge">비공개</strong>
-              <h3 data-i18n="status.console.title">관리 콘솔</h3>
+              <strong data-i18n="status.console.badge">private</strong>
+              <h3 data-i18n="status.console.title">Private console</h3>
               <p data-i18n="status.console.body">
-                실제 프로젝트 관리는 비공개 환경에서 실행됩니다.
+                실제 관리 화면은 통제된 환경에서 검증합니다.
               </p>
             </article>
             <article class="status-card private">
-              <strong data-i18n="status.api.badge">미배포</strong>
-              <h3 data-i18n="status.api.title">백엔드 API</h3>
+              <strong data-i18n="status.api.badge">private</strong>
+              <h3 data-i18n="status.api.title">Backend runtime</h3>
               <p data-i18n="status.api.body">
-                GitHub Pages에는 Runtime API를 올리지 않았습니다.
+                Runtime API는 GitHub Pages에 배포하지 않습니다.
               </p>
             </article>
             <article class="status-card">
-              <strong data-i18n="status.qa.badge">통과</strong>
-              <h3 data-i18n="status.qa.title">품질 점검</h3>
+              <strong data-i18n="status.qa.badge">checked</strong>
+              <h3 data-i18n="status.qa.title">QA-Z</h3>
               <p data-i18n="status.qa.body">
-                QA-Z 기준으로 공개 가능한 정적 파일을 확인했습니다.
+                공개 가능한 정적 파일 경계를 기준으로 확인합니다.
               </p>
             </article>
             <article class="status-card pending">
-              <strong data-i18n="status.source.badge">승인 대기</strong>
-              <h3 data-i18n="status.source.title">소스 공개</h3>
+              <strong data-i18n="status.source.badge">waiting</strong>
+              <h3 data-i18n="status.source.title">Source release</h3>
               <p data-i18n="status.source.body">
-                저장소 공개는 별도 확인 전까지 진행하지 않습니다.
+                저장소 공개는 승인 기록이 채워진 뒤에만 진행됩니다.
               </p>
             </article>
             <article class="status-card pending">
-              <strong data-i18n="status.license.badge">미생성</strong>
-              <h3 data-i18n="status.license.title">라이선스</h3>
+              <strong data-i18n="status.license.badge">waiting</strong>
+              <h3 data-i18n="status.license.title">License decision</h3>
               <p data-i18n="status.license.body">
-                LICENSE는 승인 전까지 만들지 않습니다.
+                라이선스 파일은 선택 승인이 끝난 뒤에만 추가합니다.
               </p>
             </article>
           </div>
@@ -1396,71 +1473,90 @@
           <div class="section-heading">
             <div>
               <p class="section-kicker" data-i18n="faq.kicker">FAQ</p>
-              <h2 id="faq-title" data-i18n="faq.title">자주 묻는 질문</h2>
+              <h2 id="faq-title" data-i18n="faq.title">
+                공개 페이지에서 바로 알아야 할 것
+              </h2>
             </div>
             <p data-i18n="faq.intro">
-              공개 사이트에서 볼 수 있는 것과 아직 공개하지 않은 것을 분명하게
-              나눕니다.
+              실제 서비스처럼 보이되, 현재의 공개 범위와 안전 경계를 과장하지
+              않습니다.
             </p>
           </div>
           <div class="faq-grid">
             <article class="faq-card">
-              <h3 data-i18n="faq.q1.title">
-                이 페이지에서 바로 앱을 사용할 수 있나요?
-              </h3>
+              <h3 data-i18n="faq.q1.title">지금 바로 가입할 수 있나요?</h3>
               <p data-i18n="faq.q1.body">
-                지금 이 페이지는 공개 소개 사이트입니다. 실제 프로젝트 관리
-                콘솔은 비공개 환경에서 실행됩니다. 공개 데모나 파일럿을 열 때는
-                이 페이지에 별도로 안내하겠습니다.
+                아직 아닙니다. 파일럿이나 공개 데모가 준비되면 이 페이지에 다음
+                행동을 안내합니다.
               </p>
             </article>
             <article class="faq-card">
-              <h3 data-i18n="faq.q2.title">왜 백엔드를 공개하지 않았나요?</h3>
+              <h3 data-i18n="faq.q2.title">
+                이 페이지에서 데이터가 저장되나요?
+              </h3>
               <p data-i18n="faq.q2.body">
-                GitHub Pages는 정적 소개 페이지에만 사용합니다. 실행 데이터,
-                승인 기록, API 호출은 공개 사이트에 두지 않습니다.
+                아닙니다. GitHub Pages에 올라간 정적 소개 사이트이며 입력 폼이나
+                백엔드 연결을 두지 않았습니다.
               </p>
             </article>
             <article class="faq-card">
-              <h3 data-i18n="faq.q3.title">소스코드는 언제 공개되나요?</h3>
+              <h3 data-i18n="faq.q3.title">누구에게 맞나요?</h3>
               <p data-i18n="faq.q3.body">
-                저장소 공개, 라이선스 선택, 취약점 제보 채널 같은 항목은 승인이
-                끝난 뒤에만 진행합니다. 지금은 공개 소스 릴리스가 대기
-                상태입니다.
+                솔로 창업자, 인디 빌더, 작은 제품팀처럼 AI 에이전트와 함께 작은
+                실험을 끝까지 닫고 싶은 팀에 맞습니다.
               </p>
             </article>
             <article class="faq-card">
-              <h3 data-i18n="faq.q4.title">QA-Z는 왜 필요한가요?</h3>
+              <h3 data-i18n="faq.q4.title">하루 안에 항상 출시되나요?</h3>
               <p data-i18n="faq.q4.body">
-                빠르게 만들수록 놓치는 것이 생깁니다. QA-Z는 테스트, 문서, 보안,
-                릴리스 파일을 확인해서 믿고 다음 단계로 넘길 수 있는지 봅니다.
+                모든 제품을 하루에 완성한다는 뜻은 아닙니다. 하루 안에 검증할 수
+                있는 작은 범위로 줄이고, 결과를 기록하는 것이 목표입니다.
               </p>
             </article>
             <article class="faq-card">
-              <h3 data-i18n="faq.q5.title">1Day-1MVP는 누구에게 맞나요?</h3>
+              <h3 data-i18n="faq.q5.title">
+                왜 Runtime API를 공개하지 않나요?
+              </h3>
               <p data-i18n="faq.q5.body">
-                아이디어가 많지만 하루 단위로 범위를 정하고, Codex 작업을
-                나누고, 결과를 보고 다음 결정을 내려야 하는 운영자에게 맞습니다.
+                공개 사이트는 소개 용도입니다. 실행 데이터, 승인 기록, 운영
+                API는 공개 정적 호스팅에 두지 않습니다.
               </p>
             </article>
             <article class="faq-card">
-              <h3 data-i18n="faq.q6.title">하루 안에 정말 MVP가 나오나요?</h3>
+              <h3 data-i18n="faq.q6.title">소스 공개는 언제 열리나요?</h3>
               <p data-i18n="faq.q6.body">
-                모든 제품을 하루 만에 완성한다는 뜻은 아닙니다. 대신 하루 안에
-                검증 가능한 범위를 정하고, 만들고, 점검하고, 다음 결정을 내릴 수
-                있게 돕습니다.
+                저장소 공개, 라이선스 선택, 취약점 신고 채널 승인이 끝난 뒤에만
+                별도 절차로 진행합니다.
               </p>
             </article>
           </div>
+        </section>
+
+        <section class="final-cta" aria-labelledby="final-cta-title">
+          <div>
+            <p class="section-kicker" data-i18n="finalCta.kicker">
+              Private preview
+            </p>
+            <h2 id="final-cta-title" data-i18n="finalCta.title">
+              다음 공개 단계가 열리면 이 페이지에서 안내합니다.
+            </h2>
+            <p data-i18n="finalCta.body">
+              이 페이지는 공개 소개 사이트입니다. 실제 관리 콘솔은 비공개
+              파일럿에서 검증됩니다.
+            </p>
+          </div>
+          <a class="button" href="#status" data-i18n="finalCta.button"
+            >파일럿 준비 상태 보기</a
+          >
         </section>
       </main>
 
       <footer>
         <div class="footer-inner">
-          <span data-i18n="footer.copy"
-            >1Day-1MVP는 현재 공개 소개 사이트를 운영 중이며, 실제 관리 콘솔과
-            Runtime API는 비공개 환경에서 검증됩니다.</span
-          >
+          <span data-i18n="footer.copy">
+            1Day-1MVP 공개 사이트는 정적 소개 페이지이며, 실행 콘솔과 Runtime
+            API는 비공개 환경에 둡니다.
+          </span>
           <a href="#overview" data-i18n="footer.backTop">맨 위로</a>
         </div>
       </footer>
@@ -1470,555 +1566,597 @@
       const translations = {
         ko: {
           meta: {
-            title: "1Day-1MVP - 하루짜리 MVP를 끝까지 굴러가게 만드는 작업실",
+            title: "1Day-1MVP - 오늘 만들 MVP, 오늘 끝낼 수 있게",
             description:
-              "1Day-1MVP는 아이디어를 하루 안에 검증 가능한 MVP 실행으로 바꾸는 비공개 운영 콘솔입니다. 이 페이지는 정적 공개 소개 사이트입니다.",
+              "1Day-1MVP는 오늘의 아이디어를 범위, Codex 작업 패킷, QA-Z 검증, 승인 게이트, 출시 기록까지 이어 주는 하루 MVP 실행 콘솔입니다.",
           },
           navLabel: "주요 탐색",
           languageLabel: "언어 선택",
           koTitle: "한국어로 보기",
           enTitle: "영어로 보기",
           ctaLabel: "주요 행동",
-          statusStripLabel: "현재 상태",
+          statusStripLabel: "현재 운영 상태",
+          mockLabel: "Launch Control 제품 미리보기",
           nav: {
-            overview: "처음",
+            overview: "개요",
             problem: "문제",
-            solution: "하는 일",
+            preview: "제품 미리보기",
             workflow: "흐름",
-            console: "관리 콘솔",
+            modules: "모듈",
             qaZ: "QA-Z",
-            safety: "안전장치",
-            status: "공개 상태",
+            safety: "안전",
+            status: "상태",
             faq: "FAQ",
           },
           hero: {
-            eyebrow: "공개 소개 사이트",
-            headline: "하루짜리 MVP를 끝까지 굴러가게 만드는 작업실",
+            eyebrow: "Daily MVP operating console",
+            headline: "오늘 만들 MVP,\n오늘 끝낼 수 있게",
             subcopy:
-              "아이디어를 고르는 일부터 범위 정리, Codex 작업 지시, QA 점검, 승인 확인, 출시 기록까지. 1Day-1MVP는 “오늘 만들 것”을 실제로 끝내기 위한 작은 운영 콘솔입니다.",
-            pillSite: "정적 소개 사이트 공개",
-            pillConsole: "관리 콘솔은 비공개",
-            pillQa: "QA-Z 품질 점검 통과",
-            pillSource: "공개 소스 릴리스 승인 대기",
+              "1Day-1MVP는 아이디어 하나를 오늘의 범위, Codex 작업 패킷, QA-Z 검증, 승인 게이트, 출시 기록까지 이어 주는 하루 MVP 실행 콘솔입니다.",
+            note: "파일럿 문의는 아직 열지 않았습니다. 공개 데모가 준비되면 이 페이지에 안내합니다.",
+            pillSite: "GitHub Pages live",
+            pillQa: "QA-Z checked",
+            pillRuntime: "Private runtime",
+            pillSource: "Source release awaiting approval",
           },
           cta: {
-            workflow: "어떻게 굴러가는지 보기",
-            status: "출시 상태 확인하기",
-            console: "관리 콘솔 구조 보기",
+            workflow: "실행 흐름 보기",
+            preview: "비공개 콘솔 미리보기",
+            status: "공개 상태 확인",
           },
-          visual: {
-            alt: "1Day-1MVP 관리 콘솔 흐름을 보여주는 공개 미리보기",
-            caption:
-              "실제 프로젝트 생성과 실행 버튼은 비공개 콘솔에서만 작동합니다.",
+          mock: {
+            title: "Launch Control",
+            subtitle: "오늘의 MVP 실행 상태를 한 화면에서 확인합니다.",
+            badge: "safe static preview",
+            mvpTitle: "오늘의 MVP: 인터뷰 예약 랜딩",
+            mvpBody:
+              "목표는 한 가지입니다. 방문자가 문제 인터뷰 시간을 남길 수 있는지 검증합니다.",
+            stage1: "Scope locked",
+            stage1Body: "one slice",
+            stage2: "Packet ready",
+            stage2Body: "Codex brief",
+            stage3: "QA-Z passed",
+            stage3Body: "checks clear",
+            stage4: "Approval waiting",
+            stage4Body: "domain gate",
+            stage5: "Evidence ready",
+            stage5Body: "URL proof next",
+            stage6: "Review queued",
+            stage6Body: "decide tomorrow",
+            queueTitle: "Approval queue",
+            queue1: "도메인 공개 전 검토",
+            queue2: "결제 없음 확인",
+            queue3: "개인정보 범위 점검",
+            evidenceTitle: "Launch evidence",
+            evidenceBody:
+              "공개 URL, 확인 결과, 남은 판단을 한 번에 남겨 다음 실행의 출발점으로 씁니다.",
+          },
+          proof: {
+            kicker: "Public status",
+            title: "고객 로고 대신 지금 공개할 수 있는 상태를 보여줍니다.",
+            intro:
+              "아직 고객 로고를 만들 단계가 아니므로, 신뢰 장치는 현재 공개 범위와 비공개 경계를 정확히 보여주는 방식으로 둡니다.",
+            item1Title: "GitHub Pages live",
+            item1Body: "공개 소개 사이트는 정적 페이지로 운영 중입니다.",
+            item2Title: "QA-Z checked",
+            item2Body: "공개 파일은 안전 경계를 기준으로 확인합니다.",
+            item3Title: "Private runtime",
+            item3Body: "실제 API와 관리 콘솔은 비공개 환경에서 검증합니다.",
+            item4Title: "Approval gated",
+            item4Body: "소스 공개와 라이선스 결정은 승인 이후에만 진행됩니다.",
           },
           problem: {
-            kicker: "문제",
-            title: "왜 하루 MVP는 자꾸 밀릴까?",
+            kicker: "The problem",
+            title: "AI는 빨라졌지만, 무엇을 끝낼지는 여전히 흐려집니다.",
             intro:
-              "대부분의 MVP가 느려지는 이유는 개발력이 부족해서만은 아닙니다. 오늘 끝낼 범위, 검증 기준, 위험한 결정의 위치가 흐려질 때 실행이 밀립니다.",
+              "하루 MVP가 막히는 지점은 코드 생산량이 아니라 범위, 검증 기준, 위험한 결정, 다음 판단이 흩어지는 순간입니다.",
             card1: {
-              title: "아이디어는 많은데 오늘 끝낼 범위가 없다",
-              body: "좋은 아이디어도 하루 안에 검증할 단위로 줄이지 못하면 계속 회의와 메모에 남습니다.",
+              title: "범위가 하루보다 큽니다",
+              body: "좋은 아이디어도 오늘 검증할 단위로 줄이지 못하면 실행이 늘어집니다.",
             },
             card2: {
-              title: "개발 지시는 길지만 검증 기준이 흐릿하다",
-              body: "무엇을 바꾸는지보다 무엇을 통과해야 하는지가 불분명하면 작업이 끝났는지 판단하기 어렵습니다.",
+              title: "완료 기준이 약합니다",
+              body: "패킷, 테스트, 출시 증거가 분리되면 무엇이 끝났는지 다시 확인해야 합니다.",
             },
             card3: {
-              title: "출시했다고 말하지만 남은 증거가 없다",
-              body: "URL, 점검 결과, 막힌 이유, 다음 결정을 남기지 않으면 다음날 같은 질문부터 다시 시작합니다.",
-            },
-            card4: {
-              title: "위험한 결정이 자동화 흐름에 섞인다",
-              body: "결제, 개인정보, 외부 API, 공개 릴리스 같은 결정은 속도보다 확인이 먼저입니다.",
-            },
-          },
-          solution: {
-            kicker: "해결 방식",
-            title: "1Day-1MVP가 하는 일",
-            intro:
-              "하루 실행을 하나의 화면과 기록으로 묶어, 만들기 전과 만든 뒤의 판단이 끊기지 않게 합니다.",
-            body: "1Day-1MVP는 하루 단위의 MVP 실행을 하나의 흐름으로 정리합니다. 무엇을 만들지 정하고, Codex가 실행할 수 있는 작업 단위로 나누고, QA-Z로 점검하고, 사람이 확인해야 하는 결정은 따로 멈춰 세웁니다. 마지막에는 출시 URL, 검증 결과, 다음 결정을 남깁니다.",
-            point1: {
-              title: "오늘 끝낼 범위",
-              body: "만들 것, 미룰 것, 성공 기준을 먼저 정합니다.",
-            },
-            point2: {
-              title: "실행 가능한 작업 패킷",
-              body: "Codex가 바로 움직일 수 있도록 파일, 조건, 검증 명령을 묶습니다.",
-            },
-            point3: {
-              title: "증거 기반 다음 결정",
-              body: "출시 결과와 막힌 이유를 남겨 다음 실행을 빠르게 고릅니다.",
-            },
-          },
-          workflow: {
-            kicker: "하루 루프",
-            title: "하루 실행 흐름",
-            intro:
-              "아이디어를 바로 개발하지 않고, 오늘 끝낼 수 있는 실험으로 바꾼 뒤 실행과 확인을 연결합니다.",
-            step1: {
-              title: "고르기",
-              body: "오늘 검증할 아이디어를 하나로 좁힙니다.",
-            },
-            step2: {
-              title: "자르기",
-              body: "만들 것과 미룰 것을 분리합니다.",
-            },
-            step3: {
-              title: "지시하기",
-              body: "Codex가 바로 실행할 수 있는 작업 패킷으로 바꿉니다.",
-            },
-            step4: {
-              title: "점검하기",
-              body: "QA-Z와 릴리스 검증으로 놓친 부분을 찾습니다.",
-            },
-            step5: {
-              title: "확인하기",
-              body: "결제, 개인정보, 외부 API, 공개 릴리스 같은 위험한 결정은 사람이 확인합니다.",
-            },
-            step6: {
-              title: "남기기",
-              body: "출시 URL, 결과, 막힌 이유, 다음 결정을 기록합니다.",
-            },
-          },
-          console: {
-            kicker: "비공개 관리 화면",
-            title: "관리 콘솔에서 볼 수 있는 것",
-            intro:
-              "이 공개 페이지에는 안전한 미리보기만 있습니다. 실제 프로젝트 생성, 승인 처리, 실행 기록은 비공개 console-web의 /manage에서 관리합니다.",
-          },
-          modules: {
-            projectBoard: {
-              title: "프로젝트 보드",
-              body: "진행 중인 MVP와 상태를 한눈에 봅니다.",
-            },
-            scopeNotes: {
-              title: "범위 노트",
-              body: "오늘 만들 것, 보류할 것, 성공 기준을 정리합니다.",
-            },
-            codexPackets: {
-              title: "Codex 작업 패킷",
-              body: "실행할 파일, 조건, 검증 명령을 묶어 전달합니다.",
-            },
-            approvalQueue: {
-              title: "승인 대기함",
-              body: "위험한 행동을 자동으로 넘기지 않고 따로 확인합니다.",
-            },
-            readiness: {
-              title: "출시 준비도",
-              body: "빠진 증거, 막힌 승인, 남은 작업을 보여줍니다.",
-            },
-            launchRecord: {
-              title: "출시 기록",
-              body: "URL, 결과, 검증 내역을 다음 판단을 위해 남깁니다.",
-            },
-            resultReview: {
-              title: "결과 리뷰",
-              body: "계속할지, 멈출지, 템플릿으로 만들지 결정합니다.",
+              title: "속도와 안전이 섞입니다",
+              body: "결제, 개인정보, 배포, 외부 API, 도메인 결정은 자동으로 밀어붙일 일이 아닙니다.",
             },
           },
           preview: {
-            title: "프로젝트 관리 대시보드",
-            subtitle:
-              "프로젝트, 승인, 출시 준비도, 증거, 리뷰를 한 화면에서 봅니다.",
-            badge: "공개 미리보기",
-            kpi1: { value: "12", label: "진행 프로젝트" },
-            kpi2: { value: "4", label: "승인 대기" },
-            kpi3: { value: "3", label: "출시 준비 막힘" },
-            kpi4: { value: "7", label: "결과 리뷰" },
-            row1: {
-              title: "Launch Pulse",
-              body: "출시 준비도 확인 중 · 승인 대기",
-              tag: "확인 필요",
+            kicker: "Product preview",
+            title: "Launch Control은 하루 실행을 제품처럼 다룹니다.",
+            intro:
+              "실제 데이터는 공개하지 않고, 방문자가 제품의 사용 장면을 이해할 수 있도록 안전한 예시 화면을 보여줍니다.",
+            panelTitle: "Daily MVP Control Room",
+            panelBody: "scope, packet, QA, approval, evidence, review",
+            panelBadge: "fictional sample",
+            todayTitle: "Today’s MVP",
+            todayBody:
+              "인터뷰 예약 랜딩을 오늘 안에 공개 가능한 검증 단위로 줄입니다.",
+            packetTitle: "Codex packet",
+            packetBody:
+              "목표, 금지 범위, 파일, 확인 명령을 실행 가능한 요청으로 묶습니다.",
+            qaTitle: "QA-Z gate",
+            qaBody: "문서, 테스트, 보안, 공개 파일 경계를 먼저 확인합니다.",
+            resultTitle: "Result review",
+            resultBody: "계속할지, 멈출지, 다음 실험으로 바꿀지 기록합니다.",
+            case1: {
+              title: "솔로 창업자",
+              body: "아이디어를 오늘의 실험으로 줄이고, Codex에게 줄 작업 단위를 놓치지 않습니다.",
             },
-            row2: {
-              title: "Workflow Artifact Kit",
-              body: "QA-Z 통과 · 결과 리뷰 준비",
-              tag: "리뷰",
+            case2: {
+              title: "인디 빌더",
+              body: "빠르게 만든 결과를 감으로 넘기지 않고, 출시 증거와 다음 결정을 남깁니다.",
             },
-            row3: {
-              title: "Operator Console Polish",
-              body: "출시 증거 누락 · 작업 패킷 진행 중",
-              tag: "증거 필요",
+            case3: {
+              title: "작은 제품팀",
+              body: "위험한 결정은 멈추고, 안전한 작업은 더 짧은 주기로 움직입니다.",
             },
-            boundary:
-              "공개 사이트는 입력을 저장하지 않습니다. 실제 생성, 수정, 승인, 실행은 서버 측 프록시가 있는 비공개 콘솔에서만 진행됩니다.",
+          },
+          workflow: {
+            kicker: "How it works",
+            title: "아이디어에서 증거까지 여섯 단계로 닫습니다.",
+            intro:
+              "1Day-1MVP는 빌드 도구가 아니라 하루 실행을 끝까지 운영하는 작업 흐름입니다.",
+            step1: {
+              title: "실험 선택",
+              body: "오늘 검증할 한 가지 아이디어와 대상 사용자를 고릅니다.",
+            },
+            step2: {
+              title: "범위 잠금",
+              body: "오늘 할 일과 하지 않을 일을 분리하고 성공 기준을 적습니다.",
+            },
+            step3: {
+              title: "작업 패킷 생성",
+              body: "Codex가 바로 실행할 수 있게 파일, 제약, 확인 명령을 묶습니다.",
+            },
+            step4: {
+              title: "QA-Z 검증",
+              body: "코드, 문서, 테스트, 공개 파일 경계가 어긋나지 않는지 봅니다.",
+            },
+            step5: {
+              title: "승인 대기",
+              body: "되돌리기 어려운 결정은 사람의 확인 전까지 멈춥니다.",
+            },
+            step6: {
+              title: "증거와 리뷰",
+              body: "출시 URL, 확인 결과, 막힌 점, 다음 결정을 한곳에 남깁니다.",
+            },
+          },
+          modules: {
+            kicker: "Private console modules",
+            title: "비공개 콘솔은 하루 MVP 운영판입니다.",
+            intro:
+              "이 공개 사이트는 미리보기만 제공합니다. 실제 프로젝트 관리와 실행 기록은 통제된 콘솔 환경에서 다룹니다.",
+            projectBoard: {
+              title: "Project board",
+              body: "진행 중인 MVP와 현재 상태를 빠르게 훑어봅니다.",
+            },
+            scopeNote: {
+              title: "Scope note",
+              body: "오늘 출시할 범위, 보류할 범위, 성공 기준을 고정합니다.",
+            },
+            packet: {
+              title: "Codex packet",
+              body: "작업 목표, 제약, 파일, 확인 명령을 하나의 실행 요청으로 만듭니다.",
+            },
+            approval: {
+              title: "Approval queue",
+              body: "결제, 개인정보, 배포, 외부 API, 도메인 관련 결정을 대기시킵니다.",
+            },
+            readiness: {
+              title: "Launch readiness",
+              body: "남은 증거, 승인, 차단 항목을 출시 전 한 번 더 확인합니다.",
+            },
+            review: {
+              title: "Result review",
+              body: "오늘의 결과를 계속할지, 멈출지, 반복할지 결정합니다.",
+            },
           },
           qa: {
-            kicker: "품질 확인",
-            title: "QA-Z는 무엇을 보나요?",
+            kicker: "QA-Z quality gate",
+            title: "빠르게 만들수록 검증은 더 짧고 분명해야 합니다.",
             intro:
-              "QA-Z는 “이 변경을 믿고 넘겨도 되는지”를 확인하는 점검 도구입니다.",
+              "QA-Z는 변경이 다음 단계로 넘어가도 되는지 확인하는 품질 게이트로 설명합니다. 내부 판정 파일은 공개 사이트에 올리지 않습니다.",
             card: {
-              title: "품질 점검 통과",
-              body: "보안 위험, 문서와 코드의 불일치, 테스트 누락, 릴리스 파일 문제를 확인하고 막히는 항목이 있으면 진행을 멈춥니다.",
+              title: "무엇을 확인하나요?",
+              body: "테스트 누락, 문서와 코드의 불일치, 공개하면 안 되는 값, 출시 파일 경계, 승인 항목을 함께 봅니다. 차단 항목이 있으면 고친 뒤 다시 확인합니다.",
             },
-            note: "최근 QA-Z 상태: merge_ok",
-            check1: "보안 위험과 공개하면 안 되는 값",
-            check2: "문서와 코드가 말하는 내용의 차이",
-            check3: "테스트와 릴리스 파일의 빠진 부분",
-            check4: "멈춰야 하는 승인 항목",
+            check1: "문서와 실제 동작의 어긋남",
+            check2: "테스트나 출시 파일의 빠진 부분",
+            check3: "공개 사이트에 올라가면 안 되는 값",
+            check4: "승인 전 멈춰야 하는 결정",
           },
           safety: {
-            kicker: "사람의 확인",
-            title: "자동화하지 않는 결정",
+            kicker: "Safety by design",
+            title: "공개 사이트는 소개만, 실행 권한은 비공개로 둡니다.",
             intro:
-              "1Day-1MVP는 모든 일을 자동으로 밀어붙이지 않습니다. 되돌리기 어려운 결정은 확인이 끝날 때까지 멈춥니다.",
+              "GitHub Pages에는 정적 소개 파일만 배포합니다. 실제 실행, 승인, API 호출, 운영 기록은 공개 사이트에 두지 않습니다.",
             card: {
-              title: "멈춰야 할 때 멈추는 구조",
-              body: "결제, 개인정보, 외부 API, 도메인/DNS, 공개 소스 릴리스처럼 되돌리기 어려운 결정은 사람이 확인하기 전까지 진행하지 않습니다.",
+              title: "자동화가 혼자 결정하지 않는 일",
+              body: "결제, 개인정보, 실제 배포, 유료 외부 API, 도메인과 DNS, 저장소 공개, 라이선스 선택, 취약점 신고 채널은 승인 전까지 멈춥니다.",
             },
-            item1: "공개 소스 릴리스: 승인 대기",
-            item2: "LICENSE: 승인 전까지 미생성",
-            item3: "Runtime API: GitHub Pages에 배포하지 않음",
-            item4: "공개 사이트: 정적 소개 페이지로만 운영",
+            item1: "정적 공개 사이트만 운영",
+            item2: "Runtime API는 공개 배포하지 않음",
+            item3: "관리 콘솔은 비공개 환경에서 검증",
+            item4: "소스 공개와 라이선스는 승인 대기",
           },
           status: {
-            kicker: "지금 상태",
-            title: "현재 공개 상태",
+            kicker: "Current status",
+            title: "지금 공개된 것과 아직 닫아 둔 것",
             intro:
-              "공개된 것은 소개 페이지입니다. 실제 관리 화면과 API는 비공개 환경에서 검증됩니다.",
+              "방문자에게 필요한 신뢰 정보는 숨기지 않되, 내부 운영 세부 정보가 첫 화면을 대신하지 않게 정리했습니다.",
             site: {
-              badge: "공개됨",
-              title: "소개 사이트",
-              body: "GitHub Pages에서 정적 페이지로 운영 중입니다.",
+              badge: "live",
+              title: "Public landing",
+              body: "이 페이지는 GitHub Pages에서 정적 사이트로 열려 있습니다.",
             },
             console: {
-              badge: "비공개",
-              title: "관리 콘솔",
-              body: "실제 프로젝트 관리는 비공개 환경에서 실행됩니다.",
+              badge: "private",
+              title: "Private console",
+              body: "실제 관리 화면은 통제된 환경에서 검증합니다.",
             },
             api: {
-              badge: "미배포",
-              title: "백엔드 API",
-              body: "GitHub Pages에는 Runtime API를 올리지 않았습니다.",
+              badge: "private",
+              title: "Backend runtime",
+              body: "Runtime API는 GitHub Pages에 배포하지 않습니다.",
             },
             qa: {
-              badge: "통과",
-              title: "품질 점검",
-              body: "QA-Z 기준으로 공개 가능한 정적 파일을 확인했습니다.",
+              badge: "checked",
+              title: "QA-Z",
+              body: "공개 가능한 정적 파일 경계를 기준으로 확인합니다.",
             },
             source: {
-              badge: "승인 대기",
-              title: "소스 공개",
-              body: "저장소 공개는 별도 확인 전까지 진행하지 않습니다.",
+              badge: "waiting",
+              title: "Source release",
+              body: "저장소 공개는 승인 기록이 채워진 뒤에만 진행됩니다.",
             },
             license: {
-              badge: "미생성",
-              title: "라이선스",
-              body: "LICENSE는 승인 전까지 만들지 않습니다.",
+              badge: "waiting",
+              title: "License decision",
+              body: "라이선스 파일은 선택 승인이 끝난 뒤에만 추가합니다.",
             },
           },
           faq: {
             kicker: "FAQ",
-            title: "자주 묻는 질문",
+            title: "공개 페이지에서 바로 알아야 할 것",
             intro:
-              "공개 사이트에서 볼 수 있는 것과 아직 공개하지 않은 것을 분명하게 나눕니다.",
+              "실제 서비스처럼 보이되, 현재의 공개 범위와 안전 경계를 과장하지 않습니다.",
             q1: {
-              title: "이 페이지에서 바로 앱을 사용할 수 있나요?",
-              body: "지금 이 페이지는 공개 소개 사이트입니다. 실제 프로젝트 관리 콘솔은 비공개 환경에서 실행됩니다. 공개 데모나 파일럿을 열 때는 이 페이지에 별도로 안내하겠습니다.",
+              title: "지금 바로 가입할 수 있나요?",
+              body: "아직 아닙니다. 파일럿이나 공개 데모가 준비되면 이 페이지에 다음 행동을 안내합니다.",
             },
             q2: {
-              title: "왜 백엔드를 공개하지 않았나요?",
-              body: "GitHub Pages는 정적 소개 페이지에만 사용합니다. 실행 데이터, 승인 기록, API 호출은 공개 사이트에 두지 않습니다.",
+              title: "이 페이지에서 데이터가 저장되나요?",
+              body: "아닙니다. GitHub Pages에 올라간 정적 소개 사이트이며 입력 폼이나 백엔드 연결을 두지 않았습니다.",
             },
             q3: {
-              title: "소스코드는 언제 공개되나요?",
-              body: "저장소 공개, 라이선스 선택, 취약점 제보 채널 같은 항목은 승인이 끝난 뒤에만 진행합니다. 지금은 공개 소스 릴리스가 대기 상태입니다.",
+              title: "누구에게 맞나요?",
+              body: "솔로 창업자, 인디 빌더, 작은 제품팀처럼 AI 에이전트와 함께 작은 실험을 끝까지 닫고 싶은 팀에 맞습니다.",
             },
             q4: {
-              title: "QA-Z는 왜 필요한가요?",
-              body: "빠르게 만들수록 놓치는 것이 생깁니다. QA-Z는 테스트, 문서, 보안, 릴리스 파일을 확인해서 믿고 다음 단계로 넘길 수 있는지 봅니다.",
+              title: "하루 안에 항상 출시되나요?",
+              body: "모든 제품을 하루에 완성한다는 뜻은 아닙니다. 하루 안에 검증할 수 있는 작은 범위로 줄이고, 결과를 기록하는 것이 목표입니다.",
             },
             q5: {
-              title: "1Day-1MVP는 누구에게 맞나요?",
-              body: "아이디어가 많지만 하루 단위로 범위를 정하고, Codex 작업을 나누고, 결과를 보고 다음 결정을 내려야 하는 운영자에게 맞습니다.",
+              title: "왜 Runtime API를 공개하지 않나요?",
+              body: "공개 사이트는 소개 용도입니다. 실행 데이터, 승인 기록, 운영 API는 공개 정적 호스팅에 두지 않습니다.",
             },
             q6: {
-              title: "하루 안에 정말 MVP가 나오나요?",
-              body: "모든 제품을 하루 만에 완성한다는 뜻은 아닙니다. 대신 하루 안에 검증 가능한 범위를 정하고, 만들고, 점검하고, 다음 결정을 내릴 수 있게 돕습니다.",
+              title: "소스 공개는 언제 열리나요?",
+              body: "저장소 공개, 라이선스 선택, 취약점 신고 채널 승인이 끝난 뒤에만 별도 절차로 진행합니다.",
             },
           },
+          finalCta: {
+            kicker: "Private preview",
+            title: "다음 공개 단계가 열리면 이 페이지에서 안내합니다.",
+            body: "이 페이지는 공개 소개 사이트입니다. 실제 관리 콘솔은 비공개 파일럿에서 검증됩니다.",
+            button: "파일럿 준비 상태 보기",
+          },
           footer: {
-            copy: "1Day-1MVP는 현재 공개 소개 사이트를 운영 중이며, 실제 관리 콘솔과 Runtime API는 비공개 환경에서 검증됩니다.",
+            copy: "1Day-1MVP 공개 사이트는 정적 소개 페이지이며, 실행 콘솔과 Runtime API는 비공개 환경에 둡니다.",
             backTop: "맨 위로",
           },
         },
         en: {
           meta: {
-            title:
-              "1Day-1MVP - A focused workspace for shipping one MVP in a day",
+            title: "1Day-1MVP - Turn today’s idea into a finished MVP run",
             description:
-              "1Day-1MVP turns a rough idea into a one-day MVP run. This public page is a static landing site; the management console and Runtime API stay private.",
+              "1Day-1MVP is a daily MVP operating console that turns one idea into scope, a Codex work packet, QA-Z checks, approval gates, launch evidence, and result review.",
           },
           navLabel: "Primary navigation",
           languageLabel: "Language selection",
           koTitle: "View in Korean",
           enTitle: "View in English",
           ctaLabel: "Primary actions",
-          statusStripLabel: "Current status",
+          statusStripLabel: "Current operating status",
+          mockLabel: "Launch Control product preview",
           nav: {
-            overview: "Start",
+            overview: "Overview",
             problem: "Problem",
-            solution: "What it does",
+            preview: "Preview",
             workflow: "Workflow",
-            console: "Console",
+            modules: "Modules",
             qaZ: "QA-Z",
-            safety: "Safeguards",
+            safety: "Safety",
             status: "Status",
             faq: "FAQ",
           },
           hero: {
-            eyebrow: "Public landing site",
-            headline: "A focused workspace for shipping one MVP in a day",
+            eyebrow: "Daily MVP operating console",
+            headline: "Turn today’s idea into\na finished MVP run",
             subcopy:
-              "From idea selection and scope control to Codex work packets, QA checks, approval gates, launch evidence, and review. 1Day-1MVP helps turn a rough idea into a finished daily MVP run.",
-            pillSite: "Static landing site is live",
-            pillConsole: "Management console stays private",
-            pillQa: "QA-Z quality checks passed",
-            pillSource: "Public source release pending approval",
+              "1Day-1MVP turns one idea into today’s scope, a Codex work packet, QA-Z checks, approval gates, launch evidence, and a clear next decision.",
+            note: "Pilot inquiries are not open yet. When a public demo is ready, this page will show the next step.",
+            pillSite: "GitHub Pages live",
+            pillQa: "QA-Z checked",
+            pillRuntime: "Private runtime",
+            pillSource: "Source release awaiting approval",
           },
           cta: {
-            workflow: "See how it works",
+            workflow: "See the workflow",
+            preview: "Preview the private console",
             status: "Check launch status",
-            console: "View the console structure",
           },
-          visual: {
-            alt: "Public preview of the 1Day-1MVP management console flow",
-            caption:
-              "Project creation and execution controls run only inside the private console.",
+          mock: {
+            title: "Launch Control",
+            subtitle: "See today’s MVP run in one focused view.",
+            badge: "safe static preview",
+            mvpTitle: "Today’s MVP: interview booking landing page",
+            mvpBody:
+              "The goal is one measurable question: will visitors leave time for a problem interview?",
+            stage1: "Scope locked",
+            stage1Body: "one slice",
+            stage2: "Packet ready",
+            stage2Body: "Codex brief",
+            stage3: "QA-Z passed",
+            stage3Body: "checks clear",
+            stage4: "Approval waiting",
+            stage4Body: "domain gate",
+            stage5: "Evidence ready",
+            stage5Body: "URL proof next",
+            stage6: "Review queued",
+            stage6Body: "decide tomorrow",
+            queueTitle: "Approval queue",
+            queue1: "Review before domain launch",
+            queue2: "Confirm no payment flow",
+            queue3: "Check personal data scope",
+            evidenceTitle: "Launch evidence",
+            evidenceBody:
+              "Keep the public URL, check result, and remaining decision together so tomorrow starts with context.",
+          },
+          proof: {
+            kicker: "Public status",
+            title: "No fake logos. Just the status that can be public today.",
+            intro:
+              "There are no customer logos to claim yet, so trust comes from making the public boundary and private operating surface clear.",
+            item1Title: "GitHub Pages live",
+            item1Body: "The public intro site is running as static pages.",
+            item2Title: "QA-Z checked",
+            item2Body: "Public files are checked against the safety boundary.",
+            item3Title: "Private runtime",
+            item3Body:
+              "The real API and management console are verified privately.",
+            item4Title: "Approval gated",
+            item4Body:
+              "Source publication and license choice wait for approval.",
           },
           problem: {
             kicker: "The problem",
-            title: "Why daily MVPs stall",
+            title: "AI can generate faster than teams can decide.",
             intro:
-              "Daily MVP work rarely slows down because nobody can build. It slows down when the scope, validation standard, and risk boundaries are not clear enough.",
+              "One-day MVP work usually stalls around scope, proof, risky decisions, and the next call - not around raw code output.",
             card1: {
-              title: "Too many ideas, no clear daily scope",
-              body: "A good idea still stalls if it cannot be reduced to something testable today.",
+              title: "The scope is bigger than the day",
+              body: "Even a good idea slows down if it is not reduced to something testable today.",
             },
             card2: {
-              title: "Long instructions, unclear validation",
-              body: "If the pass condition is vague, it is hard to know whether the work is actually done.",
+              title: "Done is not defined tightly enough",
+              body: "When packets, checks, and launch proof are separate, every handoff reopens the question.",
             },
             card3: {
-              title: "A launch claim without evidence",
-              body: "Without the URL, check results, blockers, and next decision, tomorrow starts with the same questions.",
-            },
-            card4: {
-              title: "Risky actions mixed into automation",
-              body: "Payments, personal data, external APIs, and public release decisions need confirmation before speed.",
-            },
-          },
-          solution: {
-            kicker: "The approach",
-            title: "What 1Day-1MVP does",
-            intro:
-              "It keeps the before-build and after-build decisions connected in one operating flow.",
-            body: "1Day-1MVP organizes a one-day MVP run into a clear operating flow. It helps define the scope, turn the work into Codex-ready packets, run QA-Z checks, pause risky actions for human review, and record the evidence needed to decide what comes next.",
-            point1: {
-              title: "Today’s real scope",
-              body: "Decide what ships, what waits, and what success means before work starts.",
-            },
-            point2: {
-              title: "Executable work packets",
-              body: "Bundle the files, constraints, and verification commands Codex needs to act.",
-            },
-            point3: {
-              title: "Evidence-based decisions",
-              body: "Keep the launch result and blockers visible so the next run is easier to choose.",
-            },
-          },
-          workflow: {
-            kicker: "Daily loop",
-            title: "How a daily run works",
-            intro:
-              "An idea does not jump straight into development. It becomes a small experiment with execution, checks, and evidence attached.",
-            step1: {
-              title: "Choose",
-              body: "Narrow the day to one idea worth testing.",
-            },
-            step2: {
-              title: "Cut",
-              body: "Separate what ships today from what waits.",
-            },
-            step3: {
-              title: "Brief",
-              body: "Turn the work into a Codex-ready packet.",
-            },
-            step4: {
-              title: "Check",
-              body: "Use QA-Z and release checks to catch gaps.",
-            },
-            step5: {
-              title: "Confirm",
-              body: "Pause risky actions for human review.",
-            },
-            step6: {
-              title: "Record",
-              body: "Keep the launch URL, result, blockers, and next decision.",
-            },
-          },
-          console: {
-            kicker: "Private management surface",
-            title: "What the private console manages",
-            intro:
-              "This public page shows a safe preview only. Real project creation, approvals, and execution records live in the private console-web app at /manage.",
-          },
-          modules: {
-            projectBoard: {
-              title: "Project Board",
-              body: "See active MVPs and their current state at a glance.",
-            },
-            scopeNotes: {
-              title: "Scope Notes",
-              body: "Capture what ships today, what waits, and what success means.",
-            },
-            codexPackets: {
-              title: "Codex Work Packets",
-              body: "Send files, constraints, and verification commands as one executable brief.",
-            },
-            approvalQueue: {
-              title: "Approval Queue",
-              body: "Keep risky actions waiting for review instead of pushing them through automatically.",
-            },
-            readiness: {
-              title: "Launch Readiness",
-              body: "Show missing evidence, blocked approvals, and remaining work.",
-            },
-            launchRecord: {
-              title: "Launch Record",
-              body: "Keep the URL, result, and check history for the next decision.",
-            },
-            resultReview: {
-              title: "Result Review",
-              body: "Decide whether to continue, stop, or turn the run into a repeatable template.",
+              title: "Speed and risk get mixed together",
+              body: "Payments, personal data, deployment, external APIs, and domains should not be pushed through blindly.",
             },
           },
           preview: {
-            title: "Project Management Dashboard",
-            subtitle:
-              "Projects, approvals, launch readiness, evidence, and reviews in one view.",
-            badge: "public preview",
-            kpi1: { value: "12", label: "active projects" },
-            kpi2: { value: "4", label: "pending approvals" },
-            kpi3: { value: "3", label: "launch blockers" },
-            kpi4: { value: "7", label: "result reviews" },
-            row1: {
-              title: "Launch Pulse",
-              body: "Launch readiness check · approval pending",
-              tag: "needs review",
+            kicker: "Product preview",
+            title:
+              "Launch Control treats the daily run like a product surface.",
+            intro:
+              "No private data is shown. The mock uses safe fictional examples so visitors can understand how the product feels.",
+            panelTitle: "Daily MVP Control Room",
+            panelBody: "scope, packet, QA, approval, evidence, review",
+            panelBadge: "fictional sample",
+            todayTitle: "Today’s MVP",
+            todayBody:
+              "Reduce an interview booking landing page to a testable public slice for the day.",
+            packetTitle: "Codex packet",
+            packetBody:
+              "Bundle the goal, out-of-scope items, files, and verification commands into an executable request.",
+            qaTitle: "QA-Z gate",
+            qaBody:
+              "Check docs, tests, security posture, and public file boundaries before moving on.",
+            resultTitle: "Result review",
+            resultBody:
+              "Record whether to continue, stop, or turn the run into the next experiment.",
+            case1: {
+              title: "Solo founders",
+              body: "Turn a loose idea into today’s experiment and keep the Codex task focused.",
             },
-            row2: {
-              title: "Workflow Artifact Kit",
-              body: "QA-Z passed · result review ready",
-              tag: "review",
+            case2: {
+              title: "Indie builders",
+              body: "Do not let fast output become guesswork. Keep launch proof and the next decision visible.",
             },
-            row3: {
-              title: "Operator Console Polish",
-              body: "Launch evidence missing · work packet active",
-              tag: "evidence needed",
+            case3: {
+              title: "Small product teams",
+              body: "Pause risky decisions while safe work keeps moving in shorter cycles.",
             },
-            boundary:
-              "The public site does not save inputs. Real creation, edits, approvals, and execution run only through the private console with its server-side proxy.",
+          },
+          workflow: {
+            kicker: "How it works",
+            title: "Close the loop from idea to evidence in six steps.",
+            intro:
+              "1Day-1MVP is not just a builder. It is an operating flow for finishing a small experiment.",
+            step1: {
+              title: "Pick the experiment",
+              body: "Choose one idea and one audience worth testing today.",
+            },
+            step2: {
+              title: "Lock the scope",
+              body: "Separate what ships today from what waits, then define success.",
+            },
+            step3: {
+              title: "Generate the work packet",
+              body: "Package files, constraints, and checks so Codex can act.",
+            },
+            step4: {
+              title: "Verify with QA-Z",
+              body: "Check code, docs, tests, and public file boundaries.",
+            },
+            step5: {
+              title: "Pause risky decisions",
+              body: "Keep hard-to-reverse actions waiting for human review.",
+            },
+            step6: {
+              title: "Record evidence and review",
+              body: "Keep the URL, result, blockers, and next decision together.",
+            },
+          },
+          modules: {
+            kicker: "Private console modules",
+            title: "The private console is the board for the daily run.",
+            intro:
+              "This public site is only a preview. Real project management and run evidence live in a controlled console environment.",
+            projectBoard: {
+              title: "Project board",
+              body: "Scan active MVPs and their current state.",
+            },
+            scopeNote: {
+              title: "Scope note",
+              body: "Fix what ships today, what waits, and what success means.",
+            },
+            packet: {
+              title: "Codex packet",
+              body: "Turn goals, files, constraints, and checks into one executable request.",
+            },
+            approval: {
+              title: "Approval queue",
+              body: "Hold payment, personal data, deployment, external API, and domain choices for review.",
+            },
+            readiness: {
+              title: "Launch readiness",
+              body: "Review missing proof, approvals, and blockers before launch.",
+            },
+            review: {
+              title: "Result review",
+              body: "Decide whether to continue, pause, or repeat the run.",
+            },
           },
           qa: {
-            kicker: "Quality check",
-            title: "What QA-Z checks",
-            intro: "QA-Z checks whether a change is safe to move forward.",
+            kicker: "QA-Z quality gate",
+            title: "The faster the build, the clearer the check needs to be.",
+            intro:
+              "QA-Z is presented as the quality gate for deciding whether a change can move forward. Internal verdict artifacts are not published on this site.",
             card: {
-              title: "Quality checks passed",
-              body: "It looks for security risks, mismatches between docs and code, missing tests, and release-file problems. If a blocking issue appears, the run stops until it is fixed.",
+              title: "What does it check?",
+              body: "It looks for missing tests, doc and code drift, values that should not be public, release file boundaries, and approval items. Blocking findings stop the run until fixed.",
             },
-            note: "Latest QA-Z state: merge_ok",
-            check1: "Values that should not be public",
-            check2: "Mismatches between docs and code",
-            check3: "Missing tests or release files",
-            check4: "Approval items that should stop the run",
+            check1: "Drift between docs and actual behavior",
+            check2: "Missing tests or release-file gaps",
+            check3: "Values that should not be public",
+            check4: "Decisions that must pause before approval",
           },
           safety: {
-            kicker: "Human review",
-            title: "Decisions automation should not make alone",
+            kicker: "Safety by design",
+            title:
+              "The public site introduces the product. Execution stays private.",
             intro:
-              "1Day-1MVP does not push every decision through automation. Hard-to-reverse actions stay paused until a person approves them.",
+              "GitHub Pages only hosts static intro files. Real execution, approval handling, API calls, and operating records are not placed on the public site.",
             card: {
-              title: "A system that knows when to stop",
-              body: "Payments, personal data, external APIs, domain/DNS changes, and public source release stay paused until a person approves them.",
+              title: "Decisions automation should not make alone",
+              body: "Payments, personal data, production deployment, paid external APIs, domain and DNS changes, repository visibility, license choice, and vulnerability reporting setup stay paused until approval.",
             },
-            item1: "Public source release: pending approval",
-            item2: "LICENSE: not created before approval",
-            item3: "Runtime API: not deployed on GitHub Pages",
-            item4: "Public site: static landing page only",
+            item1: "Static public site only",
+            item2: "Runtime API is not publicly deployed",
+            item3: "Management console is validated privately",
+            item4: "Source publication and license wait for approval",
           },
           status: {
-            kicker: "Current state",
-            title: "Current public status",
+            kicker: "Current status",
+            title: "What is public now, and what stays closed",
             intro:
-              "What is public today is the landing site. The real management console and API are validated in a private environment.",
+              "The page makes trust information visible without letting internal operating details take over the first impression.",
             site: {
               badge: "live",
-              title: "Landing site",
-              body: "Hosted as a static page on GitHub Pages.",
+              title: "Public landing",
+              body: "This page is live as a static GitHub Pages site.",
             },
             console: {
               badge: "private",
-              title: "Management console",
-              body: "Real project management runs in a private environment.",
+              title: "Private console",
+              body: "The real management surface is verified in a controlled environment.",
             },
             api: {
-              badge: "not hosted",
-              title: "Backend API",
-              body: "Runtime API is not hosted on GitHub Pages.",
+              badge: "private",
+              title: "Backend runtime",
+              body: "Runtime API is not deployed to GitHub Pages.",
             },
             qa: {
-              badge: "passed",
-              title: "Quality checks",
-              body: "Public static files were checked with QA-Z expectations.",
+              badge: "checked",
+              title: "QA-Z",
+              body: "Public static files are checked against publishable boundaries.",
             },
             source: {
-              badge: "pending",
-              title: "Public source release",
-              body: "Repository publication does not proceed before approval.",
+              badge: "waiting",
+              title: "Source release",
+              body: "Repository publication proceeds only after approval records are complete.",
             },
             license: {
-              badge: "not created",
-              title: "License",
-              body: "LICENSE is not created before approval.",
+              badge: "waiting",
+              title: "License decision",
+              body: "The license file is added only after license choice approval.",
             },
           },
           faq: {
             kicker: "FAQ",
-            title: "Questions people usually ask",
+            title: "What visitors should know first",
             intro:
-              "A clear split between what this public page shows and what remains private.",
+              "The page should feel like a real service while staying honest about the current public boundary.",
             q1: {
-              title: "Can I use the app from this page?",
-              body: "Not yet. This is the public landing site. The real project management console runs in a private environment. When a public demo or pilot opens, this page will say so clearly.",
+              title: "Can I sign up today?",
+              body: "Not yet. When a pilot or public demo is ready, this page will show the next step clearly.",
             },
             q2: {
-              title: "Why isn’t the backend public?",
-              body: "GitHub Pages is used only for the static landing site. Operating data, approval records, and API calls are not placed on the public site.",
+              title: "Does this page store data?",
+              body: "No. It is a static GitHub Pages intro site with no form submission or backend connection.",
             },
             q3: {
-              title: "When will the source code be public?",
-              body: "Repository visibility, license choice, and vulnerability-reporting setup require approval first. The public source release is still pending.",
+              title: "Who is it for?",
+              body: "Solo founders, indie builders, and small product teams who want to close small AI-assisted experiments with evidence.",
             },
             q4: {
-              title: "Why does QA-Z matter?",
-              body: "Fast work creates easy misses. QA-Z checks tests, docs, security, and release files so the next step is based on evidence.",
+              title: "Does every MVP ship in one day?",
+              body: "No. The goal is to reduce the work to a testable slice, build it, check it, and make the next decision within the day.",
             },
             q5: {
-              title: "Who is 1Day-1MVP for?",
-              body: "It is for operators with many ideas who need to choose one daily scope, brief Codex clearly, and decide the next move from real results.",
+              title: "Why is Runtime API not public?",
+              body: "This public site is for introduction only. Execution data, approval records, and operating APIs are not placed on public static hosting.",
             },
             q6: {
-              title: "Does every MVP really ship in one day?",
-              body: "Not every product can be completed in a day. The goal is to define a testable slice, build it, check it, and make the next decision within the day.",
+              title: "When will the source open?",
+              body: "Repository visibility, license choice, and vulnerability reporting approvals must be completed before that separate step proceeds.",
             },
           },
+          finalCta: {
+            kicker: "Private preview",
+            title: "When the next public step opens, this page will say so.",
+            body: "This is the public introduction site. The real management console is validated in private pilot use.",
+            button: "View pilot readiness",
+          },
           footer: {
-            copy: "1Day-1MVP currently runs a public landing site. The private management console and Runtime API are validated in a controlled environment.",
+            copy: "1Day-1MVP currently runs a static public intro site. The execution console and Runtime API stay in a private environment.",
             backTop: "Back to top",
           },
         },
@@ -2061,12 +2199,6 @@
         document.querySelectorAll("[data-i18n]").forEach((element) => {
           element.textContent = getValue(dictionary, element.dataset.i18n);
         });
-        document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
-          element.setAttribute(
-            "alt",
-            getValue(dictionary, element.dataset.i18nAlt),
-          );
-        });
         document.querySelectorAll("[data-i18n-title]").forEach((element) => {
           element.setAttribute(
             "title",
@@ -2090,6 +2222,33 @@
         storeLanguage(selectedLanguage);
       }
 
+      function updateActiveSection() {
+        const links = [...document.querySelectorAll(".nav-links a")];
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute("href")))
+          .filter(Boolean);
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (!visible) {
+              return;
+            }
+            links.forEach((link) => {
+              link.classList.toggle(
+                "is-active",
+                link.getAttribute("href") === `#${visible.target.id}`,
+              );
+            });
+          },
+          { rootMargin: "-35% 0px -55% 0px", threshold: [0.1, 0.35, 0.7] },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      }
+
       document.querySelectorAll("[data-language]").forEach((button) => {
         button.addEventListener("click", () =>
           setLanguage(button.dataset.language),
@@ -2097,6 +2256,9 @@
       });
 
       setLanguage(getStoredLanguage() || "ko");
+      if (typeof IntersectionObserver !== "undefined") {
+        updateActiveSection();
+      }
     </script>
   </body>
 </html>
