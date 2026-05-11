@@ -310,6 +310,8 @@
       .module-card h3,
       .qa-card h3,
       .faq-card h3,
+      .management-card h3,
+      .management-item h3,
       .status-card h3 {
         margin: 14px 0 8px;
         font-size: 1.03rem;
@@ -321,6 +323,8 @@
       .module-card p,
       .qa-card p,
       .faq-card p,
+      .management-card p,
+      .management-item p,
       .status-card p,
       .boundary-card p {
         margin: 0;
@@ -364,6 +368,201 @@
 
       .module-card:nth-child(5n + 5) {
         background: var(--coral-soft);
+      }
+
+      .management-preview {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+        gap: 16px;
+        align-items: start;
+      }
+
+      .management-panel,
+      .management-side {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 16px 42px rgba(29, 37, 45, 0.08);
+      }
+
+      .management-panel {
+        overflow: hidden;
+      }
+
+      .management-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+        background: #f3f7fb;
+      }
+
+      .management-toolbar h3 {
+        margin: 0;
+        font-size: 1.18rem;
+        line-height: 1.25;
+      }
+
+      .management-toolbar p {
+        margin: 4px 0 0;
+        color: var(--muted);
+      }
+
+      .management-badge {
+        display: inline-flex;
+        min-height: 30px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 10px;
+        background: var(--green-soft);
+        color: var(--green);
+        font-size: 0.82rem;
+        font-weight: 850;
+      }
+
+      .management-body {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .management-kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .management-card {
+        min-height: 106px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: #ffffff;
+      }
+
+      .management-card strong {
+        display: block;
+        font-size: clamp(1.55rem, 3vw, 2.15rem);
+        line-height: 1.04;
+      }
+
+      .management-card span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 760;
+      }
+
+      .management-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .management-item {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #ffffff;
+      }
+
+      .management-status-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: var(--green);
+      }
+
+      .management-status-dot.amber {
+        background: var(--amber);
+      }
+
+      .management-status-dot.coral {
+        background: var(--coral);
+      }
+
+      .management-tag {
+        min-width: max-content;
+        border-radius: 999px;
+        padding: 4px 8px;
+        background: var(--amber-soft);
+        color: var(--amber);
+        font-size: 0.78rem;
+        font-weight: 850;
+      }
+
+      .management-table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .management-table th,
+      .management-table td {
+        padding: 11px 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .management-table th {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+      }
+
+      .management-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .management-side {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .management-side h3 {
+        margin: 0;
+        font-size: 1.12rem;
+      }
+
+      .management-side p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .mock-field {
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 9px 11px;
+        background: #f8fafc;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .mock-button {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: var(--ink);
+        color: white;
+        font-weight: 850;
       }
 
       .qa-layout,
@@ -477,6 +676,10 @@
       }
 
       @media (max-width: 980px) {
+        section {
+          scroll-margin-top: 150px;
+        }
+
         .nav-wrap {
           grid-template-columns: 1fr auto;
           align-items: start;
@@ -491,12 +694,14 @@
         .hero,
         .section-heading,
         .qa-layout,
+        .management-preview,
         .approval-layout {
           grid-template-columns: 1fr;
         }
 
         .workflow-grid,
         .module-grid,
+        .management-kpis,
         .status-grid,
         .boundary-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -504,6 +709,10 @@
       }
 
       @media (max-width: 640px) {
+        section {
+          scroll-margin-top: 330px;
+        }
+
         .nav-wrap {
           grid-template-columns: 1fr;
         }
@@ -521,9 +730,24 @@
         .workflow-grid,
         .module-grid,
         .status-grid,
+        .management-kpis,
         .boundary-grid,
         .faq-grid {
           grid-template-columns: 1fr;
+        }
+
+        .management-item {
+          grid-template-columns: auto minmax(0, 1fr);
+        }
+
+        .management-tag {
+          grid-column: 2;
+          width: max-content;
+        }
+
+        .management-table {
+          display: block;
+          overflow-x: auto;
         }
 
         main {
@@ -544,6 +768,9 @@
                 >운영 로직</a
               >
               <a href="#modules" data-i18n="nav.modules">기능 모듈</a>
+              <a href="#management-preview" data-i18n="nav.managementPreview"
+                >관리 화면</a
+              >
               <a href="#qa-z" data-i18n="nav.qaZ">QA-Z</a>
               <a href="#approval-gates" data-i18n="nav.approvalGates"
                 >승인 게이트</a
@@ -796,6 +1023,187 @@
           </div>
         </section>
 
+        <section
+          class="section-block"
+          id="management-preview"
+          aria-labelledby="management-preview-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="management.kicker">
+                Public Preview
+              </p>
+              <h2 id="management-preview-title" data-i18n="management.title">
+                관리 대시보드 공개 미리보기
+              </h2>
+            </div>
+            <p data-i18n="management.intro">
+              실제 데이터와 실행 버튼은 비공개 콘솔에만 있으며, 이 공개 화면은
+              운영자가 보게 될 핵심 판단 구조를 샘플로 보여줍니다.
+            </p>
+          </div>
+          <div class="management-preview" aria-label="관리 대시보드 미리보기">
+            <article class="management-panel">
+              <div class="management-toolbar">
+                <div>
+                  <h3 data-i18n="management.consoleTitle">
+                    프로젝트 관리 대시보드
+                  </h3>
+                  <p data-i18n="management.consoleSubtitle">
+                    프로젝트, 승인, 출시 준비, 증거, 리뷰를 한 화면에서 봅니다.
+                  </p>
+                </div>
+                <span class="management-badge" data-i18n="management.safeBadge"
+                  >공개 샘플</span
+                >
+              </div>
+              <div class="management-body">
+                <div class="management-kpis">
+                  <div class="management-card">
+                    <strong data-i18n="management.kpi.totalValue">12</strong>
+                    <span data-i18n="management.kpi.totalLabel"
+                      >운영 프로젝트</span
+                    >
+                  </div>
+                  <div class="management-card">
+                    <strong data-i18n="management.kpi.approvalValue">4</strong>
+                    <span data-i18n="management.kpi.approvalLabel"
+                      >승인 대기</span
+                    >
+                  </div>
+                  <div class="management-card">
+                    <strong data-i18n="management.kpi.blockedValue">3</strong>
+                    <span data-i18n="management.kpi.blockedLabel"
+                      >출시 차단</span
+                    >
+                  </div>
+                  <div class="management-card">
+                    <strong data-i18n="management.kpi.reviewValue">7</strong>
+                    <span data-i18n="management.kpi.reviewLabel"
+                      >결과 리뷰</span
+                    >
+                  </div>
+                </div>
+
+                <div class="management-list">
+                  <article class="management-item">
+                    <span class="management-status-dot coral"></span>
+                    <div>
+                      <h3 data-i18n="management.queue.approvalTitle">
+                        승인 없이는 출시 불가
+                      </h3>
+                      <p data-i18n="management.queue.approvalBody">
+                        배포, 도메인, 소스 공개 같은 위험 작업은 자동 처리하지
+                        않습니다.
+                      </p>
+                    </div>
+                    <span class="management-tag" data-i18n="management.pending"
+                      >대기</span
+                    >
+                  </article>
+                  <article class="management-item">
+                    <span class="management-status-dot amber"></span>
+                    <div>
+                      <h3 data-i18n="management.queue.evidenceTitle">
+                        출시 증거 누락 확인
+                      </h3>
+                      <p data-i18n="management.queue.evidenceBody">
+                        공개 URL, QA-Z 결과, 실행 영수증, 리뷰 상태를 한 줄로
+                        비교합니다.
+                      </p>
+                    </div>
+                    <span class="management-tag" data-i18n="management.review"
+                      >검토</span
+                    >
+                  </article>
+                  <article class="management-item">
+                    <span class="management-status-dot"></span>
+                    <div>
+                      <h3 data-i18n="management.queue.nextTitle">
+                        다음 실행 후보 선택
+                      </h3>
+                      <p data-i18n="management.queue.nextBody">
+                        검색, 상태 필터, readiness 필터로 오늘 처리할 프로젝트를
+                        고릅니다.
+                      </p>
+                    </div>
+                    <span class="management-tag" data-i18n="management.ready"
+                      >준비</span
+                    >
+                  </article>
+                </div>
+
+                <table class="management-table">
+                  <thead>
+                    <tr>
+                      <th data-i18n="management.table.project">프로젝트</th>
+                      <th data-i18n="management.table.stage">단계</th>
+                      <th data-i18n="management.table.gate">게이트</th>
+                      <th data-i18n="management.table.next">다음 행동</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-i18n="management.table.row1Project">
+                        Launch Pulse
+                      </td>
+                      <td data-i18n="management.table.row1Stage">출시 준비</td>
+                      <td data-i18n="management.table.row1Gate">승인 대기</td>
+                      <td data-i18n="management.table.row1Next">
+                        승인 큐 확인
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-i18n="management.table.row2Project">
+                        Workflow Artifact Kit
+                      </td>
+                      <td data-i18n="management.table.row2Stage">QA-Z</td>
+                      <td data-i18n="management.table.row2Gate">증거 검토</td>
+                      <td data-i18n="management.table.row2Next">
+                        결과 리뷰 열기
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-i18n="management.table.row3Project">
+                        Operator Console Polish
+                      </td>
+                      <td data-i18n="management.table.row3Stage">구현 중</td>
+                      <td data-i18n="management.table.row3Gate">정상</td>
+                      <td data-i18n="management.table.row3Next">
+                        작업 패킷 계속
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <aside class="management-side">
+              <h3 data-i18n="management.createTitle">새 프로젝트 등록</h3>
+              <p data-i18n="management.createBody">
+                공개 Pages에서는 입력을 저장하지 않습니다. 실제 생성은 서버
+                프록시가 있는 비공개 콘솔에서만 실행됩니다.
+              </p>
+              <div class="mock-field" data-i18n="management.fieldName">
+                프로젝트 이름
+              </div>
+              <div class="mock-field" data-i18n="management.fieldProblem">
+                대상 사용자와 문제
+              </div>
+              <div class="mock-field" data-i18n="management.fieldHypothesis">
+                MVP 가설
+              </div>
+              <div class="mock-button" data-i18n="management.privateOnly">
+                비공개 콘솔에서 생성
+              </div>
+              <p data-i18n="management.boundary">
+                런타임 API, 승인 기록, 운영 데이터, 환경값은 이 공개 사이트에
+                포함되지 않습니다.
+              </p>
+            </aside>
+          </div>
+        </section>
+
         <section class="section-block" id="qa-z" aria-labelledby="qa-z-title">
           <div class="section-heading">
             <div>
@@ -970,9 +1378,7 @@
             </article>
             <article class="status-card">
               <strong data-i18n="status.privateAppBadge">비공개 앱</strong>
-              <h3 data-i18n="status.console.title">
-                프로젝트 관리 대시보드
-              </h3>
+              <h3 data-i18n="status.console.title">프로젝트 관리 대시보드</h3>
               <p data-i18n="status.console.body">
                 비공개 console-web의 /manage에서 제공
               </p>
@@ -1099,6 +1505,7 @@
             overview: "개요",
             operatingLogic: "운영 로직",
             modules: "기능 모듈",
+            managementPreview: "관리 화면",
             qaZ: "QA-Z",
             approvalGates: "승인 게이트",
             launchStatus: "출시 상태",
@@ -1164,7 +1571,7 @@
               "공개 사이트는 내부 구현을 노출하지 않고 운영 체계의 역할만 설명합니다.",
             dashboard: {
               title: "프로젝트 대시보드",
-              body: "실제 관리 화면은 비공개 console-web 앱의 /manage에서 제공되며, 공개 Pages에는 안내만 노출합니다.",
+              body: "실제 관리 화면은 비공개 console-web 앱의 /manage에서 제공되며, 공개 Pages에는 안전한 미리보기와 안내만 노출합니다.",
             },
             artifact: {
               title: "Workflow Artifact",
@@ -1194,6 +1601,67 @@
               title: "Audit Trail",
               body: "누가 무엇을 바꾸고 어떤 검증을 거쳤는지 추적할 수 있게 합니다.",
             },
+          },
+          management: {
+            kicker: "Public Preview",
+            title: "관리 대시보드 공개 미리보기",
+            intro:
+              "실제 데이터와 실행 버튼은 비공개 콘솔에만 있으며, 이 공개 화면은 운영자가 보게 될 핵심 판단 구조를 샘플로 보여줍니다.",
+            consoleTitle: "프로젝트 관리 대시보드",
+            consoleSubtitle:
+              "프로젝트, 승인, 출시 준비, 증거, 리뷰를 한 화면에서 봅니다.",
+            safeBadge: "공개 샘플",
+            pending: "대기",
+            review: "검토",
+            ready: "준비",
+            kpi: {
+              totalValue: "12",
+              totalLabel: "운영 프로젝트",
+              approvalValue: "4",
+              approvalLabel: "승인 대기",
+              blockedValue: "3",
+              blockedLabel: "출시 차단",
+              reviewValue: "7",
+              reviewLabel: "결과 리뷰",
+            },
+            queue: {
+              approvalTitle: "승인 없이는 출시 불가",
+              approvalBody:
+                "배포, 도메인, 소스 공개 같은 위험 작업은 자동 처리하지 않습니다.",
+              evidenceTitle: "출시 증거 누락 확인",
+              evidenceBody:
+                "공개 URL, QA-Z 결과, 실행 영수증, 리뷰 상태를 한 줄로 비교합니다.",
+              nextTitle: "다음 실행 후보 선택",
+              nextBody:
+                "검색, 상태 필터, readiness 필터로 오늘 처리할 프로젝트를 고릅니다.",
+            },
+            table: {
+              project: "프로젝트",
+              stage: "단계",
+              gate: "게이트",
+              next: "다음 행동",
+              row1Project: "Launch Pulse",
+              row1Stage: "출시 준비",
+              row1Gate: "승인 대기",
+              row1Next: "승인 큐 확인",
+              row2Project: "Workflow Artifact Kit",
+              row2Stage: "QA-Z",
+              row2Gate: "증거 검토",
+              row2Next: "결과 리뷰 열기",
+              row3Project: "Operator Console Polish",
+              row3Stage: "구현 중",
+              row3Gate: "정상",
+              row3Next: "작업 패킷 계속",
+            },
+            createTitle: "새 프로젝트 등록",
+            createBody:
+              "공개 Pages에서는 입력을 저장하지 않습니다. 실제 생성은 서버 프록시가 있는 비공개 콘솔에서만 실행됩니다.",
+            fieldName: "프로젝트 이름",
+            fieldProblem: "대상 사용자와 문제",
+            fieldHypothesis: "MVP 가설",
+            privateOnly: "비공개 콘솔에서 생성",
+            boundary:
+              "런타임 API, 승인 기록, 운영 데이터, 환경값은 이 공개 사이트에 포함되지 않습니다.",
           },
           qa: {
             kicker: "Quality Gate",
@@ -1331,6 +1799,7 @@
             overview: "Overview",
             operatingLogic: "Operating Logic",
             modules: "Modules",
+            managementPreview: "Management Preview",
             qaZ: "QA-Z",
             approvalGates: "Approval Gates",
             launchStatus: "Launch Status",
@@ -1396,7 +1865,7 @@
               "The public site explains module roles without exposing private implementation details.",
             dashboard: {
               title: "Project Dashboard",
-              body: "The real management screen lives at /manage in the private console-web app; this public Pages site only explains that boundary.",
+              body: "The real management screen lives at /manage in the private console-web app; this public Pages site shows only a safe preview and boundary copy.",
             },
             artifact: {
               title: "Workflow Artifact",
@@ -1426,6 +1895,67 @@
               title: "Audit Trail",
               body: "Tracks who changed what and which verification steps were run.",
             },
+          },
+          management: {
+            kicker: "Public Preview",
+            title: "Management Dashboard Preview",
+            intro:
+              "Real data and execution buttons stay inside the private console. This public page shows the decision structure operators will see.",
+            consoleTitle: "Project Management Dashboard",
+            consoleSubtitle:
+              "Projects, approvals, launch readiness, evidence, and reviews in one view.",
+            safeBadge: "public sample",
+            pending: "pending",
+            review: "review",
+            ready: "ready",
+            kpi: {
+              totalValue: "12",
+              totalLabel: "operating projects",
+              approvalValue: "4",
+              approvalLabel: "pending approvals",
+              blockedValue: "3",
+              blockedLabel: "launch blocked",
+              reviewValue: "7",
+              reviewLabel: "result reviews",
+            },
+            queue: {
+              approvalTitle: "Launch blocked without approval",
+              approvalBody:
+                "Deployment, domain, and public source work are not handled automatically.",
+              evidenceTitle: "Missing launch evidence check",
+              evidenceBody:
+                "Compare public URL proof, QA-Z status, execution receipts, and review state in one line.",
+              nextTitle: "Choose the next execution candidate",
+              nextBody:
+                "Use search, status filters, and readiness filters to pick what to handle today.",
+            },
+            table: {
+              project: "Project",
+              stage: "Stage",
+              gate: "Gate",
+              next: "Next action",
+              row1Project: "Launch Pulse",
+              row1Stage: "Launch readiness",
+              row1Gate: "Approval pending",
+              row1Next: "Open approval queue",
+              row2Project: "Workflow Artifact Kit",
+              row2Stage: "QA-Z",
+              row2Gate: "Evidence review",
+              row2Next: "Open result review",
+              row3Project: "Operator Console Polish",
+              row3Stage: "In progress",
+              row3Gate: "Clear",
+              row3Next: "Continue job packet",
+            },
+            createTitle: "Create New Project",
+            createBody:
+              "Public Pages does not save inputs. Real creation runs only inside the private console with the server proxy.",
+            fieldName: "Project name",
+            fieldProblem: "Target user and problem",
+            fieldHypothesis: "MVP hypothesis",
+            privateOnly: "Create in private console",
+            boundary:
+              "Runtime API, approval records, operating data, and environment values are not included on this public site.",
           },
           qa: {
             kicker: "Quality Gate",
