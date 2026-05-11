@@ -743,7 +743,8 @@
             <article class="module-card">
               <h3 data-i18n="modules.dashboard.title">프로젝트 대시보드</h3>
               <p data-i18n="modules.dashboard.body">
-                후보 프로젝트, 현재 단계, 실행 가능성을 한 화면에서 비교합니다.
+                실제 관리 화면은 비공개 console-web 앱의 /manage에서 제공되며,
+                공개 Pages에는 안내만 노출합니다.
               </p>
             </article>
             <article class="module-card">
@@ -968,6 +969,15 @@
               <p data-i18n="status.pages.body">출시됨</p>
             </article>
             <article class="status-card">
+              <strong data-i18n="status.privateAppBadge">비공개 앱</strong>
+              <h3 data-i18n="status.console.title">
+                프로젝트 관리 대시보드
+              </h3>
+              <p data-i18n="status.console.body">
+                비공개 console-web의 /manage에서 제공
+              </p>
+            </article>
+            <article class="status-card">
               <strong data-i18n="status.completeBadge">완료</strong>
               <h3 data-i18n="status.engineering.title">엔지니어링 준비 상태</h3>
               <p data-i18n="status.engineering.body">완료</p>
@@ -1017,8 +1027,8 @@
               </h3>
               <p data-i18n="faq.q1.body">
                 이 사이트는 제품 로직과 출시 상태를 설명하는 정적 공개
-                페이지입니다. 실제 운영 콘솔은 비공개 앱의 /manage에서 별도로
-                제공합니다.
+                페이지입니다. 실제 프로젝트 관리 대시보드는 공개 Pages가 아니라
+                비공개 console-web 앱의 /manage에서 별도로 제공합니다.
               </p>
             </article>
             <article class="faq-card">
@@ -1154,7 +1164,7 @@
               "공개 사이트는 내부 구현을 노출하지 않고 운영 체계의 역할만 설명합니다.",
             dashboard: {
               title: "프로젝트 대시보드",
-              body: "후보 프로젝트, 현재 단계, 실행 가능성을 한 화면에서 비교합니다.",
+              body: "실제 관리 화면은 비공개 console-web 앱의 /manage에서 제공되며, 공개 Pages에는 안내만 노출합니다.",
             },
             artifact: {
               title: "Workflow Artifact",
@@ -1237,6 +1247,7 @@
             intro:
               "현재 상태는 공개 정적 사이트 출시와 소스 공개 승인 대기를 분리해서 보여줍니다.",
             launchedBadge: "출시됨",
+            privateAppBadge: "비공개 앱",
             completeBadge: "완료",
             mergeBadge: "merge_ok",
             notHostedBadge: "미배포",
@@ -1245,6 +1256,10 @@
             pages: {
               title: "공개 GitHub Pages 사이트",
               body: "출시됨",
+            },
+            console: {
+              title: "프로젝트 관리 대시보드",
+              body: "비공개 console-web의 /manage에서 제공",
             },
             engineering: {
               title: "엔지니어링 준비 상태",
@@ -1274,7 +1289,7 @@
               "공개 사이트가 무엇을 제공하고 무엇을 의도적으로 제공하지 않는지 명확히 정리합니다.",
             q1: {
               title: "이 사이트에서 실제 앱을 사용할 수 있나요?",
-              body: "이 사이트는 제품 로직과 출시 상태를 설명하는 정적 공개 페이지입니다. 실제 운영 콘솔은 비공개 앱의 /manage에서 별도로 제공합니다.",
+              body: "이 사이트는 제품 로직과 출시 상태를 설명하는 정적 공개 페이지입니다. 실제 프로젝트 관리 대시보드는 공개 Pages가 아니라 비공개 console-web 앱의 /manage에서 별도로 제공합니다.",
             },
             q2: {
               title: "GitHub Pages에 백엔드도 올라가 있나요?",
@@ -1381,7 +1396,7 @@
               "The public site explains module roles without exposing private implementation details.",
             dashboard: {
               title: "Project Dashboard",
-              body: "Compares candidate projects, current stage, and execution readiness in one view.",
+              body: "The real management screen lives at /manage in the private console-web app; this public Pages site only explains that boundary.",
             },
             artifact: {
               title: "Workflow Artifact",
@@ -1465,6 +1480,7 @@
             intro:
               "The current state separates the launched public static site from the still-pending public source release.",
             launchedBadge: "launched",
+            privateAppBadge: "private app",
             completeBadge: "complete",
             mergeBadge: "merge_ok",
             notHostedBadge: "not hosted",
@@ -1473,6 +1489,10 @@
             pages: {
               title: "Public GitHub Pages site",
               body: "launched",
+            },
+            console: {
+              title: "Project Management Dashboard",
+              body: "available at /manage in the private console-web app",
             },
             engineering: {
               title: "Engineering readiness",
@@ -1502,7 +1522,7 @@
               "These notes clarify what the public site provides and what it intentionally does not provide.",
             q1: {
               title: "Can I use the actual app from this site?",
-              body: "This is a static public landing page only. The private operator console now lives separately at /manage in the private app.",
+              body: "This is a static public landing page only. The real project management dashboard lives separately at /manage in the private console-web app, not on public Pages.",
             },
             q2: {
               title: "Is the backend hosted on GitHub Pages?",
