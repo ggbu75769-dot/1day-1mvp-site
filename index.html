@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>1Day-1MVP - 오늘 만들 MVP, 오늘 끝낼 수 있게</title>
+    <title>1Day-1MVP - 오늘의 아이디어를 오늘 검증까지</title>
     <meta
       name="description"
-      content="1Day-1MVP는 아이디어 하나를 오늘의 범위, Codex 작업 패킷, QA-Z 검증, 승인 게이트, 출시 증거, 결과 리뷰까지 닫는 하루 MVP 실행 콘솔입니다."
+      content="1Day-1MVP는 아이디어를 하루 안에 실험 가능한 범위로 줄이고, Codex 작업 요청서와 QA-Z 확인, 승인 절차, 결과 기록까지 이어 주는 MVP 실행 콘솔입니다."
     />
     <style>
       :root {
@@ -857,23 +857,25 @@
     <main class="content" id="main">
       <section class="hero" id="overview" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="hero.eyebrow">하루 MVP 실행 콘솔</p>
+          <p class="eyebrow" data-i18n="hero.eyebrow">
+            하루 단위 MVP 운영 도구
+          </p>
           <h1 id="hero-title" data-i18n="hero.headline">
-            오늘 만들 MVP, 오늘 끝낼 수 있게
+            오늘의 아이디어를 오늘 검증까지
           </h1>
           <p class="hero-subtitle" data-i18n="hero.subcopy">
-            아이디어 하나를 오늘의 범위로 좁히고, Codex 작업부터 QA-Z·승인·출시
-            증거까지 한 흐름으로 닫습니다.
+            아이디어를 하루 안에 해볼 수 있는 범위로 줄이고, Codex 작업
+            요청서부터 QA-Z 확인, 승인, 결과 기록까지 한곳에서 이어 갑니다.
           </p>
           <div class="audience-row" aria-label="대상 사용자">
             <span class="audience-chip" data-i18n="audience.founders"
-              >솔로 창업자</span
+              >1인 창업자</span
             >
             <span class="audience-chip" data-i18n="audience.builders"
-              >인디 빌더</span
+              >인디 메이커</span
             >
             <span class="audience-chip" data-i18n="audience.teams"
-              >작은 제품팀</span
+              >소규모 제품팀</span
             >
             <span class="audience-chip" data-i18n="audience.operators"
               >AI 에이전트 운영자</span
@@ -885,21 +887,21 @@
             data-i18n-aria-label="ctaLabel"
           >
             <a class="button" href="#workflow" data-i18n="cta.workflow"
-              >실행 흐름 보기</a
+              >진행 흐름 보기</a
             >
             <a class="button secondary" href="#preview" data-i18n="cta.preview"
-              >콘솔 미리보기</a
+              >콘솔 화면 보기</a
             >
             <a
               class="button secondary"
               href="#readiness"
               data-i18n="cta.readiness"
-              >파일럿 준비 상태</a
+              >현재 공개 상태 보기</a
             >
           </div>
           <p class="hero-note" data-i18n="hero.note">
-            파일럿 문의는 아직 열지 않았습니다. 공개 데모가 준비되면 이 페이지에
-            다음 행동을 안내합니다.
+            파일럿 신청은 아직 받지 않습니다. 공개 데모가 준비되면 이 페이지에서
+            먼저 안내하겠습니다.
           </p>
           <div
             class="badge-row"
@@ -910,7 +912,7 @@
               ><strong>공개 중</strong> GitHub Pages</span
             >
             <span class="pill" data-i18n="hero.pillQa"
-              ><strong>확인 완료</strong> QA-Z</span
+              ><strong>확인 완료</strong> 공개 파일</span
             >
             <span class="pill" data-i18n="hero.pillRuntime"
               ><strong>비공개</strong> Runtime API</span
@@ -930,34 +932,36 @@
             <div>
               <h2 data-i18n="mock.title">Launch Control</h2>
               <p data-i18n="mock.subtitle">
-                오늘의 MVP 실행을 한 화면에서 확인합니다.
+                오늘의 MVP 진행 상황을 한 화면에서 봅니다.
               </p>
             </div>
             <span class="console-badge" data-i18n="mock.badge"
-              >정적 안전 미리보기</span
+              >안전한 예시 화면</span
             >
           </div>
           <div class="console-body">
             <div class="run-card">
               <h3 data-i18n="mock.mvpTitle">오늘의 MVP: 인터뷰 예약 랜딩</h3>
               <p data-i18n="mock.mvpBody">
-                목표는 한 가지입니다. 방문자가 문제 인터뷰 시간을 남길 만큼
-                제안이 선명한지 검증합니다.
+                오늘 확인할 목표는 하나입니다. 방문자가 인터뷰 시간을 남길 만큼
+                제안이 분명한지 확인합니다.
               </p>
               <div class="timeline">
                 <div class="stage done">
                   <strong data-i18n="mock.stage1">범위 잠금</strong>
                   <span data-i18n="mock.stage1Body"
-                    >하루 안에 검증할 한 조각</span
+                    >오늘 확인할 만큼 작게 자르기</span
                   >
                 </div>
                 <div class="stage done">
-                  <strong data-i18n="mock.stage2">패킷 준비</strong>
-                  <span data-i18n="mock.stage2Body">Codex 작업 요청 준비</span>
+                  <strong data-i18n="mock.stage2">요청서 준비</strong>
+                  <span data-i18n="mock.stage2Body"
+                    >Codex가 바로 실행할 작업 정리</span
+                  >
                 </div>
                 <div class="stage done">
                   <strong data-i18n="mock.stage3">QA-Z 통과</strong>
-                  <span data-i18n="mock.stage3Body">공개 파일 경계 확인</span>
+                  <span data-i18n="mock.stage3Body">공개 파일 안전 점검</span>
                 </div>
                 <div class="stage waiting">
                   <strong data-i18n="mock.stage4">승인 대기</strong>
@@ -965,13 +969,15 @@
                 </div>
                 <div class="stage review">
                   <strong data-i18n="mock.stage5">결정 메모</strong>
-                  <span data-i18n="mock.stage5Body">다음 실험 판단 대기</span>
+                  <span data-i18n="mock.stage5Body"
+                    >다음 실험을 계속할지 판단</span
+                  >
                 </div>
               </div>
             </div>
             <div class="split-panel">
               <div class="mini-panel">
-                <h3 data-i18n="mock.queueTitle">승인 대기열</h3>
+                <h3 data-i18n="mock.queueTitle">승인 필요 항목</h3>
                 <ul class="list">
                   <li>
                     <span class="dot amber"></span>
@@ -988,10 +994,10 @@
                 </ul>
               </div>
               <div class="mini-panel">
-                <h3 data-i18n="mock.evidenceTitle">출시 증거</h3>
+                <h3 data-i18n="mock.evidenceTitle">결과 기록</h3>
                 <p data-i18n="mock.evidenceBody">
-                  공개 URL, 확인 결과, 남은 결정을 함께 묶어 내일의 출발점으로
-                  남깁니다.
+                  공개 URL, 확인 결과, 남은 결정을 함께 남겨 내일 바로 이어서
+                  판단할 수 있게 합니다.
                 </p>
               </div>
             </div>
@@ -1004,13 +1010,12 @@
           <div>
             <p class="section-kicker" data-i18n="proof.kicker">공개 상태</p>
             <h2 id="proof-title" data-i18n="proof.title">
-              고객 로고 대신, 지금 공개할 수 있는 상태를 정확히 보여줍니다.
+              아직 과장된 고객 로고보다, 현재 공개 범위를 정확히 보여줍니다.
             </h2>
           </div>
           <p data-i18n="proof.intro">
-            아직 고객 로고를 만들 단계가 아니므로 신뢰 장치는 과장 대신 공개
-            범위, 비공개 실행 경계, 검증 상태를 선명하게 보여주는 방식으로
-            둡니다.
+            지금은 신뢰를 숫자로 꾸밀 단계가 아닙니다. 공개된 것, 비공개로 둔
+            것, 확인이 끝난 것을 분명하게 보여주는 편이 더 중요합니다.
           </p>
         </div>
         <div class="status-strip">
@@ -1021,21 +1026,21 @@
             >
           </div>
           <div class="proof-item">
-            <strong data-i18n="proof.item2Title">QA-Z 확인 완료</strong>
+            <strong data-i18n="proof.item2Title">QA-Z 확인</strong>
             <span data-i18n="proof.item2Body"
-              >공개 파일은 안전 경계를 기준으로 확인합니다.</span
+              >공개 파일에 민감한 값이 섞이지 않았는지 확인합니다.</span
             >
           </div>
           <div class="proof-item">
-            <strong data-i18n="proof.item3Title">비공개 Runtime</strong>
+            <strong data-i18n="proof.item3Title">Runtime API 비공개</strong>
             <span data-i18n="proof.item3Body"
-              >실제 API와 관리 콘솔은 비공개 환경에서 검증합니다.</span
+              >실제 API와 관리 콘솔은 통제된 환경에서만 검증합니다.</span
             >
           </div>
           <div class="proof-item">
-            <strong data-i18n="proof.item4Title">승인 게이트</strong>
+            <strong data-i18n="proof.item4Title">승인 후 진행</strong>
             <span data-i18n="proof.item4Body"
-              >소스 공개와 라이선스 선택은 승인 이후에만 진행합니다.</span
+              >소스 공개와 라이선스 선택은 승인 기록이 남은 뒤 진행합니다.</span
             >
           </div>
         </div>
@@ -1050,34 +1055,35 @@
           <div>
             <p class="section-kicker" data-i18n="problem.kicker">문제</p>
             <h2 id="problem-title" data-i18n="problem.title">
-              AI는 빨라졌지만, 무엇을 끝낼지는 여전히 흐려집니다.
+              AI가 빨라질수록, 무엇을 끝낼지 더 또렷해야 합니다.
             </h2>
           </div>
           <p data-i18n="problem.intro">
-            하루 MVP가 막히는 지점은 코드 생산량이 아닙니다. 범위, 완료 기준,
-            승인, 출시 증거, 다음 판단이 흩어지는 순간입니다.
+            하루 MVP가 멈추는 이유는 코드를 못 써서가 아닙니다. 오늘 할 범위,
+            완료 기준, 승인, 확인 기록, 다음 결정이 흩어질 때 속도가 떨어집니다.
           </p>
         </div>
         <div class="problem-grid">
           <article class="problem-card">
-            <h3 data-i18n="problem.card1.title">범위가 하루보다 커집니다</h3>
+            <h3 data-i18n="problem.card1.title">범위가 금세 커집니다</h3>
             <p data-i18n="problem.card1.body">
-              좋은 아이디어도 오늘 검증할 단위로 줄이지 못하면 실행이
-              늘어집니다.
+              좋은 아이디어도 오늘 확인할 만큼 작게 자르지 못하면 계속 밀립니다.
             </p>
           </article>
           <article class="problem-card">
-            <h3 data-i18n="problem.card2.title">완료 기준이 느슨합니다</h3>
+            <h3 data-i18n="problem.card2.title">끝났다는 기준이 모호합니다</h3>
             <p data-i18n="problem.card2.body">
-              작업 패킷, 검증, 출시 증거가 분리되면 매번 무엇이 끝났는지 다시
-              확인해야 합니다.
+              작업 요청서, QA, 결과 기록이 따로 놀면 매번 상태를 다시 확인해야
+              합니다.
             </p>
           </article>
           <article class="problem-card">
-            <h3 data-i18n="problem.card3.title">속도와 위험이 섞입니다</h3>
+            <h3 data-i18n="problem.card3.title">
+              빠른 실행과 위험한 결정이 섞입니다
+            </h3>
             <p data-i18n="problem.card3.body">
-              결제, 개인정보, 배포, 외부 API, 도메인 결정은 자동으로 밀어붙일
-              일이 아닙니다.
+              결제, 개인정보, 배포, 외부 API, 도메인 결정은 자동으로 넘길 수
+              없는 일입니다.
             </p>
           </article>
         </div>
@@ -1094,12 +1100,13 @@
               제품 미리보기
             </p>
             <h2 id="preview-title" data-i18n="preview.title">
-              Launch Control은 하루 실행을 실제 제품 화면처럼 다룹니다.
+              Launch Control에서 하루 실행을 한눈에 봅니다.
             </h2>
           </div>
           <p data-i18n="preview.intro">
-            실제 데이터는 공개하지 않고, 안전한 예시 화면과 정적 이미지를 함께
-            보여줘 방문자가 제품 사용 장면을 즉시 상상할 수 있게 합니다.
+            실제 프로젝트 데이터는 공개하지 않고, 안전한 예시 화면과 정적
+            이미지만 보여줍니다. 방문자는 어떤 장면에서 제품을 쓰는지 바로
+            이해할 수 있습니다.
           </p>
         </div>
         <div class="preview-layout">
@@ -1112,8 +1119,8 @@
               height="900"
             />
             <figcaption class="image-caption" data-i18n="preview.caption">
-              아이디어, 범위, 작업 패킷, QA, 승인, 증거, 리뷰가 하루 실행의 같은
-              선 위에 놓입니다.
+              아이디어, 범위, 작업 요청서, QA, 승인, 결과 기록, 리뷰가 하나의
+              진행 흐름에 놓입니다.
             </figcaption>
           </figure>
           <div class="metric-grid">
@@ -1121,30 +1128,30 @@
               <span data-i18n="preview.metric1.label">오늘의 MVP</span>
               <strong data-i18n="preview.metric1.title">한 문장 실험</strong>
               <p data-i18n="preview.metric1.body">
-                오늘의 질문과 성공 기준을 먼저 고정합니다.
+                오늘 답해야 할 질문과 성공 기준을 먼저 정합니다.
               </p>
             </article>
             <article class="metric-card">
-              <span data-i18n="preview.metric2.label">Codex 패킷</span>
+              <span data-i18n="preview.metric2.label">Codex 요청서</span>
               <strong data-i18n="preview.metric2.title"
-                >실행 가능한 요청</strong
+                >바로 실행할 수 있는 요청</strong
               >
               <p data-i18n="preview.metric2.body">
-                파일, 제약, 확인 명령을 하나의 작업 단위로 묶습니다.
+                파일, 제약, 확인 명령을 하나의 작업 요청으로 묶습니다.
               </p>
             </article>
             <article class="metric-card">
-              <span data-i18n="preview.metric3.label">QA-Z 게이트</span>
-              <strong data-i18n="preview.metric3.title">출시 전 멈춤</strong>
+              <span data-i18n="preview.metric3.label">QA-Z 확인</span>
+              <strong data-i18n="preview.metric3.title">출시 전 점검</strong>
               <p data-i18n="preview.metric3.body">
-                문서, 테스트, 공개 파일 경계를 짧고 단단하게 확인합니다.
+                문서, 테스트, 공개 파일 안전 범위를 짧게 확인합니다.
               </p>
             </article>
             <article class="metric-card">
               <span data-i18n="preview.metric4.label">결과 리뷰</span>
               <strong data-i18n="preview.metric4.title">다음 판단</strong>
               <p data-i18n="preview.metric4.body">
-                계속할지, 멈출지, 다음 실험으로 바꿀지를 기록합니다.
+                계속할지, 멈출지, 다음 실험으로 바꿀지 기록합니다.
               </p>
             </article>
           </div>
@@ -1160,13 +1167,12 @@
           <div>
             <p class="section-kicker" data-i18n="decision.kicker">결정 경로</p>
             <h2 id="decision-title" data-i18n="decision.title">
-              방문자는 “무엇을 해볼 수 있나”를 바로 이해해야 합니다.
+              방문자는 다음에 무엇을 보면 되는지 바로 알아야 합니다.
             </h2>
           </div>
           <p data-i18n="decision.intro">
-            만점 패스에서는 CTA를 단순 앵커가 아니라 제품 여정으로 다룹니다.
-            먼저 흐름을 보고, 콘솔 장면을 확인하고, 지금 가능한 공개 상태를
-            확인합니다.
+            CTA는 단순한 이동 링크가 아니라 제품을 이해하는 순서입니다. 진행
+            흐름을 보고, 콘솔 화면을 보고, 지금 공개된 범위를 확인합니다.
           </p>
         </div>
         <div class="decision-panel">
@@ -1175,28 +1181,28 @@
               <span>1</span>
               <strong data-i18n="decision.step1.title">문제 확인</strong>
               <p data-i18n="decision.step1.body">
-                AI 산출물이 아니라 실행 완료 기준이 병목임을 설명합니다.
+                AI 산출물보다 완료 기준이 더 큰 병목임을 보여줍니다.
               </p>
             </div>
             <div class="decision-step">
               <span>2</span>
-              <strong data-i18n="decision.step2.title">콘솔 상상</strong>
+              <strong data-i18n="decision.step2.title">콘솔 화면</strong>
               <p data-i18n="decision.step2.body">
-                Launch Control 화면에서 실제 사용 장면을 보여줍니다.
+                Launch Control에서 실제 사용 장면을 떠올릴 수 있게 합니다.
               </p>
             </div>
             <div class="decision-step">
               <span>3</span>
               <strong data-i18n="decision.step3.title">안전 경계</strong>
               <p data-i18n="decision.step3.body">
-                공개 사이트와 비공개 실행 콘솔의 경계를 분리합니다.
+                공개 소개 사이트와 비공개 실행 콘솔의 범위를 분리합니다.
               </p>
             </div>
             <div class="decision-step">
               <span>4</span>
               <strong data-i18n="decision.step4.title">다음 행동</strong>
               <p data-i18n="decision.step4.body">
-                파일럿이 열리면 이 페이지에서 다음 공개 단계를 안내합니다.
+                파일럿이 열리면 이 페이지에서 다음 단계를 안내합니다.
               </p>
             </div>
           </div>
@@ -1212,12 +1218,12 @@
           <div>
             <p class="section-kicker" data-i18n="workflow.kicker">작동 방식</p>
             <h2 id="workflow-title" data-i18n="workflow.title">
-              아이디어에서 증거까지 여섯 단계로 닫습니다.
+              아이디어에서 결과 기록까지 여섯 단계로 이어집니다.
             </h2>
           </div>
           <p data-i18n="workflow.intro">
-            1Day-1MVP는 빌더 하나가 아니라 하루 실험을 끝까지 운영하는
-            흐름입니다.
+            1Day-1MVP는 하루 실험을 끝까지 밀고 갈 수 있도록 범위, 작업, 확인,
+            결정을 한 흐름으로 묶습니다.
           </p>
         </div>
         <div class="decision-rail">
@@ -1225,7 +1231,7 @@
             <span>1</span>
             <strong data-i18n="workflow.step1.title">실험 선택</strong>
             <p data-i18n="workflow.step1.body">
-              오늘 검증할 아이디어와 대상을 하나로 좁힙니다.
+              오늘 확인할 아이디어와 대상을 하나로 좁힙니다.
             </p>
           </div>
           <div class="decision-step">
@@ -1237,16 +1243,16 @@
           </div>
           <div class="decision-step">
             <span>3</span>
-            <strong data-i18n="workflow.step3.title">작업 패킷</strong>
+            <strong data-i18n="workflow.step3.title">작업 요청서</strong>
             <p data-i18n="workflow.step3.body">
-              Codex가 바로 실행할 파일, 제약, 검증 명령을 묶습니다.
+              Codex가 바로 실행할 파일, 제약, 확인 명령을 묶습니다.
             </p>
           </div>
           <div class="decision-step">
             <span>4</span>
-            <strong data-i18n="workflow.step4.title">QA-Z 검증</strong>
+            <strong data-i18n="workflow.step4.title">QA-Z 확인</strong>
             <p data-i18n="workflow.step4.body">
-              코드, 문서, 테스트, 공개 파일 경계를 확인합니다.
+              코드, 문서, 테스트, 공개 파일 안전 범위를 확인합니다.
             </p>
           </div>
           <div class="decision-step">
@@ -1258,9 +1264,9 @@
           </div>
           <div class="decision-step">
             <span>6</span>
-            <strong data-i18n="workflow.step6.title">증거와 리뷰</strong>
+            <strong data-i18n="workflow.step6.title">결과 기록과 리뷰</strong>
             <p data-i18n="workflow.step6.body">
-              URL, 결과, 남은 결정, 다음 행동을 함께 남깁니다.
+              URL, 확인 결과, 남은 결정, 다음 행동을 함께 남깁니다.
             </p>
           </div>
         </div>
@@ -1277,12 +1283,12 @@
               비공개 콘솔 모듈
             </p>
             <h2 id="modules-title" data-i18n="modules.title">
-              비공개 콘솔은 하루 MVP 운영판입니다.
+              비공개 콘솔에서 하루 MVP를 운영합니다.
             </h2>
           </div>
           <p data-i18n="modules.intro">
-            공개 페이지는 미리보기만 제공합니다. 실제 프로젝트 관리와 실행
-            기록은 통제된 콘솔 환경에서 다룹니다.
+            공개 페이지는 제품을 소개하는 미리보기만 제공합니다. 실제 프로젝트
+            관리와 실행 기록은 통제된 콘솔에서 다룹니다.
           </p>
         </div>
         <div class="module-grid">
@@ -1301,37 +1307,38 @@
               >할 일과 하지 않을 일</strong
             >
             <p data-i18n="modules.scopeNote.body">
-              오늘 출시 범위, 보류 범위, 성공 기준을 고정합니다.
+              오늘 만들 범위, 미룰 범위, 성공 기준을 고정합니다.
             </p>
           </article>
           <article class="module-card">
-            <h3 data-i18n="modules.packet.title">Codex 패킷</h3>
+            <h3 data-i18n="modules.packet.title">Codex 작업 요청서</h3>
             <strong data-i18n="modules.packet.signal">실행 요청</strong>
             <p data-i18n="modules.packet.body">
-              목표, 파일, 제약, 확인 명령을 하나의 작업 요청으로 만듭니다.
+              목표, 파일, 제약, 확인 명령을 하나의 요청서로 만듭니다.
             </p>
           </article>
           <article class="module-card">
-            <h3 data-i18n="modules.approval.title">승인 대기열</h3>
+            <h3 data-i18n="modules.approval.title">승인 필요 항목</h3>
             <strong data-i18n="modules.approval.signal"
-              >위험한 결정 보류</strong
+              >위험한 결정은 보류</strong
             >
             <p data-i18n="modules.approval.body">
-              결제, 개인정보, 배포, 외부 API, 도메인 관련 결정을 대기시킵니다.
+              결제, 개인정보, 배포, 외부 API, 도메인 관련 결정은 승인 전까지
+              멈춥니다.
             </p>
           </article>
           <article class="module-card">
             <h3 data-i18n="modules.readiness.title">출시 준비도</h3>
             <strong data-i18n="modules.readiness.signal">출시 전 점검</strong>
             <p data-i18n="modules.readiness.body">
-              부족한 증거, 승인, 차단 항목을 출시 전에 확인합니다.
+              부족한 확인 기록, 승인, 차단 항목을 출시 전에 봅니다.
             </p>
           </article>
           <article class="module-card">
             <h3 data-i18n="modules.review.title">결과 리뷰</h3>
             <strong data-i18n="modules.review.signal">다음 실험 결정</strong>
             <p data-i18n="modules.review.body">
-              오늘의 결과를 계속, 중단, 반복 중 하나의 판단으로 남깁니다.
+              오늘 결과를 계속, 중단, 반복 중 하나로 정리합니다.
             </p>
           </article>
         </div>
@@ -1340,14 +1347,14 @@
       <section class="section-block" id="qa-z" aria-labelledby="qa-title">
         <div class="section-heading">
           <div>
-            <p class="section-kicker" data-i18n="qa.kicker">QA-Z 품질 게이트</p>
+            <p class="section-kicker" data-i18n="qa.kicker">QA-Z 품질 확인</p>
             <h2 id="qa-title" data-i18n="qa.title">
-              빠르게 만들수록 검증은 더 짧고 분명해야 합니다.
+              빠르게 만들수록 확인은 더 짧고 분명해야 합니다.
             </h2>
           </div>
           <p data-i18n="qa.intro">
-            QA-Z는 변경이 다음 단계로 넘어가도 되는지 확인하는 품질 게이트로
-            설명합니다. 내부 판정 산출물은 이 공개 사이트에 게시하지 않습니다.
+            QA-Z는 변경 사항이 다음 단계로 넘어가도 되는지 확인하는 품질
+            점검입니다. 내부 판정 파일은 공개 사이트에 올리지 않습니다.
           </p>
         </div>
         <div class="qa-layout">
@@ -1355,8 +1362,8 @@
             <h3 data-i18n="qa.card.title">무엇을 확인하나요?</h3>
             <p data-i18n="qa.card.body">
               테스트 누락, 문서와 코드의 어긋남, 공개되면 안 되는 값, 출시 파일
-              경계, 승인 항목을 함께 봅니다. 차단 항목이 있으면 고친 뒤 다시
-              확인합니다.
+              범위, 승인 필요 항목을 함께 봅니다. 차단 항목이 있으면 고친 뒤
+              다시 확인합니다.
             </p>
           </div>
           <div class="decision-panel">
@@ -1388,25 +1395,25 @@
         <div class="section-heading">
           <div>
             <p class="section-kicker" data-i18n="safety.kicker">
-              설계된 안전 경계
+              안전하게 나눈 공개 범위
             </p>
             <h2 id="safety-title" data-i18n="safety.title">
-              공개 사이트는 소개만, 실행 권한은 비공개로 둡니다.
+              공개 사이트는 소개만, 실제 실행은 비공개로 둡니다.
             </h2>
           </div>
           <p data-i18n="safety.intro">
-            GitHub Pages에는 정적 소개 파일만 배포합니다. 실제 실행, 승인 처리,
+            GitHub Pages에는 정적 소개 파일만 올립니다. 실제 실행, 승인 처리,
             API 호출, 운영 기록은 공개 사이트에 두지 않습니다.
           </p>
         </div>
         <div class="safety-layout">
           <div class="decision-panel">
             <h3 data-i18n="safety.card.title">
-              자동화가 혼자 결정하지 않는 것
+              자동화가 혼자 넘기지 않는 결정
             </h3>
             <p data-i18n="safety.card.body">
               결제, 개인정보, 실제 배포, 유료 외부 API, 도메인과 DNS, 저장소
-              공개, 라이선스 선택, 취약점 신고 채널은 승인 전까지 멈춥니다.
+              공개, 라이선스 선택, 취약점 신고 채널은 승인 전까지 멈춰 둡니다.
             </p>
           </div>
           <div class="decision-panel">
@@ -1424,7 +1431,7 @@
               <li>
                 <span class="dot violet"></span
                 ><span data-i18n="safety.item3"
-                  >관리 콘솔은 비공개 환경에서 검증</span
+                  >관리 콘솔은 비공개 환경에서 확인</span
                 >
               </li>
               <li>
@@ -1449,31 +1456,31 @@
               파일럿 준비 상태
             </p>
             <h2 id="readiness-title" data-i18n="readiness.title">
-              지금 공개된 것과 아직 닫아 둔 것을 한 번에 확인합니다.
+              지금 열려 있는 것과 아직 닫아 둔 것을 한눈에 봅니다.
             </h2>
           </div>
           <p data-i18n="readiness.intro">
-            CTA는 과장된 가입 버튼이 아니라 현재 가능한 다음 행동을 안내합니다.
-            파일럿이 열리면 이 영역이 가장 먼저 바뀝니다.
+            가입 버튼을 억지로 만들지 않습니다. 지금 할 수 있는 일과 아직
+            기다려야 하는 일을 분명히 안내합니다.
           </p>
         </div>
         <div class="readiness-grid">
           <article class="readiness-card">
-            <strong data-i18n="readiness.card1.title">공개 랜딩</strong>
+            <strong data-i18n="readiness.card1.title">공개 소개 페이지</strong>
             <p data-i18n="readiness.card1.body">
-              이 페이지는 공개 정적 사이트로 열려 있습니다.
+              이 페이지는 정적 공개 사이트로 열려 있습니다.
             </p>
           </article>
           <article class="readiness-card">
             <strong data-i18n="readiness.card2.title">비공개 콘솔</strong>
             <p data-i18n="readiness.card2.body">
-              실제 관리 화면은 통제된 환경에서 검증됩니다.
+              실제 관리 화면은 통제된 환경에서만 확인합니다.
             </p>
           </article>
           <article class="readiness-card">
             <strong data-i18n="readiness.card3.title">소스 공개</strong>
             <p data-i18n="readiness.card3.body">
-              저장소 공개와 라이선스 결정은 승인 기록이 끝난 뒤 진행합니다.
+              저장소 공개와 라이선스 결정은 승인 기록이 남은 뒤 진행합니다.
             </p>
           </article>
         </div>
@@ -1488,15 +1495,15 @@
             </h2>
           </div>
           <p data-i18n="faq.intro">
-            실제 서비스처럼 보이되, 현재 공개 경계는 과장하지 않습니다.
+            서비스 소개는 선명하게, 공개 범위는 정확하게 보여줍니다.
           </p>
         </div>
         <div class="faq-grid">
           <article class="faq-card">
             <h3 data-i18n="faq.q1.title">지금 바로 가입할 수 있나요?</h3>
             <p data-i18n="faq.q1.body">
-              아직 아닙니다. 파일럿이나 공개 데모가 준비되면 이 페이지에 다음
-              행동을 안내합니다.
+              아직은 받을 수 없습니다. 파일럿이나 공개 데모가 준비되면 이
+              페이지에서 다음 단계를 안내하겠습니다.
             </p>
           </article>
           <article class="faq-card">
@@ -1509,15 +1516,15 @@
           <article class="faq-card">
             <h3 data-i18n="faq.q3.title">누구에게 맞나요?</h3>
             <p data-i18n="faq.q3.body">
-              솔로 창업자, 인디 빌더, 작은 제품팀처럼 AI와 함께 작은 실험을
-              증거까지 닫고 싶은 팀에 맞습니다.
+              1인 창업자, 인디 메이커, 소규모 제품팀처럼 AI와 함께 작은 실험을
+              만들고 결과까지 남기고 싶은 팀에 맞습니다.
             </p>
           </article>
           <article class="faq-card">
             <h3 data-i18n="faq.q4.title">모든 MVP가 하루 안에 출시되나요?</h3>
             <p data-i18n="faq.q4.body">
-              아닙니다. 목표는 하루 안에 검증 가능한 작은 범위로 줄이고, 만들고,
-              확인하고, 다음 결정을 남기는 것입니다.
+              아닙니다. 목표는 하루 안에 확인 가능한 작은 범위로 줄이고, 만들고,
+              결과를 보고, 다음 결정을 남기는 것입니다.
             </p>
           </article>
         </div>
@@ -1529,15 +1536,15 @@
             비공개 미리보기
           </p>
           <h2 id="final-cta-title" data-i18n="finalCta.title">
-            다음 공개 단계가 열리면 이 페이지에서 안내합니다.
+            다음 공개 단계가 열리면 이 페이지에서 먼저 안내합니다.
           </h2>
           <p data-i18n="finalCta.body">
             이 페이지는 공개 소개 사이트입니다. 실제 관리 콘솔은 비공개 파일럿
-            환경에서 검증됩니다.
+            환경에서만 확인합니다.
           </p>
         </div>
         <a class="button" href="#readiness" data-i18n="finalCta.button"
-          >파일럿 준비 상태 보기</a
+          >현재 공개 상태 보기</a
         >
       </section>
     </main>
@@ -1545,7 +1552,7 @@
     <footer>
       <div class="footer-inner">
         <span data-i18n="footer.copy">
-          1Day-1MVP 공개 사이트는 정적 소개 페이지이며, 실행 콘솔과 Runtime
+          1Day-1MVP 공개 사이트는 정적 소개 페이지입니다. 실행 콘솔과 Runtime
           API는 비공개 환경에 둡니다.
         </span>
         <a href="#overview" data-i18n="footer.backTop">맨 위로</a>
@@ -1556,9 +1563,9 @@
       const translations = {
         ko: {
           meta: {
-            title: "1Day-1MVP - 오늘 만들 MVP, 오늘 끝낼 수 있게",
+            title: "1Day-1MVP - 오늘의 아이디어를 오늘 검증까지",
             description:
-              "1Day-1MVP는 아이디어 하나를 오늘의 범위, Codex 작업 패킷, QA-Z 검증, 승인 게이트, 출시 증거, 결과 리뷰까지 닫는 하루 MVP 실행 콘솔입니다.",
+              "1Day-1MVP는 아이디어를 하루 안에 실험 가능한 범위로 줄이고, Codex 작업 요청서와 QA-Z 확인, 승인 절차, 결과 기록까지 이어 주는 MVP 실행 콘솔입니다.",
           },
           skipLink: "본문으로 이동",
           navLabel: "주요 탐색",
@@ -1580,171 +1587,172 @@
             faq: "FAQ",
           },
           audience: {
-            founders: "솔로 창업자",
-            builders: "인디 빌더",
-            teams: "작은 제품팀",
+            founders: "1인 창업자",
+            builders: "인디 메이커",
+            teams: "소규모 제품팀",
             operators: "AI 에이전트 운영자",
           },
           hero: {
-            eyebrow: "하루 MVP 실행 콘솔",
-            headline: "오늘 만들 MVP,\n오늘 끝낼 수 있게",
+            eyebrow: "하루 단위 MVP 운영 도구",
+            headline: "오늘의 아이디어를\n오늘 검증까지",
             subcopy:
-              "아이디어 하나를 오늘의 범위로 좁히고, Codex 작업부터 QA-Z·승인·출시 증거까지 한 흐름으로 닫습니다.",
-            note: "파일럿 문의는 아직 열지 않았습니다. 공개 데모가 준비되면 이 페이지에 다음 행동을 안내합니다.",
+              "아이디어를 하루 안에 해볼 수 있는 범위로 줄이고, Codex 작업 요청서부터 QA-Z 확인, 승인, 결과 기록까지 한곳에서 이어 갑니다.",
+            note: "파일럿 신청은 아직 받지 않습니다. 공개 데모가 준비되면 이 페이지에서 먼저 안내하겠습니다.",
             pillSite: "GitHub Pages 공개 중",
-            pillQa: "QA-Z 확인 완료",
-            pillRuntime: "비공개 Runtime API",
+            pillQa: "QA-Z로 공개 파일 확인",
+            pillRuntime: "Runtime API 비공개",
             pillSource: "소스 공개 대기",
           },
           cta: {
-            workflow: "실행 흐름 보기",
-            preview: "콘솔 미리보기",
-            readiness: "파일럿 준비 상태",
+            workflow: "진행 흐름 보기",
+            preview: "콘솔 화면 보기",
+            readiness: "현재 공개 상태 보기",
           },
           mock: {
             title: "Launch Control",
-            subtitle: "오늘의 MVP 실행을 한 화면에서 확인합니다.",
-            badge: "정적 안전 미리보기",
+            subtitle: "오늘의 MVP 진행 상황을 한 화면에서 봅니다.",
+            badge: "안전한 예시 화면",
             mvpTitle: "오늘의 MVP: 인터뷰 예약 랜딩",
             mvpBody:
-              "목표는 한 가지입니다. 방문자가 문제 인터뷰 시간을 남길 만큼 제안이 선명한지 검증합니다.",
+              "오늘 확인할 목표는 하나입니다. 방문자가 인터뷰 시간을 남길 만큼 제안이 분명한지 확인합니다.",
             stage1: "범위 잠금",
-            stage1Body: "하루 안에 검증할 한 조각",
-            stage2: "패킷 준비",
-            stage2Body: "Codex 작업 요청 준비",
+            stage1Body: "오늘 확인할 만큼 작게 자르기",
+            stage2: "요청서 준비",
+            stage2Body: "Codex가 바로 실행할 작업 정리",
             stage3: "QA-Z 통과",
-            stage3Body: "공개 파일 경계 확인",
+            stage3Body: "공개 파일 안전 점검",
             stage4: "승인 대기",
             stage4Body: "도메인 공개 전 검토",
             stage5: "결정 메모",
-            stage5Body: "다음 실험 판단 대기",
-            queueTitle: "승인 대기열",
+            stage5Body: "다음 실험을 계속할지 판단",
+            queueTitle: "승인 필요 항목",
             queue1: "도메인 공개 전 검토",
             queue2: "결제 흐름 없음 확인",
             queue3: "개인정보 범위 점검",
-            evidenceTitle: "출시 증거",
+            evidenceTitle: "결과 기록",
             evidenceBody:
-              "공개 URL, 확인 결과, 남은 결정을 함께 묶어 내일의 출발점으로 남깁니다.",
+              "공개 URL, 확인 결과, 남은 결정을 함께 남겨 내일 바로 이어서 판단할 수 있게 합니다.",
           },
           proof: {
             kicker: "공개 상태",
             title:
-              "고객 로고 대신, 지금 공개할 수 있는 상태를 정확히 보여줍니다.",
+              "아직 과장된 고객 로고보다, 현재 공개 범위를 정확히 보여줍니다.",
             intro:
-              "아직 고객 로고를 만들 단계가 아니므로 신뢰 장치는 과장 대신 공개 범위, 비공개 실행 경계, 검증 상태를 선명하게 보여주는 방식으로 둡니다.",
+              "지금은 신뢰를 숫자로 꾸밀 단계가 아닙니다. 공개된 것, 비공개로 둔 것, 확인이 끝난 것을 분명하게 보여주는 편이 더 중요합니다.",
             item1Title: "GitHub Pages 공개 중",
             item1Body: "공개 소개 사이트는 정적 파일로 운영 중입니다.",
-            item2Title: "QA-Z 확인 완료",
-            item2Body: "공개 파일은 안전 경계를 기준으로 확인합니다.",
-            item3Title: "비공개 Runtime",
-            item3Body: "실제 API와 관리 콘솔은 비공개 환경에서 검증합니다.",
-            item4Title: "승인 게이트",
-            item4Body: "소스 공개와 라이선스 선택은 승인 이후에만 진행합니다.",
+            item2Title: "QA-Z 확인",
+            item2Body: "공개 파일에 민감한 값이 섞이지 않았는지 확인합니다.",
+            item3Title: "Runtime API 비공개",
+            item3Body: "실제 API와 관리 콘솔은 통제된 환경에서만 검증합니다.",
+            item4Title: "승인 후 진행",
+            item4Body:
+              "소스 공개와 라이선스 선택은 승인 기록이 남은 뒤 진행합니다.",
           },
           problem: {
             kicker: "문제",
-            title: "AI는 빨라졌지만, 무엇을 끝낼지는 여전히 흐려집니다.",
+            title: "AI가 빨라질수록, 무엇을 끝낼지 더 또렷해야 합니다.",
             intro:
-              "하루 MVP가 막히는 지점은 코드 생산량이 아닙니다. 범위, 완료 기준, 승인, 출시 증거, 다음 판단이 흩어지는 순간입니다.",
+              "하루 MVP가 멈추는 이유는 코드를 못 써서가 아닙니다. 오늘 할 범위, 완료 기준, 승인, 확인 기록, 다음 결정이 흩어질 때 속도가 떨어집니다.",
             card1: {
-              title: "범위가 하루보다 커집니다",
-              body: "좋은 아이디어도 오늘 검증할 단위로 줄이지 못하면 실행이 늘어집니다.",
+              title: "범위가 금세 커집니다",
+              body: "좋은 아이디어도 오늘 확인할 만큼 작게 자르지 못하면 계속 밀립니다.",
             },
             card2: {
-              title: "완료 기준이 느슨합니다",
-              body: "작업 패킷, 검증, 출시 증거가 분리되면 매번 무엇이 끝났는지 다시 확인해야 합니다.",
+              title: "끝났다는 기준이 모호합니다",
+              body: "작업 요청서, QA, 결과 기록이 따로 놀면 매번 상태를 다시 확인해야 합니다.",
             },
             card3: {
-              title: "속도와 위험이 섞입니다",
-              body: "결제, 개인정보, 배포, 외부 API, 도메인 결정은 자동으로 밀어붙일 일이 아닙니다.",
+              title: "빠른 실행과 위험한 결정이 섞입니다",
+              body: "결제, 개인정보, 배포, 외부 API, 도메인 결정은 자동으로 넘길 수 없는 일입니다.",
             },
           },
           preview: {
             kicker: "제품 미리보기",
-            title: "Launch Control은 하루 실행을 실제 제품 화면처럼 다룹니다.",
+            title: "Launch Control에서 하루 실행을 한눈에 봅니다.",
             intro:
-              "실제 데이터는 공개하지 않고, 안전한 예시 화면과 정적 이미지를 함께 보여줘 방문자가 제품 사용 장면을 즉시 상상할 수 있게 합니다.",
+              "실제 프로젝트 데이터는 공개하지 않고, 안전한 예시 화면과 정적 이미지만 보여줍니다. 방문자는 어떤 장면에서 제품을 쓰는지 바로 이해할 수 있습니다.",
             imageAlt: "1Day-1MVP Launch Control 제품 미리보기",
             caption:
-              "아이디어, 범위, 작업 패킷, QA, 승인, 증거, 리뷰가 하루 실행의 같은 선 위에 놓입니다.",
+              "아이디어, 범위, 작업 요청서, QA, 승인, 결과 기록, 리뷰가 하나의 진행 흐름에 놓입니다.",
             metric1: {
               label: "오늘의 MVP",
               title: "한 문장 실험",
-              body: "오늘의 질문과 성공 기준을 먼저 고정합니다.",
+              body: "오늘 답해야 할 질문과 성공 기준을 먼저 정합니다.",
             },
             metric2: {
-              label: "Codex 패킷",
-              title: "실행 가능한 요청",
-              body: "파일, 제약, 확인 명령을 하나의 작업 단위로 묶습니다.",
+              label: "Codex 요청서",
+              title: "바로 실행할 수 있는 요청",
+              body: "파일, 제약, 확인 명령을 하나의 작업 요청으로 묶습니다.",
             },
             metric3: {
-              label: "QA-Z 게이트",
-              title: "출시 전 멈춤",
-              body: "문서, 테스트, 공개 파일 경계를 짧고 단단하게 확인합니다.",
+              label: "QA-Z 확인",
+              title: "출시 전 점검",
+              body: "문서, 테스트, 공개 파일 안전 범위를 짧게 확인합니다.",
             },
             metric4: {
               label: "결과 리뷰",
               title: "다음 판단",
-              body: "계속할지, 멈출지, 다음 실험으로 바꿀지를 기록합니다.",
+              body: "계속할지, 멈출지, 다음 실험으로 바꿀지 기록합니다.",
             },
           },
           decision: {
             kicker: "결정 경로",
-            title: "방문자는 “무엇을 해볼 수 있나”를 바로 이해해야 합니다.",
+            title: "방문자는 다음에 무엇을 보면 되는지 바로 알아야 합니다.",
             intro:
-              "만점 패스에서는 CTA를 단순 앵커가 아니라 제품 여정으로 다룹니다. 먼저 흐름을 보고, 콘솔 장면을 확인하고, 지금 가능한 공개 상태를 확인합니다.",
+              "CTA는 단순한 이동 링크가 아니라 제품을 이해하는 순서입니다. 진행 흐름을 보고, 콘솔 화면을 보고, 지금 공개된 범위를 확인합니다.",
             step1: {
               title: "문제 확인",
-              body: "AI 산출물이 아니라 실행 완료 기준이 병목임을 설명합니다.",
+              body: "AI 산출물보다 완료 기준이 더 큰 병목임을 보여줍니다.",
             },
             step2: {
-              title: "콘솔 상상",
-              body: "Launch Control 화면에서 실제 사용 장면을 보여줍니다.",
+              title: "콘솔 화면",
+              body: "Launch Control에서 실제 사용 장면을 떠올릴 수 있게 합니다.",
             },
             step3: {
               title: "안전 경계",
-              body: "공개 사이트와 비공개 실행 콘솔의 경계를 분리합니다.",
+              body: "공개 소개 사이트와 비공개 실행 콘솔의 범위를 분리합니다.",
             },
             step4: {
               title: "다음 행동",
-              body: "파일럿이 열리면 이 페이지에서 다음 공개 단계를 안내합니다.",
+              body: "파일럿이 열리면 이 페이지에서 다음 단계를 안내합니다.",
             },
           },
           workflow: {
             kicker: "작동 방식",
-            title: "아이디어에서 증거까지 여섯 단계로 닫습니다.",
+            title: "아이디어에서 결과 기록까지 여섯 단계로 이어집니다.",
             intro:
-              "1Day-1MVP는 빌더 하나가 아니라 하루 실험을 끝까지 운영하는 흐름입니다.",
+              "1Day-1MVP는 하루 실험을 끝까지 밀고 갈 수 있도록 범위, 작업, 확인, 결정을 한 흐름으로 묶습니다.",
             step1: {
               title: "실험 선택",
-              body: "오늘 검증할 아이디어와 대상을 하나로 좁힙니다.",
+              body: "오늘 확인할 아이디어와 대상을 하나로 좁힙니다.",
             },
             step2: {
               title: "범위 잠금",
               body: "오늘 할 일과 하지 않을 일을 분리합니다.",
             },
             step3: {
-              title: "작업 패킷",
-              body: "Codex가 바로 실행할 파일, 제약, 검증 명령을 묶습니다.",
+              title: "작업 요청서",
+              body: "Codex가 바로 실행할 파일, 제약, 확인 명령을 묶습니다.",
             },
             step4: {
-              title: "QA-Z 검증",
-              body: "코드, 문서, 테스트, 공개 파일 경계를 확인합니다.",
+              title: "QA-Z 확인",
+              body: "코드, 문서, 테스트, 공개 파일 안전 범위를 확인합니다.",
             },
             step5: {
               title: "승인 대기",
               body: "되돌리기 어려운 결정은 사람 검토 전까지 멈춥니다.",
             },
             step6: {
-              title: "증거와 리뷰",
-              body: "URL, 결과, 남은 결정, 다음 행동을 함께 남깁니다.",
+              title: "결과 기록과 리뷰",
+              body: "URL, 확인 결과, 남은 결정, 다음 행동을 함께 남깁니다.",
             },
           },
           modules: {
             kicker: "비공개 콘솔 모듈",
-            title: "비공개 콘솔은 하루 MVP 운영판입니다.",
+            title: "비공개 콘솔에서 하루 MVP를 운영합니다.",
             intro:
-              "공개 페이지는 미리보기만 제공합니다. 실제 프로젝트 관리와 실행 기록은 통제된 콘솔 환경에서 다룹니다.",
+              "공개 페이지는 제품을 소개하는 미리보기만 제공합니다. 실제 프로젝트 관리와 실행 기록은 통제된 콘솔에서 다룹니다.",
             projectBoard: {
               title: "프로젝트 보드",
               signal: "오늘의 실행 상태",
@@ -1753,37 +1761,37 @@
             scopeNote: {
               title: "범위 노트",
               signal: "할 일과 하지 않을 일",
-              body: "오늘 출시 범위, 보류 범위, 성공 기준을 고정합니다.",
+              body: "오늘 만들 범위, 미룰 범위, 성공 기준을 고정합니다.",
             },
             packet: {
-              title: "Codex 패킷",
+              title: "Codex 작업 요청서",
               signal: "실행 요청",
-              body: "목표, 파일, 제약, 확인 명령을 하나의 작업 요청으로 만듭니다.",
+              body: "목표, 파일, 제약, 확인 명령을 하나의 요청서로 만듭니다.",
             },
             approval: {
-              title: "승인 대기열",
-              signal: "위험한 결정 보류",
-              body: "결제, 개인정보, 배포, 외부 API, 도메인 관련 결정을 대기시킵니다.",
+              title: "승인 필요 항목",
+              signal: "위험한 결정은 보류",
+              body: "결제, 개인정보, 배포, 외부 API, 도메인 관련 결정은 승인 전까지 멈춥니다.",
             },
             readiness: {
               title: "출시 준비도",
               signal: "출시 전 점검",
-              body: "부족한 증거, 승인, 차단 항목을 출시 전에 확인합니다.",
+              body: "부족한 확인 기록, 승인, 차단 항목을 출시 전에 봅니다.",
             },
             review: {
               title: "결과 리뷰",
               signal: "다음 실험 결정",
-              body: "오늘의 결과를 계속, 중단, 반복 중 하나의 판단으로 남깁니다.",
+              body: "오늘 결과를 계속, 중단, 반복 중 하나로 정리합니다.",
             },
           },
           qa: {
-            kicker: "QA-Z 품질 게이트",
-            title: "빠르게 만들수록 검증은 더 짧고 분명해야 합니다.",
+            kicker: "QA-Z 품질 확인",
+            title: "빠르게 만들수록 확인은 더 짧고 분명해야 합니다.",
             intro:
-              "QA-Z는 변경이 다음 단계로 넘어가도 되는지 확인하는 품질 게이트로 설명합니다. 내부 판정 산출물은 이 공개 사이트에 게시하지 않습니다.",
+              "QA-Z는 변경 사항이 다음 단계로 넘어가도 되는지 확인하는 품질 점검입니다. 내부 판정 파일은 공개 사이트에 올리지 않습니다.",
             card: {
               title: "무엇을 확인하나요?",
-              body: "테스트 누락, 문서와 코드의 어긋남, 공개되면 안 되는 값, 출시 파일 경계, 승인 항목을 함께 봅니다. 차단 항목이 있으면 고친 뒤 다시 확인합니다.",
+              body: "테스트 누락, 문서와 코드의 어긋남, 공개되면 안 되는 값, 출시 파일 범위, 승인 필요 항목을 함께 봅니다. 차단 항목이 있으면 고친 뒤 다시 확인합니다.",
             },
             check1: "문서와 실제 동작의 어긋남",
             check2: "테스트 또는 출시 파일의 빈틈",
@@ -1791,45 +1799,44 @@
             check4: "승인 전 멈춰야 하는 결정",
           },
           safety: {
-            kicker: "설계된 안전 경계",
-            title: "공개 사이트는 소개만, 실행 권한은 비공개로 둡니다.",
+            kicker: "안전하게 나눈 공개 범위",
+            title: "공개 사이트는 소개만, 실제 실행은 비공개로 둡니다.",
             intro:
-              "GitHub Pages에는 정적 소개 파일만 배포합니다. 실제 실행, 승인 처리, API 호출, 운영 기록은 공개 사이트에 두지 않습니다.",
+              "GitHub Pages에는 정적 소개 파일만 올립니다. 실제 실행, 승인 처리, API 호출, 운영 기록은 공개 사이트에 두지 않습니다.",
             card: {
-              title: "자동화가 혼자 결정하지 않는 것",
-              body: "결제, 개인정보, 실제 배포, 유료 외부 API, 도메인과 DNS, 저장소 공개, 라이선스 선택, 취약점 신고 채널은 승인 전까지 멈춥니다.",
+              title: "자동화가 혼자 넘기지 않는 결정",
+              body: "결제, 개인정보, 실제 배포, 유료 외부 API, 도메인과 DNS, 저장소 공개, 라이선스 선택, 취약점 신고 채널은 승인 전까지 멈춰 둡니다.",
             },
             item1: "정적 공개 사이트만 운영",
             item2: "Runtime API는 공개 배포하지 않음",
-            item3: "관리 콘솔은 비공개 환경에서 검증",
+            item3: "관리 콘솔은 비공개 환경에서 확인",
             item4: "소스 공개와 라이선스는 승인 대기",
           },
           readiness: {
             kicker: "파일럿 준비 상태",
-            title: "지금 공개된 것과 아직 닫아 둔 것을 한 번에 확인합니다.",
+            title: "지금 열려 있는 것과 아직 닫아 둔 것을 한눈에 봅니다.",
             intro:
-              "CTA는 과장된 가입 버튼이 아니라 현재 가능한 다음 행동을 안내합니다. 파일럿이 열리면 이 영역이 가장 먼저 바뀝니다.",
+              "가입 버튼을 억지로 만들지 않습니다. 지금 할 수 있는 일과 아직 기다려야 하는 일을 분명히 안내합니다.",
             card1: {
-              title: "공개 랜딩",
-              body: "이 페이지는 공개 정적 사이트로 열려 있습니다.",
+              title: "공개 소개 페이지",
+              body: "이 페이지는 정적 공개 사이트로 열려 있습니다.",
             },
             card2: {
               title: "비공개 콘솔",
-              body: "실제 관리 화면은 통제된 환경에서 검증됩니다.",
+              body: "실제 관리 화면은 통제된 환경에서만 확인합니다.",
             },
             card3: {
               title: "소스 공개",
-              body: "저장소 공개와 라이선스 결정은 승인 기록이 끝난 뒤 진행합니다.",
+              body: "저장소 공개와 라이선스 결정은 승인 기록이 남은 뒤 진행합니다.",
             },
           },
           faq: {
             kicker: "FAQ",
             title: "방문자가 먼저 알아야 할 것",
-            intro:
-              "실제 서비스처럼 보이되, 현재 공개 경계는 과장하지 않습니다.",
+            intro: "서비스 소개는 선명하게, 공개 범위는 정확하게 보여줍니다.",
             q1: {
               title: "지금 바로 가입할 수 있나요?",
-              body: "아직 아닙니다. 파일럿이나 공개 데모가 준비되면 이 페이지에 다음 행동을 안내합니다.",
+              body: "아직은 받을 수 없습니다. 파일럿이나 공개 데모가 준비되면 이 페이지에서 다음 단계를 안내하겠습니다.",
             },
             q2: {
               title: "이 페이지에서 데이터를 저장하나요?",
@@ -1837,21 +1844,21 @@
             },
             q3: {
               title: "누구에게 맞나요?",
-              body: "솔로 창업자, 인디 빌더, 작은 제품팀처럼 AI와 함께 작은 실험을 증거까지 닫고 싶은 팀에 맞습니다.",
+              body: "1인 창업자, 인디 메이커, 소규모 제품팀처럼 AI와 함께 작은 실험을 만들고 결과까지 남기고 싶은 팀에 맞습니다.",
             },
             q4: {
               title: "모든 MVP가 하루 안에 출시되나요?",
-              body: "아닙니다. 목표는 하루 안에 검증 가능한 작은 범위로 줄이고, 만들고, 확인하고, 다음 결정을 남기는 것입니다.",
+              body: "아닙니다. 목표는 하루 안에 확인 가능한 작은 범위로 줄이고, 만들고, 결과를 보고, 다음 결정을 남기는 것입니다.",
             },
           },
           finalCta: {
             kicker: "비공개 미리보기",
-            title: "다음 공개 단계가 열리면 이 페이지에서 안내합니다.",
-            body: "이 페이지는 공개 소개 사이트입니다. 실제 관리 콘솔은 비공개 파일럿 환경에서 검증됩니다.",
-            button: "파일럿 준비 상태 보기",
+            title: "다음 공개 단계가 열리면 이 페이지에서 먼저 안내합니다.",
+            body: "이 페이지는 공개 소개 사이트입니다. 실제 관리 콘솔은 비공개 파일럿 환경에서만 확인합니다.",
+            button: "현재 공개 상태 보기",
           },
           footer: {
-            copy: "1Day-1MVP 공개 사이트는 정적 소개 페이지이며, 실행 콘솔과 Runtime API는 비공개 환경에 둡니다.",
+            copy: "1Day-1MVP 공개 사이트는 정적 소개 페이지입니다. 실행 콘솔과 Runtime API는 비공개 환경에 둡니다.",
             backTop: "맨 위로",
           },
         },
